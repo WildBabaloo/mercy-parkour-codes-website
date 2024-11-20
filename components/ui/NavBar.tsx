@@ -1,15 +1,21 @@
 import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+  Link,
+} from "@nextui-org/react";
+
+import { Button } from "@/components/ui/button";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = [
-    "New/Latest Codes",
-    "Learn Mercy Tech",
-    "Extras",
-    "Login",
-  ];
+  const menuItems = ["New/Latest Codes", "Learn Mercy Tech", "Extras", "Login"];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -42,9 +48,7 @@ export default function App() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Login
-          </Button>
+          <Button variant="default">Login</Button>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
@@ -52,7 +56,11 @@ export default function App() {
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
               color={
-                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+                index === 2
+                  ? "primary"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
               }
               className="w-full"
               href="#"
