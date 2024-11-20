@@ -5,16 +5,10 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
+    "New/Latest Codes",
+    "Learn Mercy Tech",
+    "Extras",
+    "Login",
   ];
 
   return (
@@ -25,34 +19,31 @@ export default function App() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <p className="font-bold text-inherit">MercyParkour.codes</p>
+          <p className="font-bold text-inherit">mercyparkour.codes</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
-            Features
+            New/Latest Codes
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" aria-current="page">
-            Customers
+            Learn Mercy Tech
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Integrations
+            Extras
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
+            Login
           </Button>
         </NavbarItem>
       </NavbarContent>
