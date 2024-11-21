@@ -9,16 +9,34 @@ import {
   NavbarMenuItem,
   Link,
 } from "@nextui-org/react";
-
 import { Button } from "@/components/ui/button";
+import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = ["New/Latest Codes", "Learn Mercy Tech", "Extras", "Login"];
+  const menuItems = ["New/Latest Codes", "Learn Mercy Tech", "Extras"];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      onMenuOpenChange={setIsMenuOpen}
+      classNames={{
+        item: [
+          "flex",
+          "relative",
+          "h-full",
+          "items-center",
+          "data-[active=true]:after:content-['']",
+          "data-[active=true]:after:absolute",
+          "data-[active=true]:after:bottom-0",
+          "data-[active=true]:after:left-0",
+          "data-[active=true]:after:right-0",
+          "data-[active=true]:after:h-[2px]",
+          "data-[active=true]:after:rounded-[2px]",
+          "data-[active=true]:after:bg-primary",
+        ],
+      }}
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -47,6 +65,12 @@ export default function App() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
+        <NavbarItem>
+          <MoonIcon className="w-6 h-6" />
+        </NavbarItem>
+        <NavbarItem>
+          <GlobeIcon className="w-6 h-6" />
+        </NavbarItem>
         <NavbarItem>
           <Button variant="default">Login</Button>
         </NavbarItem>
