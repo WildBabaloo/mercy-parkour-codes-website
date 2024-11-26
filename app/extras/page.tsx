@@ -1,3 +1,11 @@
+"use client";
+import NavBarUI from "@/components/ui/NavBar";
+
 export default function Extras() {
-  return <>Extras Page</>;
+  return (
+    <>
+      <NavBarUI />
+      Extras Page
+    </>
+  );
 }
