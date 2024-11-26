@@ -43,7 +43,9 @@ export default function App() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <p className="font-bold text-inherit">mercyparkour.codes</p>
+          <Link href="/">
+            <p className="font-bold text-inherit">mercyparkour.codes</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
