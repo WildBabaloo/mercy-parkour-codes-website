@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@nextui-org/navbar": "^2.0.37",
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/system": "^2.2.6",
