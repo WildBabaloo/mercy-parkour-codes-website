@@ -1,9 +1,12 @@
-"use client";
 import NavBarUI from "@/components/ui/NavBar";
 import Card from "@/components/CodeCard";
 import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Codes() {
+export default async function Codes() {
+  const supabase = await createClient();
+  // const data = await supabase.from("mercy_parkour_codes").select();
+  console.log(supabase);
   return (
     <>
       <NavBarUI />
