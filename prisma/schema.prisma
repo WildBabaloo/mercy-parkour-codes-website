@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mercy_parkour_codes {
+  Map                 String?
+  Code                String?
+  Checkpoints         Int?
+  Video_Notes         String?
+  Author              String?
+  Difficulty_key_here String?
+  Sit                 String?
+  Cloud               String?
+  Stuck_Balance       String?
+  Softlock            String?
+  Many_Orbs           String?
+
+  @@ignore
+}
