@@ -1,17 +1,35 @@
 import NavBarUI from "@/components/ui/NavBar";
 import Card from "@/components/CodeCard";
 import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
-import { createClient } from "@/utils/supabase/server";
+import prisma from "@/prisma/lib/db";
 
 export default async function Codes() {
-  const supabase = await createClient();
-  // const data = await supabase.from("mercy_parkour_codes").select();
-  console.log(supabase);
+  const codes = await prisma.mercy_parkour_codes.findMany({
+    take: 25,
+  });
+
+  console.log(codes);
+
   return (
     <>
       <NavBarUI />
-      <div className="flex items-center justify-center min-h-screen bg-gray-800 p-4">
-        <Card
+      <div className="min-h-screen bg-gray-800 flex items-center justify-center p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-md w-full">
+          {codes.map((code) => (
+            <Card
+              key={code.Map_Number}
+              title={code.Map}
+              code={code.Code}
+              difficulty={code.Difficulty}
+              mapper={code.Author}
+              date="12 Oct 2024"
+              likes={36}
+              imageSrc={Ecopoint}
+            />
+          ))}
+        </div>
+      </div>
+      {/*         <Card
           title="Mercy Parkour Ep: Antarctica"
           code="QTXG4"
           difficulty="Intermediate"
@@ -19,8 +37,7 @@ export default async function Codes() {
           date="12 Oct 2024"
           likes={36}
           imageSrc={Ecopoint}
-        />
-      </div>
+        />*/}
     </>
   );
 }

@@ -1,15 +1,16 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { HeartIcon, ShareIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 interface CardProps {
-  title: string;
-  code: string;
-  difficulty: string;
-  mapper: string;
-  date: string;
-  likes: number;
+  title: string | null;
+  code: string | null;
+  difficulty: string | null;
+  mapper: string | null;
+  date: string | null;
+  likes: number | null;
   imageSrc: StaticImageData;
 }
 
