@@ -20,8 +20,8 @@ export default async function Codes() {
               key={code.Map_Number}
               title={code.Map}
               code={code.Code}
-              difficulty={code.Difficulty}
-              mapper={code.Author}
+              difficulty={code.Difficulty ? code.Difficulty : "N/A"}
+              mapper={code.Author ? code.Author : "Unknown Mapper"}
               date="12 Oct 2024"
               likes={36}
               imageSrc={Ecopoint}

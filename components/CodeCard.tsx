@@ -2,15 +2,19 @@
 import React from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import { HeartIcon, ShareIcon, CheckIcon } from "@heroicons/react/24/outline";
+import {
+  HeartIcon,
+  BookmarkIcon,
+  CheckIcon,
+} from "@heroicons/react/24/outline";
 
 interface CardProps {
   title: string | null;
   code: string | null;
-  difficulty: string | null;
-  mapper: string | null;
-  date: string | null;
-  likes: number | null;
+  difficulty: string;
+  mapper: string;
+  date: string;
+  likes: number;
   imageSrc: StaticImageData;
 }
 
@@ -66,7 +70,7 @@ const Card: React.FC<CardProps> = ({
           <div className="flex flex-col space-y-2 items-end">
             <HeartIcon className="h-5 w-5 text-gray-400" />
             <CheckIcon className="h-5 w-5 text-gray-400" />
-            <ShareIcon className="h-5 w-5 text-gray-400" />
+            <BookmarkIcon className="h-5 w-5 text-gray-400" />
           </div>
         </div>
       </div>
