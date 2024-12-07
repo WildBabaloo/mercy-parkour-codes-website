@@ -13,14 +13,19 @@ export default async function Codes() {
 
   return (
     <>
+      {/* Navbar */}
       <NavBarUI />
+      {/* Content */}
       <div className="bg-gray-800 p-4">
+        {/* Search Bar */}
         <div className="flex items-center justify-center">
           <div className="w-full">
             <Input type="search" placeholder="Search..." className="mb-8" />
           </div>
         </div>
+        {/* Card Section */}
         <div className="min-h-screen flex items-center justify-center">
+          {/* Individual Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-md w-full">
             {codes.map((code) => (
               <Card
