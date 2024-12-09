@@ -19,9 +19,12 @@ export default async function Codes() {
       <div className="bg-gray-800 p-4">
         {/* Search Bar */}
         <div className="flex items-center justify-center">
-          <div className="w-full">
-            <Input type="search" placeholder="Search..." className="mb-8" />
+          <div className="max-w-screen-md w-full">
+            <Input type="search" placeholder="Search..." className="" />
           </div>
+        </div>
+        <div className="text-center p-4 text-white">
+          More search options (Clickable to see and apply filter options){" "}
         </div>
         {/* Card Section */}
         <div className="min-h-screen flex items-center justify-center">
@@ -34,7 +37,6 @@ export default async function Codes() {
                 code={code.Code}
                 difficulty={code.Difficulty ? code.Difficulty : "N/A"}
                 mapper={code.Author ? code.Author : "Unknown Mapper"}
-                date="12 Oct 2024"
                 likes={36}
                 imageSrc={Ecopoint}
               />
@@ -42,15 +44,6 @@ export default async function Codes() {
           </div>
         </div>
       </div>
-      {/*         <Card
-          title="Mercy Parkour Ep: Antarctica"
-          code="QTXG4"
-          difficulty="Intermediate"
-          mapper="OnMyKnees"
-          date="12 Oct 2024"
-          likes={36}
-          imageSrc={Ecopoint}
-        />*/}
     </>
   );
 }

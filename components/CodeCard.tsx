@@ -13,7 +13,6 @@ interface CardProps {
   code: string | null;
   difficulty: string;
   mapper: string;
-  date: string;
   likes: number;
   imageSrc: StaticImageData;
 }
@@ -23,7 +22,6 @@ const Card: React.FC<CardProps> = ({
   code,
   difficulty,
   mapper,
-  date,
   likes,
   imageSrc,
 }) => {
@@ -49,29 +47,25 @@ const Card: React.FC<CardProps> = ({
         </div>
 
         {/* Bottom Section */}
-        <div className="text-gray-400 text-sm flex justify-between items-center mt-4">
-          {/* Left: Mapped By & Likes/Date */}
-          <div>
-            <p>
-              Mapped by: <span className="text-white">{mapper}</span>
-            </p>
-            <div className="flex items-center space-x-4 mt-2">
-              {/* Likes */}
-              <div className="flex items-center space-x-2">
-                <HeartIcon className="h-5 w-5 text-gray-400" />
-                <span>{likes}</span>
-              </div>
-              {/* Date */}
-              <p>{date}</p>
+        <div className="absolute bottom-4 left-4 text-gray-400 text-sm">
+          {/* Mapped By & Likes */}
+          <p>
+            Mapped by: <span className="text-white">{mapper}</span>
+          </p>
+          <div className="flex items-center space-x-4 mt-2">
+            {/* Likes */}
+            <div className="flex items-center space-x-2">
+              <HeartIcon className="h-5 w-5 text-gray-400" />
+              <span>{likes}</span>
             </div>
           </div>
+        </div>
 
-          {/* Right: Vertical Icons */}
-          <div className="flex flex-col space-y-2 items-end">
-            <HeartIcon className="h-5 w-5 text-gray-400" />
-            <CheckIcon className="h-5 w-5 text-gray-400" />
-            <BookmarkIcon className="h-5 w-5 text-gray-400" />
-          </div>
+        {/* Right Section: Vertical Icons */}
+        <div className="absolute bottom-4 right-4 flex flex-col space-y-2 items-end">
+          <HeartIcon className="h-5 w-5 text-gray-400" />
+          <CheckIcon className="h-5 w-5 text-gray-400" />
+          <BookmarkIcon className="h-5 w-5 text-gray-400" />
         </div>
       </div>
     </div>
