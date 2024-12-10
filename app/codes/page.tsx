@@ -1,15 +1,66 @@
+"use client";
+import { useState, useEffect } from "react";
 import NavBarUI from "@/components/ui/NavBar";
 import Card from "@/components/CodeCard";
 import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
-import prisma from "@/prisma/lib/db";
 import { Input } from "@/components/ui/input";
 
-export default async function Codes() {
-  const codes = await prisma.mercy_parkour_codes.findMany({
-    take: 25,
-  });
+type MapCode = {
+  Map_Number: number;
+  Map: string | null;
+  Code: string;
+  Checkpoints: number | null;
+  Video: string | null;
+  Notes: string | null;
+  Author: string | null;
+  Difficulty: string | null;
+  Sit: string | null;
+  Cloud: string | null;
+  Stuck_Balance: string | null;
+  Softlock: string | null;
+  Many_Orbs: string | null;
+};
 
-  console.log(codes);
+export default function Codes() {
+  const [codes, setCodes] = useState<MapCode[]>([]);
+  const [page, setPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    const fetchCodes = async () => {
+      if (isLoading || !hasMore) return;
+
+      setIsLoading(true);
+      try {
+        const response = await fetch(`/api/codes?skip=${page * 20}&take=20`);
+        const newCodes: MapCode[] = await response.json();
+
+        if (newCodes.length < 25) setHasMore(false);
+        setCodes((previousCodes) => [...previousCodes, ...newCodes]);
+      } catch (error) {
+        console.error("Error fetching more codes from the database", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCodes();
+  }, [page, hasMore, isLoading]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - 100
+      ) {
+        setPage((prev) => prev + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -43,6 +94,8 @@ export default async function Codes() {
             ))}
           </div>
         </div>
+        {isLoading && <p className="text-center text-white">Loading...</p>}
+        {!hasMore && <p className="text-center text-white">No more codes!</p>}
       </div>
     </>
   );
