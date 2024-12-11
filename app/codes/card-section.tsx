@@ -56,9 +56,10 @@ export default function CardSection({
               key={code.Map_Number}
               title={code.Map}
               code={code.Code}
+              checkpoints={code.Checkpoints?.toString() || "N/A"}
               difficulty={code.Difficulty || "N/A"}
               mapper={code.Author || "Unknown Mapper"}
-              likes={36}
+              likes={0}
               imageSrc={Ecopoint}
             />
           ))}

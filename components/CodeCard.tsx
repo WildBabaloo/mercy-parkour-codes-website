@@ -11,6 +11,7 @@ import {
 interface CardProps {
   title: string | null;
   code: string | null;
+  checkpoints: string;
   difficulty: string;
   mapper: string;
   likes: number;
@@ -20,6 +21,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({
   title,
   code,
+  checkpoints,
   difficulty,
   mapper,
   likes,
@@ -33,7 +35,7 @@ const Card: React.FC<CardProps> = ({
           src={imageSrc}
           alt={`${title} thumbnail`}
           layout="fill"
-          className="object-cover opacity-30"
+          className="object-cover opacity-50"
         />
       </div>
 
@@ -42,7 +44,7 @@ const Card: React.FC<CardProps> = ({
         {/* Top Section */}
         <div>
           <h3 className="text-white text-lg font-bold">{title}</h3>
-          <p className="text-gray-300 text-sm">{code}</p>
+          <p className="text-gray-300 text-sm">{`${code} | ${checkpoints} checkpoints`}</p>
           <p className="text-gray-400 text-sm">{difficulty}</p>
         </div>
 
