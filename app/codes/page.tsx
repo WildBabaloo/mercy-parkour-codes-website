@@ -55,6 +55,7 @@ export default function Codes() {
     if (inView) {
       fetchMoreCodes();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
 
   return (
