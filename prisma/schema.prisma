@@ -8,19 +8,18 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model mercy_parkour_codes {
-  Map                 String?
-  Code                String?
-  Checkpoints         Int?
-  Video_Notes         String?
-  Author              String?
-  Difficulty_key_here String?
-  Sit                 String?
-  Cloud               String?
-  Stuck_Balance       String?
-  Softlock            String?
-  Many_Orbs           String?
-
-  @@ignore
+  Map_Number    Int     @default(autoincrement())
+  Map           String?
+  Code          String  @id
+  Checkpoints   Int?
+  Video         String?
+  Notes         String?
+  Author        String?
+  Difficulty    String?
+  Sit           String?
+  Cloud         String?
+  Stuck_Balance String?
+  Softlock      String?
+  Many_Orbs     String?
 }
