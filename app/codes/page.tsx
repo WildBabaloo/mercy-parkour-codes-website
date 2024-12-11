@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import NavBarUI from "@/components/ui/NavBar";
 import Card from "@/components/CodeCard";
 import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
@@ -26,41 +27,35 @@ export default function Codes() {
   const [page, setPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [ref, inView] = useInView();
+
+  async function fetchMoreCodes() {
+    if (isLoading || !hasMore) return;
+
+    setIsLoading(true);
+    try {
+      const nextPage = page + 1;
+      const response = await fetch(`/api/codes?skip=${page * 20}&take=20`);
+      const newCodes: MapCode[] = await response.json();
+
+      if (newCodes.length < 20) {
+        setHasMore(false);
+      }
+
+      setPage(nextPage);
+      setCodes((prevCodes) => [...prevCodes, ...newCodes]);
+    } catch (error) {
+      console.error("Error fetching more codes from the database", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
-    const fetchCodes = async () => {
-      if (isLoading || !hasMore) return;
-
-      setIsLoading(true);
-      try {
-        const response = await fetch(`/api/codes?skip=${page * 20}&take=20`);
-        const newCodes: MapCode[] = await response.json();
-
-        if (newCodes.length < 25) setHasMore(false);
-        setCodes((previousCodes) => [...previousCodes, ...newCodes]);
-      } catch (error) {
-        console.error("Error fetching more codes from the database", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCodes();
-  }, [page, hasMore, isLoading]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - 100
-      ) {
-        setPage((prev) => prev + 1);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (inView) {
+      fetchMoreCodes();
+    }
+  }, [inView]);
 
   return (
     <>
@@ -75,7 +70,7 @@ export default function Codes() {
           </div>
         </div>
         <div className="text-center p-4 text-white">
-          More search options (Clickable to see and apply filter options){" "}
+          More search options (Clickable to see and apply filter options)
         </div>
         {/* Card Section */}
         <div className="min-h-screen flex items-center justify-center">
@@ -86,8 +81,8 @@ export default function Codes() {
                 key={code.Map_Number}
                 title={code.Map}
                 code={code.Code}
-                difficulty={code.Difficulty ? code.Difficulty : "N/A"}
-                mapper={code.Author ? code.Author : "Unknown Mapper"}
+                difficulty={code.Difficulty || "N/A"}
+                mapper={code.Author || "Unknown Mapper"}
                 likes={36}
                 imageSrc={Ecopoint}
               />
@@ -96,6 +91,8 @@ export default function Codes() {
         </div>
         {isLoading && <p className="text-center text-white">Loading...</p>}
         {!hasMore && <p className="text-center text-white">No more codes!</p>}
+        {/* Intersection Observer Element */}
+        <div ref={ref} style={{ height: "1px" }}></div>
       </div>
     </>
   );
