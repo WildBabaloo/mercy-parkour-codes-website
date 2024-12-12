@@ -1,5 +1,5 @@
 import NavBarUI from "@/components/ui/NavBar";
-import { Input } from "@/components/ui/input";
+import { CodeInput } from "@/components/ui/CodeInput";
 import CardSection from "./card-section";
 import { MapCode } from "./MapCode";
 import prisma from "@/prisma/lib/db";
@@ -12,13 +12,15 @@ export default async function Codes() {
   return (
     <>
       {/* Navbar */}
-      <NavBarUI />
+      <div>
+        <NavBarUI />
+      </div>
       {/* Content */}
       <div className="bg-gray-800 p-4">
         {/* Search Bar */}
         <div className="flex items-center justify-center">
           <div className="max-w-screen-md w-full">
-            <Input type="search" placeholder="Search..." className="" />
+            <CodeInput type="search" placeholder="Search..." className="" />
           </div>
         </div>
         <div className="text-center p-4 text-white">

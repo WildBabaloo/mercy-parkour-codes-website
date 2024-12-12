@@ -4,7 +4,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import MercyGIF from "@/images/tumblr_p8ffrwv7PA1rignt3o1_500-2380950851.gif";
 import TitleScreen from "@/components/TitleScreen";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/MainPageInput";
 
 export default function Home() {
   return (
