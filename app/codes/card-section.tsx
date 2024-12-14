@@ -66,8 +66,10 @@ export default function CardSection({
   useEffect(() => {
     if (search) {
       fetchSearchedCodes(search);
+    } else {
+      setCodes(initialCodes);
     }
-  }, [search]);
+  }, [search, initialCodes]);
 
   useEffect(() => {
     if (inView) {
