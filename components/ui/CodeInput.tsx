@@ -1,25 +1,27 @@
 "use client";
-import { forwardRef, ComponentProps } from "react";
+import { forwardRef, ComponentProps, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-// import { useDebounce } from "use-debounce";
+import { useDebounce } from "use-debounce";
 
 const CodeInput = forwardRef<HTMLInputElement, ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {
+    const [text, setText] = useState("");
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
+    const [searchTerm] = useDebounce(text, 500);
 
-    function handleSearch(term: string) {
+    useEffect(() => {
       const params = new URLSearchParams(searchParams);
-      if (term) {
-        params.set("search", term);
+      if (searchTerm) {
+        params.set("search", searchTerm);
       } else {
         params.delete("search");
       }
       replace(`${pathname}?${params.toString()}`);
-    }
+    }, [searchTerm, pathname, searchParams, replace]);
 
     return (
       <div className="relative w-full">
@@ -32,9 +34,8 @@ const CodeInput = forwardRef<HTMLInputElement, ComponentProps<"input">>(
           )}
           ref={ref}
           {...props}
-          onChange={(e) => {
-            handleSearch(e.target.value);
-          }}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
         />
         {/* Search Icon */}
