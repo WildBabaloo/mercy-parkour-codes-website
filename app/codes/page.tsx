@@ -11,13 +11,13 @@ export default async function Codes(props: {
   }>;
 }) {
   const searchParams = await props.searchParams;
-  const search = searchParams?.search || "";
+  const search = searchParams?.search;
   const currentPage = Number(searchParams?.page) || 1;
   const take = 20; // Number of items per page
   const skip = (currentPage - 1) * take; // Pagination offset
 
-  console.log(`Search Value: ${search}`);
-  console.log(`Current Page: ${currentPage}`);
+  // console.log(`Search Value: ${search}`);
+  // console.log(`Current Page: ${currentPage}`);
 
   const codes: MapCode[] = await prisma.mercy_parkour_codes.findMany({
     where: search
@@ -33,8 +33,6 @@ export default async function Codes(props: {
     skip,
     orderBy: { Map_Number: "desc" },
   });
-
-  console.log(codes);
 
   return (
     <>
@@ -53,7 +51,7 @@ export default async function Codes(props: {
         <div className="text-center p-4 text-white">
           More search options (Clickable to see and apply filter options)
         </div>
-        <CardSection initialCodes={codes} />
+        <CardSection initialCodes={codes} search={search} />
       </div>
     </>
   );
