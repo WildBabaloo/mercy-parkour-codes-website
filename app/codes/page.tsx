@@ -19,30 +19,20 @@ export default async function Codes(props: {
   console.log(`Search Value: ${search}`);
   console.log(`Current Page: ${currentPage}`);
 
-  let codes: MapCode[];
-
-  if (!search) {
-    // Fetch all codes when no search term is provided
-    codes = await prisma.mercy_parkour_codes.findMany({
-      take,
-      skip,
-      orderBy: { Map_Number: "desc" },
-    });
-  } else {
-    // Fetch filtered codes when a search term is provided
-    codes = await prisma.mercy_parkour_codes.findMany({
-      where: {
-        OR: [
-          { Map: { contains: search, mode: "insensitive" } }, // Search in Map column
-          { Code: { contains: search, mode: "insensitive" } }, // Search in Code column
-          { Author: { contains: search, mode: "insensitive" } }, // Search in Author column
-        ],
-      },
-      take,
-      skip,
-      orderBy: { Map_Number: "desc" },
-    });
-  }
+  const codes: MapCode[] = await prisma.mercy_parkour_codes.findMany({
+    where: search
+      ? {
+          OR: [
+            { Map: { contains: search, mode: "insensitive" } },
+            { Code: { contains: search, mode: "insensitive" } },
+            { Author: { contains: search, mode: "insensitive" } },
+          ],
+        }
+      : undefined,
+    take,
+    skip,
+    orderBy: { Map_Number: "desc" },
+  });
 
   console.log(codes);
 
