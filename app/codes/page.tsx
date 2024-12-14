@@ -4,11 +4,48 @@ import CardSection from "./card-section";
 import { MapCode } from "./MapCode";
 import prisma from "@/prisma/lib/db";
 
-export default async function Codes() {
-  const codes: MapCode[] = await prisma.mercy_parkour_codes.findMany({
-    take: 20,
-    orderBy: { Map_Number: "desc" },
-  });
+export default async function Codes(props: {
+  searchParams?: Promise<{
+    search?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const search = searchParams?.search || "";
+  const currentPage = Number(searchParams?.page) || 1;
+  const take = 20; // Number of items per page
+  const skip = (currentPage - 1) * take; // Pagination offset
+
+  console.log(`Search Value: ${search}`);
+  console.log(`Current Page: ${currentPage}`);
+
+  let codes: MapCode[];
+
+  if (!search) {
+    // Fetch all codes when no search term is provided
+    codes = await prisma.mercy_parkour_codes.findMany({
+      take,
+      skip,
+      orderBy: { Map_Number: "desc" },
+    });
+  } else {
+    // Fetch filtered codes when a search term is provided
+    codes = await prisma.mercy_parkour_codes.findMany({
+      where: {
+        OR: [
+          { Map: { contains: search, mode: "insensitive" } }, // Search in Map column
+          { Code: { contains: search, mode: "insensitive" } }, // Search in Code column
+          { Author: { contains: search, mode: "insensitive" } }, // Search in Author column
+        ],
+      },
+      take,
+      skip,
+      orderBy: { Map_Number: "desc" },
+    });
+  }
+
+  console.log(codes);
+
   return (
     <>
       {/* Navbar */}
