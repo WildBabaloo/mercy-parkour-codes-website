@@ -1,30 +1,57 @@
 import NavBarUI from "@/components/ui/NavBar";
-import { Input } from "@/components/ui/input";
+import { CodeInput } from "@/components/ui/CodeInput";
 import CardSection from "./card-section";
 import { MapCode } from "./MapCode";
 import prisma from "@/prisma/lib/db";
 
-export default async function Codes() {
+export default async function Codes(props: {
+  searchParams?: Promise<{
+    search?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const search = searchParams?.search;
+  const currentPage = Number(searchParams?.page) || 1;
+  const take = 20; // Number of items per page
+  const skip = (currentPage - 1) * take; // Pagination offset
+
+  // console.log(`Search Value: ${search}`);
+  // console.log(`Current Page: ${currentPage}`);
+
   const codes: MapCode[] = await prisma.mercy_parkour_codes.findMany({
-    take: 20,
+    where: search
+      ? {
+          OR: [
+            { Map: { contains: search, mode: "insensitive" } },
+            { Code: { contains: search, mode: "insensitive" } },
+            { Author: { contains: search, mode: "insensitive" } },
+          ],
+        }
+      : undefined,
+    take,
+    skip,
     orderBy: { Map_Number: "desc" },
   });
+
   return (
     <>
       {/* Navbar */}
-      <NavBarUI />
+      <div>
+        <NavBarUI />
+      </div>
       {/* Content */}
       <div className="bg-gray-800 p-4">
         {/* Search Bar */}
         <div className="flex items-center justify-center">
           <div className="max-w-screen-md w-full">
-            <Input type="search" placeholder="Search..." className="" />
+            <CodeInput type="search" placeholder="Search..." className="" />
           </div>
         </div>
         <div className="text-center p-4 text-white">
           More search options (Clickable to see and apply filter options)
         </div>
-        <CardSection initialCodes={codes} />
+        <CardSection initialCodes={codes} search={search} />
       </div>
     </>
   );

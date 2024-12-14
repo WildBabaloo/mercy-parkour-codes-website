@@ -7,8 +7,10 @@ import { MapCode } from "./MapCode";
 
 export default function CardSection({
   initialCodes,
+  search,
 }: {
   initialCodes: MapCode[];
+  search: string | undefined;
 }) {
   const [codes, setCodes] = useState<MapCode[]>(initialCodes);
   const [page, setPage] = useState(1);
@@ -22,7 +24,9 @@ export default function CardSection({
     setIsLoading(true);
     try {
       const nextPage = page + 1;
-      const response = await fetch(`/api/codes?skip=${page * 20}&take=20`);
+      const response = await fetch(
+        `/api/codes?skip=${page * 20}&take=20&search=${search}`
+      );
       const newCodes: MapCode[] = await response.json();
 
       if (newCodes.length < 20) {
@@ -37,6 +41,35 @@ export default function CardSection({
       setIsLoading(false);
     }
   }
+
+  async function fetchSearchedCodes(searchTerm: string) {
+    setIsLoading(true);
+    setHasMore(true);
+    try {
+      const response = await fetch(
+        `/api/codes?skip=0&take=20&search=${searchTerm}`
+      );
+      const searchedCodes: MapCode[] = await response.json();
+
+      if (searchedCodes.length < 20) {
+        setHasMore(false);
+      }
+
+      setCodes(searchedCodes);
+    } catch (error) {
+      console.error("Error fetching searched codes from the database", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    if (search) {
+      fetchSearchedCodes(search);
+    } else {
+      setCodes(initialCodes);
+    }
+  }, [search, initialCodes]);
 
   useEffect(() => {
     if (inView) {
