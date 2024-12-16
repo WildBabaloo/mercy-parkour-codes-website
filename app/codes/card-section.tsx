@@ -84,7 +84,7 @@ export default function CardSection({
   return (
     <>
       {/* Card Section */}
-      <div className="min-h-screen flex justify-center">
+      <div className="min-h-screen flex justify-center mt-2">
         {/* Individual Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-md h-full w-full align-top">
           {codes.map((code) => (
