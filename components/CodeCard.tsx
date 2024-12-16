@@ -6,6 +6,7 @@ import {
   HeartIcon,
   BookmarkIcon,
   CheckIcon,
+  FlagIcon,
 } from "@heroicons/react/24/outline";
 
 interface CardProps {
@@ -44,7 +45,10 @@ const Card: React.FC<CardProps> = ({
         {/* Top Section */}
         <div>
           <h3 className="text-white text-lg font-bold">{title}</h3>
-          <p className="text-gray-300 text-sm">{`${code} | ${checkpoints} checkpoints`}</p>
+          <p className="text-gray-300 text-sm flex space-x-2">
+            <FlagIcon className="h-5 w-5 mr-1" />
+            {`${checkpoints} | ${code}`}
+          </p>
           <p className="text-gray-400 text-sm">{difficulty}</p>
         </div>
 
