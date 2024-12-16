@@ -3,6 +3,7 @@ import { CodeInput } from "@/components/ui/CodeInput";
 import CardSection from "./card-section";
 import { MapCode } from "./MapCode";
 import prisma from "@/prisma/lib/db";
+import SortSection from "./sort-section";
 
 export default async function Codes(props: {
   searchParams?: Promise<{
@@ -51,7 +52,10 @@ export default async function Codes(props: {
         <div className="text-center p-4 text-white">
           More search options (Clickable to see and apply filter options)
         </div>
-        <CardSection initialCodes={codes} search={search} />
+        <div>
+          <SortSection />
+          <CardSection initialCodes={codes} search={search} />
+        </div>
       </div>
     </>
   );
