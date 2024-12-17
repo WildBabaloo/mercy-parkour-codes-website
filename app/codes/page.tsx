@@ -14,8 +14,8 @@ export default async function Codes(props: {
   const searchParams = await props.searchParams;
   const search = searchParams?.search;
   const currentPage = Number(searchParams?.page) || 1;
-  const take = 20; // Number of items per page
-  const skip = (currentPage - 1) * take; // Pagination offset
+  const take = 20;
+  const skip = (currentPage - 1) * take; 
 
   // console.log(`Search Value: ${search}`);
   // console.log(`Current Page: ${currentPage}`);
