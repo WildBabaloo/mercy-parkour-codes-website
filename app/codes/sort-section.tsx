@@ -1,12 +1,16 @@
 "use client";
 import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 export default function SortSection() {
   const [activeSort, setActiveSort] = useState<{
     key: string | null;
     direction: "down" | "up" | null;
   }>({ key: null, direction: null });
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
   const sortOptions = [
     "Favorites",
@@ -17,15 +21,28 @@ export default function SortSection() {
   ];
 
   const handleSortClick = (option: string) => {
+    const params = new URLSearchParams(searchParams);
+
     setActiveSort((prev) => {
+      let newDirection: "down" | "up" | null = null;
+
       if (prev.key === option) {
-        if (prev.direction === "down") return { key: option, direction: "up" };
-        if (prev.direction === "up") return { key: null, direction: null };
+        if (prev.direction === "down") {
+          newDirection = "up";
+          params.set("sort", `${option}_asc`);
+        } else if (prev.direction === "up") {
+          newDirection = null;
+          params.delete("sort");
+        }
+      } else {
+        newDirection = "down";
+        params.set("sort", `${option}_desc`);
       }
-      return { key: option, direction: "down" };
+
+      replace(`${pathname}?${params.toString()}`);
+      return { key: newDirection ? option : null, direction: newDirection };
     });
   };
-
   const getArrowIcon = (key: string) => {
     if (activeSort.key === key) {
       if (activeSort.direction === "down") {
@@ -45,7 +62,9 @@ export default function SortSection() {
         {sortOptions.map((option) => (
           <button
             key={option}
-            onClick={() => handleSortClick(option)}
+            onClick={() => {
+              handleSortClick(option);
+            }}
             className="p-2 rounded-md hover:bg-zinc-600 transition duration-200 flex items-center gap-1"
           >
             {option}
