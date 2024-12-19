@@ -13,11 +13,12 @@ export default function SortSection() {
   const { replace } = useRouter();
 
   const sortOptions = [
-    "Favorites",
+    "Map_Number",
     "Difficulty",
-    "Creator",
+    "Author",
     "Map",
     "Checkpoints",
+    "Favorites",
   ];
 
   const handleSortClick = (option: string) => {
