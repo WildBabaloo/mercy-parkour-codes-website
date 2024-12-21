@@ -76,6 +76,7 @@ export default function CardSection({
       setPage(1);
       setHasMore(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, initialCodes]);
 
   useEffect(() => {
