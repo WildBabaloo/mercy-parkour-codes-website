@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
@@ -11,7 +11,6 @@ export default function SortSection() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-
   const sortOptions = [
     "Map_Number",
     "Difficulty",
@@ -22,28 +21,41 @@ export default function SortSection() {
   ];
 
   const handleSortClick = (option: string) => {
-    const params = new URLSearchParams(searchParams);
-
     setActiveSort((prev) => {
       let newDirection: "down" | "up" | null = null;
-
       if (prev.key === option) {
         if (prev.direction === "down") {
           newDirection = "up";
-          params.set("sort", `${option}_asc`);
         } else if (prev.direction === "up") {
-          newDirection = null;
-          params.delete("sort");
+          newDirection = "down";
         }
       } else {
         newDirection = "down";
-        params.set("sort", `${option}_desc`);
       }
-
-      replace(`${pathname}?${params.toString()}`);
       return { key: newDirection ? option : null, direction: newDirection };
     });
   };
+
+  useEffect(() => {
+    if (activeSort.key) {
+      const params = new URLSearchParams(searchParams);
+      const sortValue =
+        activeSort.direction === "down"
+          ? `${activeSort.key}_desc`
+          : activeSort.direction === "up"
+          ? `${activeSort.key}_asc`
+          : null;
+
+      if (sortValue) {
+        params.set("sort", sortValue);
+      } else {
+        params.delete("sort");
+      }
+
+      replace(`${pathname}?${params.toString()}`);
+    }
+  }, [activeSort, searchParams, pathname, replace]);
+
   const getArrowIcon = (key: string) => {
     if (activeSort.key === key) {
       if (activeSort.direction === "down") {
