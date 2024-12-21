@@ -12,7 +12,7 @@ export default function SortSection() {
   const pathname = usePathname();
   const { replace } = useRouter();
   const sortOptions = [
-    "Map_Number",
+    "Added",
     "Difficulty",
     "Author",
     "Map",

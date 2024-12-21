@@ -100,7 +100,7 @@ export default async function Codes(props: {
         </div>
         <div>
           <SortSection />
-          <CardSection initialCodes={codes} search={search} />
+          <CardSection initialCodes={codes} search={search} sort={sortMethod} />
         </div>
       </div>
     </>
