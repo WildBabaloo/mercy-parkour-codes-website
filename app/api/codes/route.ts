@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/prisma/lib/db";
+import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
 
 export async function GET(request: NextRequest) {
     try {
@@ -18,23 +18,9 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: "Invalid skip or take parameter" }, { status: 400 });
         }
 
-        /*
-        const codes = await prisma.mercy_parkour_codes.findMany({
-            where: search
-                ? {
-                      OR: [
-                          { Map: { contains: search, mode: "insensitive" } },
-                          { Code: { contains: search, mode: "insensitive" } },
-                          { Author: { contains: search, mode: "insensitive" } },
-                      ],
-                  }
-                : undefined,
-            skip: skipInt,
-            take: takeInt,
-            orderBy: { Map_Number: "desc" },
-        });
-        */
+        const codes = await getNewCodesDefault(search, skipInt, takeInt);
 
+        /*
         const fetchCodes = async ({
             search,
             sort,
@@ -76,6 +62,7 @@ export async function GET(request: NextRequest) {
           };
           
         const codes = await fetchCodes(queryParams);
+        */
 
         return NextResponse.json(codes);
     } catch (error) {
