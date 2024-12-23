@@ -11,9 +11,9 @@ export async function getNewCodesDefault(search: string | null, skipInt: number,
                   ],
               }
             : undefined,
+        orderBy: { Map_Number: "desc" },
         skip: skipInt,
         take: takeInt,
-        orderBy: { Map_Number: "desc" },
     });
 
     return codes;

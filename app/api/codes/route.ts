@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
+import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 
 export async function GET(request: NextRequest) {
     try {
@@ -18,7 +19,21 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: "Invalid skip or take parameter" }, { status: 400 });
         }
 
-        const codes = await getNewCodesDefault(search, skipInt, takeInt);
+        let codes;
+        if (!sortMethod) {
+          codes = await getNewCodesDefault(search, skipInt, takeInt);
+        } else {
+          const [sortKey, sortOrder] = sortMethod.split("_");
+          /*
+          if (isValidSort(sortKey, sortOrder)) {
+            sortKey = "Map_Number"
+            sortOrder = "desc"
+          }
+            */
+          
+          codes = await getSortedMapCodes(search, skipInt, takeInt, sortKey, sortOrder)
+        }
+
 
         /*
         const fetchCodes = async ({
@@ -70,3 +85,22 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: "Failed to fetch code data" }, { status: 500 });
     }
 }
+
+/* 
+enum SortKey {
+  Map = "Map",
+  Favorites = "Favorites",
+  Difficulty = "Difficulty",
+  Author = "Author",
+  Checkpoints = "Checkpoints",
+}
+
+enum SortOrder {
+  Asc = "asc",
+  Desc = "desc",
+}
+
+const isValidSort = (key: string, direction: string): boolean => {
+  return key in SortKey && direction in SortOrder;
+};
+*/
