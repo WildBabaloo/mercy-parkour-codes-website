@@ -1,6 +1,6 @@
 import prisma from "@/prisma/lib/db";
 
-export async function getSortedMapCodes(search: string | null, skip: number, take: number, sortKey: string, sortOrder: string) {
+export async function getSortedMapCodes(search: string | undefined, skip: number, take: number, sortKey: string, sortOrder: string) {
   const codes = await prisma.mercy_parkour_codes.findMany({
     where: {
       AND: [
@@ -20,7 +20,10 @@ export async function getSortedMapCodes(search: string | null, skip: number, tak
         },
       ],
     },
-    orderBy: { [sortKey]: sortOrder },
+    orderBy: [
+      { [sortKey]: sortOrder },
+      {"Map_Number": "desc"}
+  ],
     skip,
     take,
   });
