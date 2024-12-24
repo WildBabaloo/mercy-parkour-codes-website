@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/prisma/lib/db";
+import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
+import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 
 export async function GET(request: NextRequest) {
     try {
@@ -7,30 +8,76 @@ export async function GET(request: NextRequest) {
         const search = url.searchParams.get("search");
         const skip = url.searchParams.get("skip");
         const take = url.searchParams.get("take");
+        const sortMethod = url.searchParams.get("sort");
 
-        console.log(`Skip: ${skip}, Take: ${take}, Search: ${search}`);
+        console.log(`Skip: ${skip}, Take: ${take}, Search: ${search}, Sort: ${sortMethod}`);
 
-        const skipInt = parseInt(skip as string, 10) || 0; // Default to 0 if not provided
-        const takeInt = parseInt(take as string, 10) || 20; // Default to 20 if not provided
+        const skipInt = parseInt(skip as string, 10) || 0;
+        const takeInt = parseInt(take as string, 10) || 20;
 
         if (isNaN(skipInt) || isNaN(takeInt)) {
             return NextResponse.json({ error: "Invalid skip or take parameter" }, { status: 400 });
         }
 
-        const codes = await prisma.mercy_parkour_codes.findMany({
-            where: search
+        let codes;
+        if (!sortMethod) {
+          codes = await getNewCodesDefault(search, skipInt, takeInt);
+        } else {
+          const [sortKey, sortOrder] = sortMethod.split("_");
+          /*
+          if (isValidSort(sortKey, sortOrder)) {
+            sortKey = "Map_Number"
+            sortOrder = "desc"
+          }
+            */
+          
+          codes = await getSortedMapCodes(search, skipInt, takeInt, sortKey, sortOrder)
+        }
+
+
+        /*
+        const fetchCodes = async ({
+            search,
+            sort,
+            skip,
+            take,
+          }: {
+            search?: string;
+            sort?: string;
+            skip: number;
+            take: number;
+          }) => {
+            const [sortKey, sortOrder] = sort
+              ? sort.split("_")
+              : ["Map_Number", "desc"];
+        
+            const codes = await prisma.mercy_parkour_codes.findMany({
+              where: search
                 ? {
-                      OR: [
-                          { Map: { contains: search, mode: "insensitive" } },
-                          { Code: { contains: search, mode: "insensitive" } },
-                          { Author: { contains: search, mode: "insensitive" } },
-                      ],
+                    OR: [
+                      { Map: { contains: search, mode: "insensitive" } },
+                      { Code: { contains: search, mode: "insensitive" } },
+                      { Author: { contains: search, mode: "insensitive" } },
+                    ],
                   }
                 : undefined,
+              orderBy: { [sortKey]: sortOrder },
+              skip,
+              take,
+            });
+        
+            return codes;
+          };
+        
+          const queryParams = {
+            search: search || "",
+            sort: sortMethod || "",
             skip: skipInt,
             take: takeInt,
-            orderBy: { Map_Number: "desc" },
-        });
+          };
+          
+        const codes = await fetchCodes(queryParams);
+        */
 
         return NextResponse.json(codes);
     } catch (error) {
@@ -38,3 +85,22 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: "Failed to fetch code data" }, { status: 500 });
     }
 }
+
+/* 
+enum SortKey {
+  Map = "Map",
+  Favorites = "Favorites",
+  Difficulty = "Difficulty",
+  Author = "Author",
+  Checkpoints = "Checkpoints",
+}
+
+enum SortOrder {
+  Asc = "asc",
+  Desc = "desc",
+}
+
+const isValidSort = (key: string, direction: string): boolean => {
+  return key in SortKey && direction in SortOrder;
+};
+*/

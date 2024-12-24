@@ -8,9 +8,11 @@ import { MapCode } from "./MapCode";
 export default function CardSection({
   initialCodes,
   search,
+  sort,
 }: {
   initialCodes: MapCode[];
   search: string | undefined;
+  sort: string | undefined;
 }) {
   const [codes, setCodes] = useState<MapCode[]>(initialCodes);
   const [page, setPage] = useState(1);
@@ -25,7 +27,9 @@ export default function CardSection({
     try {
       const nextPage = page + 1;
       const response = await fetch(
-        `/api/codes?skip=${page * 20}&take=20&search=${search || ""}`
+        `/api/codes?skip=${page * 20}&take=20&search=${
+          search || ""
+        }&sort=${sort}`
       );
       const newCodes: MapCode[] = await response.json();
 
@@ -48,7 +52,7 @@ export default function CardSection({
     setPage(1);
     try {
       const response = await fetch(
-        `/api/codes?skip=0&take=20&search=${searchTerm || ""}`
+        `/api/codes?skip=0&take=20&search=${searchTerm || ""}&sort=${sort}`
       );
       const searchedCodes: MapCode[] = await response.json();
 
@@ -72,6 +76,7 @@ export default function CardSection({
       setPage(1);
       setHasMore(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, initialCodes]);
 
   useEffect(() => {
