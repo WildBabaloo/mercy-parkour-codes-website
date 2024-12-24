@@ -18,56 +18,6 @@ export async function GET(request: NextRequest) {
         if (isNaN(skipInt) || isNaN(takeInt)) {
             return NextResponse.json({ error: "Invalid skip or take parameter" }, { status: 400 });
         }
-
-        let codes;
-        if (!sortMethod) {
-          codes = await getNewCodesDefault(search, skipInt, takeInt);
-        } else {
-          const [sortKey, sortOrder] = sortMethod.split("_");
-          /*
-          if (isValidSort(sortKey, sortOrder)) {
-            sortKey = "Map_Number"
-            sortOrder = "desc"
-          }
-            */
-          
-          codes = await getSortedMapCodes(search, skipInt, takeInt, sortKey, sortOrder)
-        }
-
-
-        /*
-        const fetchCodes = async ({
-            search,
-            sort,
-            skip,
-            take,
-          }: {
-            search?: string;
-            sort?: string;
-            skip: number;
-            take: number;
-          }) => {
-            const [sortKey, sortOrder] = sort
-              ? sort.split("_")
-              : ["Map_Number", "desc"];
-        
-            const codes = await prisma.mercy_parkour_codes.findMany({
-              where: search
-                ? {
-                    OR: [
-                      { Map: { contains: search, mode: "insensitive" } },
-                      { Code: { contains: search, mode: "insensitive" } },
-                      { Author: { contains: search, mode: "insensitive" } },
-                    ],
-                  }
-                : undefined,
-              orderBy: { [sortKey]: sortOrder },
-              skip,
-              take,
-            });
-        
-            return codes;
-          };
         
           const queryParams = {
             search: search || "",
@@ -77,7 +27,6 @@ export async function GET(request: NextRequest) {
           };
           
         const codes = await fetchCodes(queryParams);
-        */
 
         return NextResponse.json(codes);
     } catch (error) {
@@ -86,21 +35,27 @@ export async function GET(request: NextRequest) {
     }
 }
 
-/* 
-enum SortKey {
-  Map = "Map",
-  Favorites = "Favorites",
-  Difficulty = "Difficulty",
-  Author = "Author",
-  Checkpoints = "Checkpoints",
-}
+const fetchCodes = async ({
+  search,
+  sort,
+  skip,
+  take,
+}: {
+  search?: string;
+  sort?: string;
+  skip: number;
+  take: number;
+}) => {
+  const [sortKey, sortOrder] = sort && sort !== "undefined"
+    ? sort.split("_")
+    : ["Map_Number", "desc"];
 
-enum SortOrder {
-  Asc = "asc",
-  Desc = "desc",
-}
+    console.log(`Sort: ${sort}, SortKey: ${sortKey}, SortOrder: ${sortOrder}`);
 
-const isValidSort = (key: string, direction: string): boolean => {
-  return key in SortKey && direction in SortOrder;
+      const codes =
+        sortKey === "Map_Number"
+          ? getNewCodesDefault(search, skip, take)
+          : getSortedMapCodes(search, skip, take, sortKey, sortOrder);
+
+  return codes;
 };
-*/
