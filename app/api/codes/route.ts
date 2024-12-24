@@ -54,20 +54,29 @@ export async function GET(request: NextRequest) {
 
               console.log(`Sort: ${sort}, SortKey: ${sortKey}, SortOrder: ${sortOrder}`);
         
-            const codes = await prisma.mercy_parkour_codes.findMany({
-              where: search
-                ? {
-                    OR: [
-                      { Map: { contains: search, mode: "insensitive" } },
-                      { Code: { contains: search, mode: "insensitive" } },
-                      { Author: { contains: search, mode: "insensitive" } },
-                    ],
-                  }
-                : undefined,
-              orderBy: { [sortKey]: sortOrder },
-              skip,
-              take,
-            });
+              const codes = await prisma.mercy_parkour_codes.findMany({
+                where: {
+                  AND: [
+                    search
+                      ? {
+                          OR: [
+                            { Map: { contains: search, mode: "insensitive" } },
+                            { Code: { contains: search, mode: "insensitive" } },
+                            { Author: { contains: search, mode: "insensitive" } },
+                          ],
+                        }
+                      : {},
+                    {
+                      [sortKey]: {
+                        not: null,
+                      },
+                    },
+                  ],
+                },
+                orderBy: { [sortKey]: sortOrder },
+                skip,
+                take,
+              });
         
             return codes;
           };
