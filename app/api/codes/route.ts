@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-// import prisma from "@/prisma/lib/db";
 import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
 import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 
