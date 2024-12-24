@@ -1,6 +1,6 @@
 import prisma from "@/prisma/lib/db";
 
-export async function getNewCodesDefault(search: string | null, skipInt: number, takeInt: number){
+export async function getNewCodesDefault(search: string | null, skip: number, take: number){
     const codes = await prisma.mercy_parkour_codes.findMany({
         where: search
             ? {
@@ -12,8 +12,8 @@ export async function getNewCodesDefault(search: string | null, skipInt: number,
               }
             : undefined,
         orderBy: { Map_Number: "desc" },
-        skip: skipInt,
-        take: takeInt,
+        skip,
+        take,
     });
 
     return codes;
