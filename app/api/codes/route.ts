@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
-import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
+// import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
+// import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
+import prisma from "@/prisma/lib/db";
 
 export async function GET(request: NextRequest) {
     try {
@@ -19,23 +20,23 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: "Invalid skip or take parameter" }, { status: 400 });
         }
 
+        /*
+
         let codes;
         if (!sortMethod) {
           codes = await getNewCodesDefault(search, skipInt, takeInt);
         } else {
           const [sortKey, sortOrder] = sortMethod.split("_");
-          /*
           if (isValidSort(sortKey, sortOrder)) {
             sortKey = "Map_Number"
             sortOrder = "desc"
           }
-            */
           
           codes = await getSortedMapCodes(search, skipInt, takeInt, sortKey, sortOrder)
         }
+        */
 
 
-        /*
         const fetchCodes = async ({
             search,
             sort,
@@ -47,9 +48,11 @@ export async function GET(request: NextRequest) {
             skip: number;
             take: number;
           }) => {
-            const [sortKey, sortOrder] = sort
+            const [sortKey, sortOrder] = sort && sort !== "undefined"
               ? sort.split("_")
               : ["Map_Number", "desc"];
+
+              console.log(`Sort: ${sort}, SortKey: ${sortKey}, SortOrder: ${sortOrder}`);
         
             const codes = await prisma.mercy_parkour_codes.findMany({
               where: search
@@ -77,7 +80,6 @@ export async function GET(request: NextRequest) {
           };
           
         const codes = await fetchCodes(queryParams);
-        */
 
         return NextResponse.json(codes);
     } catch (error) {
