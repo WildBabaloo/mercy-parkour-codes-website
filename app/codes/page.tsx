@@ -2,8 +2,9 @@ import NavBarUI from "@/components/ui/NavBar";
 import { CodeInput } from "@/components/ui/CodeInput";
 import CardSection from "./card-section";
 import { MapCode } from "./MapCode";
-import prisma from "@/prisma/lib/db";
 import SortSection from "./sort-section";
+import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
+import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 
 export default async function Codes(props: {
   searchParams?: Promise<{
@@ -22,56 +23,6 @@ export default async function Codes(props: {
   // console.log(`Search Value: ${search}`);
   // console.log(`Current Page: ${currentPage}`);
   // console.log(`Sort Method: ${sortMethod}`);
-
-  /*
-  const codes: MapCode[] = await prisma.mercy_parkour_codes.findMany({
-    where: search
-      ? {
-          OR: [
-            { Map: { contains: search, mode: "insensitive" } },
-            { Code: { contains: search, mode: "insensitive" } },
-            { Author: { contains: search, mode: "insensitive" } },
-          ],
-        }
-      : undefined,
-    take,
-    skip,
-    orderBy: { Map_Number: "desc" },
-  });
-  */
-
-  const fetchCodes = async ({
-    search,
-    sort,
-    skip,
-    take,
-  }: {
-    search?: string;
-    sort?: string;
-    skip: number;
-    take: number;
-  }) => {
-    const [sortKey, sortOrder] = sort
-      ? sort.split("_")
-      : ["Map_Number", "desc"];
-
-    const codes = await prisma.mercy_parkour_codes.findMany({
-      where: search
-        ? {
-            OR: [
-              { Map: { contains: search, mode: "insensitive" } },
-              { Code: { contains: search, mode: "insensitive" } },
-              { Author: { contains: search, mode: "insensitive" } },
-            ],
-          }
-        : undefined,
-      orderBy: { [sortKey]: sortOrder },
-      skip,
-      take,
-    });
-
-    return codes;
-  };
 
   const queryParams = {
     search: search,
@@ -106,3 +57,25 @@ export default async function Codes(props: {
     </>
   );
 }
+
+const fetchCodes = async ({
+  search,
+  sort,
+  skip,
+  take,
+}: {
+  search?: string;
+  sort?: string;
+  skip: number;
+  take: number;
+}) => {
+  const [sortKey, sortOrder] =
+    sort && sort !== "undefined" ? sort.split("_") : ["Map_Number", "desc"];
+
+  const codes =
+    sortKey === "Map_Number"
+      ? getNewCodesDefault(search, skip, take)
+      : getSortedMapCodes(search, skip, take, sortKey, sortOrder);
+
+  return codes;
+};
