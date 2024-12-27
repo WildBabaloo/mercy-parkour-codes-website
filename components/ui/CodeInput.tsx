@@ -1,7 +1,10 @@
 "use client";
 import { forwardRef, ComponentProps, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import {
+  MagnifyingGlassIcon,
+  AdjustmentsHorizontalIcon,
+} from "@heroicons/react/20/solid";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebounce } from "use-debounce";
 
@@ -39,7 +42,11 @@ const CodeInput = forwardRef<HTMLInputElement, ComponentProps<"input">>(
           defaultValue={searchParams.get("query")?.toString()}
         />
         {/* Search Icon */}
-        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">
+        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground flex gap-4">
+          <AdjustmentsHorizontalIcon
+            className="h-5 w-5 text-gray-400"
+            aria-hidden="true"
+          />
           <MagnifyingGlassIcon
             className="h-5 w-5 text-gray-400"
             aria-hidden="true"
