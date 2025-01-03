@@ -18,34 +18,32 @@ export default function GA_Cancel_Bhop() {
           <h3 className="text-xl font-semibold mb-4 text-orange-400">
             Instructions:
           </h3>
-          <p className="text-base leading-relaxed">
-            <ul className="list-disc list-inside space-y-3 text-base leading-relaxed">
-              <li>
-                <span className="font-bold">
-                  Guardian angel toggle on (default setting)
-                </span>
-                <p className="ml-4">
-                  Fly to the bot, cancel your guardian angel and then hold
-                  angelic descent. If done correctly, you should have a jump
-                  once you hit the ground (the bhop). <br />
-                  The buttons you should be clicking (based on PC default input
-                  settings) is shift (fly to bot) → click shift AGAIN (to cancel
-                  GA) → space (angelic descent)
-                </p>
-              </li>
-              <li>
-                <span className="font-bold">Guardian angel toggle off</span>
-                <p className="ml-4">
-                  Fly to the bot, cancel your guardian angel and then hold
-                  angelic descent. If done correctly, you should have a jump
-                  once you hit the ground (the bhop). <br />
-                  The buttons you should be clicking (based on PC default input
-                  settings) is HOLD shift (fly to bot) → LET GO of shift (to
-                  cancel GA) → space (angelic descent)
-                </p>
-              </li>
-            </ul>
-          </p>
+          <ul className="list-disc list-inside space-y-3 text-base leading-relaxed">
+            <li>
+              <span className="font-bold">
+                Guardian angel toggle on (default setting)
+              </span>
+              <p className="ml-4">
+                Fly to the bot, cancel your guardian angel and then hold angelic
+                descent. If done correctly, you should have a jump once you hit
+                the ground (the bhop). <br />
+                The buttons you should be clicking (based on PC default input
+                settings) is shift (fly to bot) → click shift AGAIN (to cancel
+                GA) → space (angelic descent)
+              </p>
+            </li>
+            <li>
+              <span className="font-bold">Guardian angel toggle off</span>
+              <p className="ml-4">
+                Fly to the bot, cancel your guardian angel and then hold angelic
+                descent. If done correctly, you should have a jump once you hit
+                the ground (the bhop). <br />
+                The buttons you should be clicking (based on PC default input
+                settings) is HOLD shift (fly to bot) → LET GO of shift (to
+                cancel GA) → space (angelic descent)
+              </p>
+            </li>
+          </ul>
         </div>
 
         {/* Video Section */}
