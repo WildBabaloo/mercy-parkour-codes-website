@@ -8,9 +8,9 @@ export default function Tech() {
     { id: 1, title: "Bunnyhop", gif: Ecopoint, link: "/tech/bunnyhop" },
     {
       id: 2,
-      title: "GA Cancel Bunnyhop",
+      title: "GA Cancel Bhop",
       gif: Ecopoint,
-      link: "/tech/bunnyhop",
+      link: "/tech/ga_cancel_bhop",
     },
     { id: 3, title: "Sit Emote", gif: Ecopoint, link: "/tech/bunnyhop" },
     { id: 4, title: "Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
