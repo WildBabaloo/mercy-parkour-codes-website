@@ -5,24 +5,24 @@ import Link from "next/link";
 
 export default function Tech() {
   const basicTechItems = [
-    { id: 1, title: "Bunnyhop", gif: Ecopoint, link: "/tech/bunnyhop" },
+    { id: 1, title: "Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
     {
       id: 2,
-      title: "GA Cancel Bhop",
-      gif: Ecopoint,
-      link: "/tech/ga_cancel_bhop",
-    },
-    { id: 3, title: "Sit Emote", gif: Ecopoint, link: "/tech/bunnyhop" },
-    { id: 4, title: "Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
-    {
-      id: 5,
       title: "Backwards Slingshot",
       gif: Ecopoint,
       link: "/tech/slingshot",
     },
-    { id: 6, title: "Late Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
-    { id: 7, title: "Superjump", gif: Ecopoint, link: "/tech/superjump" },
-    { id: 8, title: "Late Superjump", gif: Ecopoint, link: "/tech/superjump" },
+    { id: 3, title: "Late Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
+    { id: 4, title: "Superjump", gif: Ecopoint, link: "/tech/superjump" },
+    { id: 5, title: "Late Superjump", gif: Ecopoint, link: "/tech/superjump" },
+    { id: 6, title: "Bunnyhop", gif: Ecopoint, link: "/tech/bunnyhop" },
+    {
+      id: 7,
+      title: "GA Cancel Bhop",
+      gif: Ecopoint,
+      link: "/tech/ga_cancel_bhop",
+    },
+    { id: 8, title: "Sit Emote", gif: Ecopoint, link: "/tech/bunnyhop" },
   ];
 
   return (
