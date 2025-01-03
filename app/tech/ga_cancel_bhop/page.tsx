@@ -1,6 +1,6 @@
 import NavBarUI from "@/components/ui/NavBar";
 
-export default function Bunnyhop() {
+export default function GA_Cancel_Bhop() {
   return (
     <>
       <NavBarUI />
