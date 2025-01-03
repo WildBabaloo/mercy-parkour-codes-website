@@ -5,10 +5,24 @@ import Link from "next/link";
 
 export default function Tech() {
   const basicTechItems = [
-    { id: 1, title: "Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
-    { id: 2, title: "Superjump", gif: Ecopoint, link: "/tech/superjump" },
-    { id: 3, title: "Bunnyhop (Bhop)", gif: Ecopoint, link: "/tech/bunnyhop" },
-    { id: 4, title: "GA Cancel Bhop", gif: Ecopoint, link: "/tech/bunnyhop" },
+    { id: 1, title: "Bunnyhop", gif: Ecopoint, link: "/tech/bunnyhop" },
+    {
+      id: 2,
+      title: "GA Cancel Bunnyhop",
+      gif: Ecopoint,
+      link: "/tech/bunnyhop",
+    },
+    { id: 3, title: "Sit Emote", gif: Ecopoint, link: "/tech/bunnyhop" },
+    { id: 4, title: "Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
+    {
+      id: 5,
+      title: "Backwards Slingshot",
+      gif: Ecopoint,
+      link: "/tech/slingshot",
+    },
+    { id: 6, title: "Late Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
+    { id: 7, title: "Superjump", gif: Ecopoint, link: "/tech/superjump" },
+    { id: 8, title: "Late Superjump", gif: Ecopoint, link: "/tech/superjump" },
   ];
 
   return (
