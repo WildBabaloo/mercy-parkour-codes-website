@@ -1,10 +1,10 @@
 import NavBarUI from "@/components/ui/NavBar";
 
-export default function Extras() {
+export default function Slingshot() {
   return (
     <>
       <NavBarUI />
-      Extras Page
+      Slingshot Page
     </>
   );
 }
