@@ -22,7 +22,7 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/ga_cancel_bhop",
     },
-    { id: 8, title: "Sit Emote", gif: Ecopoint, link: "/tech/bunnyhop" },
+    { id: 8, title: "Sit Emote", gif: Ecopoint, link: "/tech/sit_emote" },
   ];
 
   return (
