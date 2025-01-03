@@ -23,6 +23,25 @@ export default function Bunnyhop() {
           </p>
         </div>
 
+        {/* Video Section */}
+        <div>
+          <h3 className="text-3xl font-bold mb-4 text-white text-center">
+            Video Tutorial
+          </h3>
+          <div className="flex justify-center my-8">
+            <iframe
+              className="rounded-lg shadow-lg"
+              width="640"
+              height="360"
+              src="https://www.youtube.com/embed/9v5yd4vnmZs?si=mILsYRE7MBBt2v5J"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+
         {/* Tips Section */}
         <div className="border border-gray-600 rounded-lg p-6 bg-gray-700 shadow-md my-8 mx-auto max-w-4xl">
           <h3 className="text-xl font-semibold mb-4 text-green-400">Tips:</h3>
@@ -46,25 +65,6 @@ export default function Bunnyhop() {
               without using jump first!
             </li>
           </ul>
-        </div>
-
-        {/* Video Section */}
-        <div>
-          <h3 className="text-3xl font-bold mb-4 text-white text-center">
-            Video Tutorial
-          </h3>
-          <div className="flex justify-center my-8">
-            <iframe
-              className="rounded-lg shadow-lg"
-              width="640"
-              height="360"
-              src="https://www.youtube.com/embed/9v5yd4vnmZs?si=mILsYRE7MBBt2v5J"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </div>
         </div>
       </div>
     </>
