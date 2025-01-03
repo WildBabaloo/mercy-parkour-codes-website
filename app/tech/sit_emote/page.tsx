@@ -7,8 +7,7 @@ export default function Sit_Emote() {
       <div className="bg-gray-800 text-white min-h-screen p-6">
         {/* Title Section */}
         <div className="text-center mt-6">
-          <h1 className="text-4xl font-extrabold mb-2">Bunnyhop</h1>
-          <h5 className="italic text-lg text-gray-400">Also known as: bhop</h5>
+          <h1 className="text-4xl font-extrabold mb-2">Sit Emote</h1>
         </div>
 
         {/* Instructions Section */}
