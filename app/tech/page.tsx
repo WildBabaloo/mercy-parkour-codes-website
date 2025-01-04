@@ -45,6 +45,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/crouch_ga_slingshot",
     },
+    {
+      id: 11,
+      title: "Crouch GA Superjump",
+      gif: Ecopoint,
+      link: "/tech/crouch_ga_superjump",
+    },
   ];
 
   return (
