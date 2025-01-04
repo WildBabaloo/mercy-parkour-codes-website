@@ -4,7 +4,7 @@ import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
 import Link from "next/link";
 
 export default function Tech() {
-  const basicTechItems = [
+  const techItems = [
     { id: 1, title: "Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
     {
       id: 2,
@@ -33,6 +33,12 @@ export default function Tech() {
       link: "/tech/ga_cancel_bhop",
     },
     { id: 8, title: "Sit Emote", gif: Ecopoint, link: "/tech/sit_emote" },
+    {
+      id: 9,
+      title: "Crouch Guardian Angel Bhop",
+      gif: Ecopoint,
+      link: "/tech/crouch_ga_bhop",
+    },
   ];
 
   return (
@@ -50,7 +56,7 @@ export default function Tech() {
         {/* Tech Items */}
         <div className="min-h-screen flex justify-center mt-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-md h-full w-full align-top">
-            {basicTechItems.map((item) => (
+            {techItems.map((item) => (
               <div
                 key={item.id}
                 className="border rounded-md shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
