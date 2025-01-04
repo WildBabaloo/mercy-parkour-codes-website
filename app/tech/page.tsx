@@ -35,9 +35,15 @@ export default function Tech() {
     { id: 8, title: "Sit Emote", gif: Ecopoint, link: "/tech/sit_emote" },
     {
       id: 9,
-      title: "Crouch Guardian Angel Bhop",
+      title: "Crouch GA Bhop",
       gif: Ecopoint,
       link: "/tech/crouch_ga_bhop",
+    },
+    {
+      id: 10,
+      title: "Crouch GA Slingshot",
+      gif: Ecopoint,
+      link: "/tech/crouch_ga_slingshot",
     },
   ];
 
