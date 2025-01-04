@@ -8,6 +8,7 @@ export default function Superjump() {
         {/* Title Section */}
         <div className="text-center mt-6">
           <h1 className="text-4xl font-extrabold mb-2">Normal Superjump</h1>
+          <h5 className="italic text-lg text-gray-400">Also known as: sj</h5>
         </div>
 
         {/* Instructions Section */}
