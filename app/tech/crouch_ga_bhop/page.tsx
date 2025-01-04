@@ -7,9 +7,7 @@ export default function Slingshot() {
       <div className="bg-gray-800 text-white min-h-screen p-6">
         {/* Title Section */}
         <div className="text-center mt-6">
-          <h1 className="text-4xl font-extrabold mb-2">
-            Crouch Guardian Angel Bhop
-          </h1>
+          <h1 className="text-4xl font-extrabold mb-2">Crouch GA Bhop</h1>
           <h5 className="italic text-lg text-gray-400">
             Also known as: Crouch GA, Crouch GA Bhop
           </h5>
