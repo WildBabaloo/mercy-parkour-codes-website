@@ -12,7 +12,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/backwards_slingshot",
     },
-    { id: 3, title: "Late Slingshot", gif: Ecopoint, link: "/tech/slingshot" },
+    {
+      id: 3,
+      title: "Late Slingshot",
+      gif: Ecopoint,
+      link: "/tech/late_slingshot",
+    },
     { id: 4, title: "Superjump", gif: Ecopoint, link: "/tech/superjump" },
     { id: 5, title: "Late Superjump", gif: Ecopoint, link: "/tech/superjump" },
     { id: 6, title: "Bunnyhop", gif: Ecopoint, link: "/tech/bunnyhop" },
