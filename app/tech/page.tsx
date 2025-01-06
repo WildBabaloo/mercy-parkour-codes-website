@@ -52,6 +52,12 @@ export default function Tech() {
       link: "/tech/crouch_ga_superjump",
     },
     { id: 12, title: "Propjump", gif: Ecopoint, link: "/tech/propjump" },
+    {
+      id: 13,
+      title: "Beamless Propjump",
+      gif: Ecopoint,
+      link: "/tech/beamless_propjump",
+    },
   ];
 
   return (
