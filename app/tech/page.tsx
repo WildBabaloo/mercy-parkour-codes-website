@@ -64,6 +64,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/instant_superjump",
     },
+    {
+      id: 15,
+      title: "Superjump Rez",
+      gif: Ecopoint,
+      link: "/tech/superjump_rez",
+    },
   ];
 
   return (
