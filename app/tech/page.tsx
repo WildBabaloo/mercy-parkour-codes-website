@@ -77,6 +77,7 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/cloud_jump",
     },
+    { id: 18, title: "Wall Bounce", gif: Ecopoint, link: "/tech/wall_bounce" },
   ];
 
   return (
