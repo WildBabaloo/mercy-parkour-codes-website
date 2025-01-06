@@ -1,6 +1,6 @@
 import NavBarUI from "@/components/ui/NavBar";
 
-export default function Bunnyhop() {
+export default function Wallbounce() {
   return (
     <>
       <NavBarUI />
