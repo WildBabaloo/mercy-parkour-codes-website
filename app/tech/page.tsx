@@ -71,6 +71,12 @@ export default function Tech() {
       link: "/tech/superjump_rez",
     },
     { id: 16, title: "Sling Rez", gif: Ecopoint, link: "/tech/sling_rez" },
+    {
+      id: 17,
+      title: "Cloud Jump/Bounce",
+      gif: Ecopoint,
+      link: "/tech/cloud_jump",
+    },
   ];
 
   return (
