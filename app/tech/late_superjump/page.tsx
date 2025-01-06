@@ -1,6 +1,6 @@
 import NavBarUI from "@/components/ui/NavBar";
 
-export default function Late_Slingshot() {
+export default function Late_Superjump() {
   return (
     <>
       <NavBarUI />

@@ -1,6 +1,6 @@
 import NavBarUI from "@/components/ui/NavBar";
 
-export default function Slingshot() {
+export default function Crouch_GA_Slingshot() {
   return (
     <>
       <NavBarUI />

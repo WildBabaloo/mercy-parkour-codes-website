@@ -2,7 +2,7 @@ import NavBarUI from "@/components/ui/NavBar";
 import Image from "next/image";
 import NoFacingTargetOnly from "@/public/images/warnings/no-facing-target-only.png";
 
-export default function Slingshot() {
+export default function Propjump() {
   return (
     <>
       <NavBarUI />
