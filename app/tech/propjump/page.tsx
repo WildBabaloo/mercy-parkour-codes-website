@@ -29,12 +29,12 @@ export default function Slingshot() {
             USING “FACING TARGET ONLY” MEANS YOU WILL NOT BE ABLE TO DO THIS
             TECH.
           </p>
-          <div className="relative w-full h-96 overflow-hidden mt-4">
+          <div className="relative w-full mt-4">
             <Image
-              layout="fill"
+              layout="responsive"
               src={NoFacingTargetOnly}
               alt="NoFacinfTargetOnly image"
-              className="object-cover"
+              className="object-contain rounded-lg"
             />
           </div>
         </div>
