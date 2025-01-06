@@ -58,6 +58,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/beamless_propjump",
     },
+    {
+      id: 14,
+      title: "Instant Superjump",
+      gif: Ecopoint,
+      link: "/tech/instant_sj",
+    },
   ];
 
   return (
