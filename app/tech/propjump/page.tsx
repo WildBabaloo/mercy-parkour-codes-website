@@ -31,9 +31,8 @@ export default function Slingshot() {
           </p>
           <div className="relative w-full mt-4">
             <Image
-              layout="responsive"
               src={NoFacingTargetOnly}
-              alt="NoFacinfTargetOnly image"
+              alt="NoFacingTargetOnly image"
               className="object-contain rounded-lg"
             />
           </div>
