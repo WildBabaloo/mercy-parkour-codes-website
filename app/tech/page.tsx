@@ -78,6 +78,7 @@ export default function Tech() {
       link: "/tech/cloud_jump",
     },
     { id: 18, title: "Wall Bounce", gif: Ecopoint, link: "/tech/wall_bounce" },
+    { id: 19, title: "Stuck/Balances", gif: Ecopoint, link: "/tech/stuck" },
   ];
 
   return (
