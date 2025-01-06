@@ -70,6 +70,7 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/superjump_rez",
     },
+    { id: 16, title: "Sling Rez", gif: Ecopoint, link: "/tech/sling_rez" },
   ];
 
   return (
