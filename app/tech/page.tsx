@@ -98,6 +98,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/cancel_ga_superjump",
     },
+    {
+      id: 24,
+      title: "Bhop Reset/Infinite Bhop",
+      gif: Ecopoint,
+      link: "/tech/bhop_reset",
+    },
   ];
 
   return (
