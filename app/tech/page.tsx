@@ -92,6 +92,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/cancel_ga_slingshot",
     },
+    {
+      id: 23,
+      title: "Cancel GA Superjump",
+      gif: Ecopoint,
+      link: "/tech/cancel_ga_superjump",
+    },
   ];
 
   return (
