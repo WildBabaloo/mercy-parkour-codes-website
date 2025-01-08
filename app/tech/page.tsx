@@ -86,6 +86,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/reverse_crouch_ga",
     },
+    {
+      id: 22,
+      title: "Cancel GA Slingshot",
+      gif: Ecopoint,
+      link: "/tech/cancel_ga_slingshot",
+    },
   ];
 
   return (
