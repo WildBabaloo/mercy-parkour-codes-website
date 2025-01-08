@@ -79,6 +79,7 @@ export default function Tech() {
     },
     { id: 18, title: "Wall Bounce", gif: Ecopoint, link: "/tech/wall_bounce" },
     { id: 19, title: "Stuck/Balances", gif: Ecopoint, link: "/tech/stuck" },
+    { id: 20, title: "Roll", gif: Ecopoint, link: "/tech/roll" },
   ];
 
   return (
