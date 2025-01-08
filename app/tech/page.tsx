@@ -104,6 +104,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/bhop_reset",
     },
+    {
+      id: 25,
+      title: "Superjump Rez Cancel",
+      gif: Ecopoint,
+      link: "/tech/superjump_rez_cancel",
+    },
   ];
 
   return (
