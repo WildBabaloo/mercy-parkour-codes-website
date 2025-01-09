@@ -146,6 +146,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/reverse_jumping_slant_jump",
     },
+    {
+      id: 32,
+      title: "Pseudo Bunnyhop",
+      gif: Ecopoint,
+      link: "/tech/pseudo_bunnyhop",
+    },
   ];
 
   return (
