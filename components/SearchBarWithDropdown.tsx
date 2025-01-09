@@ -12,7 +12,7 @@ const SearchBarWithDropdown = () => {
       {/* Search Bar */}
       <CodeInput
         type="search"
-        placeholder="Search..."
+        placeholder="Search by author, code or map..."
         className=""
         onMenuToggle={() => setIsMenuVisible(!isMenuVisible)}
       />
