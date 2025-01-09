@@ -136,9 +136,15 @@ export default function Tech() {
     },
     {
       id: 30,
-      title: "Reverse Jumping Slant Jump",
+      title: "Reverse Walking Slant Jump",
       gif: Ecopoint,
       link: "/tech/reverse_walking_slant_jump",
+    },
+    {
+      id: 31,
+      title: "Reverse Jumping Slant Jump",
+      gif: Ecopoint,
+      link: "/tech/reverse_jumping_slant_jump",
     },
   ];
 
