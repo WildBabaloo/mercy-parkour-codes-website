@@ -128,6 +128,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/walking_slant_jump",
     },
+    {
+      id: 29,
+      title: "Jumping Slant Jump",
+      gif: Ecopoint,
+      link: "/tech/jumping_slant_jump",
+    },
   ];
 
   return (
