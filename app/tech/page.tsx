@@ -110,6 +110,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/superjump_rez_cancel",
     },
+    {
+      id: 26,
+      title: "Cancel Sling Rez",
+      gif: Ecopoint,
+      link: "/tech/cancel_sling_rez",
+    },
   ];
 
   return (
