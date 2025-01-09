@@ -1,10 +1,11 @@
 import NavBarUI from "@/components/ui/NavBar";
-import { CodeInput } from "@/components/ui/CodeInput";
+// import { CodeInput } from "@/components/ui/CodeInput";
 import CardSection from "./card-section";
 import { MapCode } from "./MapCode";
 import SortSection from "./sort-section";
 import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
 import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
+import SearchBarWithDropdown from "@/components/SearchBarWithDropdown";
 
 export default async function Codes(props: {
   searchParams?: Promise<{
@@ -43,14 +44,15 @@ export default async function Codes(props: {
         {/* Search Bar */}
         <div className="flex items-center justify-center">
           <div className="max-w-screen-md w-full">
-            <CodeInput type="search" placeholder="Search..." className="" />
+            <SearchBarWithDropdown />
           </div>
         </div>
-        <div className="text-center p-4 text-white">
-          More search options (Clickable to see and apply filter options)
-        </div>
         <div>
-          <SortSection />
+          {/* Sort Section */}
+          <div className="m-4 items-center justify-center flex">
+            <SortSection />
+          </div>
+          {/* Card Section */}
           <CardSection initialCodes={codes} search={search} sort={sortMethod} />
         </div>
       </div>
