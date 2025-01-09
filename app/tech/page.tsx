@@ -116,6 +116,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/cancel_sling_rez",
     },
+    {
+      id: 27,
+      title: "Rez Bhop Reset",
+      gif: Ecopoint,
+      link: "/tech/rez_bhop_reset",
+    },
   ];
 
   return (
