@@ -122,6 +122,12 @@ export default function Tech() {
       gif: Ecopoint,
       link: "/tech/rez_bhop_reset",
     },
+    {
+      id: 28,
+      title: "Walking Slant Jump",
+      gif: Ecopoint,
+      link: "/tech/walking_slant_jump",
+    },
   ];
 
   return (
