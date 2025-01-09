@@ -4,7 +4,22 @@ import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
 import Link from "next/link";
 import { CodeInput } from "@/components/ui/CodeInput";
 
-export default function Tech() {
+export default async function Tech(props: {
+  searchParams?: Promise<{
+    search?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const search = searchParams?.search;
+  console.log(`Search Value: ${search}`);
+
+  const filteredTechItems =
+    search && search !== "undefined"
+      ? techItems.filter((item) =>
+          item.title.toLowerCase().includes(search.toLowerCase())
+        )
+      : techItems;
+
   return (
     <>
       <NavBarUI />
@@ -17,7 +32,7 @@ export default function Tech() {
           <div className="mb-6 max-w-screen-md w-full">
             <CodeInput
               type="search"
-              placeholder="Search..."
+              placeholder="Search for a specific tech..."
               className="text-black"
             />
           </div>
@@ -26,7 +41,7 @@ export default function Tech() {
         {/* Tech Items */}
         <div className="min-h-screen flex justify-center mt-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-md h-full w-full align-top">
-            {techItems.map((item) => (
+            {filteredTechItems.map((item) => (
               <div
                 key={item.id}
                 className="border rounded-md shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
