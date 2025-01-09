@@ -2,6 +2,7 @@ import NavBarUI from "@/components/ui/NavBar";
 import Image from "next/image";
 import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
 import Link from "next/link";
+import { CodeInput } from "@/components/ui/CodeInput";
 
 export default function Tech() {
   return (
@@ -12,9 +13,15 @@ export default function Tech() {
           <h1>Hall Of Mercy Parkour Tech</h1>
         </div>
 
-        <h2 className="text-2xl font-semibold text-center m-6">
-          Basic Mercy Tech
-        </h2>
+        <div className="flex items-center justify-center">
+          <div className="mb-6 max-w-screen-md w-full">
+            <CodeInput
+              type="search"
+              placeholder="Search..."
+              className="text-black"
+            />
+          </div>
+        </div>
 
         {/* Tech Items */}
         <div className="min-h-screen flex justify-center mt-2">
