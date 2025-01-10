@@ -1,0 +1,52 @@
+"use client";
+import type { Selection } from "@nextui-org/react";
+
+import React from "react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
+
+export default function Dropdown_Menu(props: {
+  menuHeader: string;
+  menuItems: string[];
+}) {
+  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
+    new Set([props.menuHeader])
+  );
+
+  const selectedValue = React.useMemo(
+    () => Array.from(selectedKeys).join(", ").replace(/_/g, ""),
+    [selectedKeys]
+  );
+
+  return (
+    <Dropdown>
+      <DropdownTrigger>
+        <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500 capitalize">
+          {selectedValue}
+        </button>
+      </DropdownTrigger>
+      <DropdownMenu
+        disallowEmptySelection
+        aria-label="Single selection example"
+        selectedKeys={selectedKeys}
+        selectionMode="single"
+        variant="flat"
+        onSelectionChange={setSelectedKeys}
+        className="relative border rounded-md bg-gray-800 text-white shadow-lg w-48"
+      >
+        {props.menuItems.map((item) => (
+          <DropdownItem
+            key={item}
+            className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+          >
+            {item}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
+  );
+}
