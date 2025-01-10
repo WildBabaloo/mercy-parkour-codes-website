@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CodeInput } from "@/components/ui/CodeInput";
 import DoubleEndedCodeSlider from "./ui/DoubleEndedCodeSlider";
+import Dropdown_Menu from "./ui/DropdownMenu";
 
 const SearchBarWithDropdown = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -23,18 +24,22 @@ const SearchBarWithDropdown = () => {
           <div className="max-w-screen-md w-full bg-gray-700 rounded-md shadow-lg p-4 text-white space-y-4">
             {/* Filter Options */}
             <div className="flex flex-wrap gap-2">
-              <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500">
-                Category...
-              </button>
-              <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500">
-                Map...
-              </button>
-              <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500">
-                Difficulty...
-              </button>
-              <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500">
-                Not Played...
-              </button>
+              <Dropdown_Menu
+                menuHeader="Category..."
+                menuItems={categoryOptionItems.sort()}
+              />
+              <Dropdown_Menu
+                menuHeader="Map..."
+                menuItems={mapOptionItems.sort()}
+              />
+              <Dropdown_Menu
+                menuHeader="Difficulty..."
+                menuItems={difficultyOptionItems}
+              />
+              <Dropdown_Menu
+                menuHeader="Played/Not Played..."
+                menuItems={playOptionItems}
+              />
             </div>
             {/* Slider */}
             <DoubleEndedCodeSlider />
@@ -48,5 +53,80 @@ const SearchBarWithDropdown = () => {
     </>
   );
 };
+
+const categoryOptionItems = [
+  "Rez Map",
+  "Clouds",
+  "Stuck/Balances",
+  "Many Orbs",
+  "Softlock/Hardlock",
+];
+
+const mapOptionItems = [
+  "Antarctic Peninsula",
+  "Busan",
+  "Ilios",
+  "Lijiang Tower",
+  "Nepal",
+  "Oasis",
+  "Samoa",
+  "Circuit Royal",
+  "Dorado",
+  "Havana",
+  "Junkertown",
+  "Rialto",
+  "Route 66",
+  "Shambali Monastery",
+  "Watchpoint: Gibraltar",
+  "New Junk City",
+  "Suravasa",
+  "Blizzard World",
+  "Eichenwalde",
+  "Hollywood",
+  "King's Row",
+  "Midtown",
+  "Numbani",
+  "Paraíso",
+  "Colosseo",
+  "Esperança",
+  "New Queen Street",
+  "Runasapi",
+  "Hanaoka",
+  "Throne of Anubis",
+  "Château Guillard",
+  "Kanezaka",
+  "Malevento",
+  "Petra",
+  "Hanamura",
+  "Horizon Lunar Colony",
+  "Paris",
+  "Temple of Anubis",
+  "Volskaya Industries",
+  "Ayutthaya",
+  "Black Forest",
+  "Castillo",
+  "Ecopoint: Antarctica",
+  "Necropolis",
+  "Workshop Chamber",
+  "Workshop Expanse",
+  "Workshop Green Screen",
+  "Workshop Island",
+  "Practice Range",
+];
+
+const difficultyOptionItems = [
+  "Multi Difficulty",
+  "Beginner",
+  "Easy",
+  "Low Intermediate",
+  "Intermediate",
+  "High Intermediate",
+  "Hard",
+  "Very Hard",
+  "Expert",
+  "Super Expert",
+];
+
+const playOptionItems = ["Played", "Not Played"];
 
 export default SearchBarWithDropdown;
