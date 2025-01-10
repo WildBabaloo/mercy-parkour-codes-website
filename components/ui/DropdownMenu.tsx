@@ -36,7 +36,7 @@ export default function Dropdown_Menu(props: {
         selectionMode="single"
         variant="flat"
         onSelectionChange={setSelectedKeys}
-        className="relative border rounded-md bg-gray-800 text-white shadow-lg w-48"
+        className="relative border rounded-md bg-gray-800 text-white shadow-lg w-48 max-h-60 overflow-y-auto"
       >
         {props.menuItems.map((item) => (
           <DropdownItem
