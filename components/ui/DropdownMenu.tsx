@@ -22,11 +22,36 @@ export default function Dropdown_Menu(props: {
     [selectedKeys]
   );
 
+  const handleClearSingleFilterOption = () => {
+    setSelectedKeys(new Set([props.menuHeader]));
+  };
+
   return (
     <Dropdown>
       <DropdownTrigger>
         <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500 capitalize">
-          {selectedValue}
+          {selectedValue == props.menuHeader ? (
+            selectedValue
+          ) : (
+            <div className="flex items-center">
+              {selectedValue}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 text-red-500 ml-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                onClick={handleClearSingleFilterOption}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+          )}
         </button>
       </DropdownTrigger>
       <DropdownMenu
