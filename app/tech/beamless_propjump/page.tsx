@@ -1,3 +1,4 @@
+import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
 import NavBarUI from "@/components/ui/NavBar";
 
 export default function Beamless_Propjump() {
@@ -84,6 +85,18 @@ export default function Beamless_Propjump() {
               against walls, ceilings, floors (floor bounce), etc.
             </li>
           </ul>
+        </div>
+
+        {/* Still Stuck Section */}
+        <div className="border border-gray-600 rounded-lg p-6 bg-gray-700 shadow-md my-8 mx-auto max-w-4xl">
+          <h3 className="text-xl font-semibold mb-4 text-yellow-400">
+            Still Stuck?
+          </h3>
+          <div className="text-base leading-relaxed">
+            <div className="font-semibold">
+              <If_You_Are_Still_Stuck_Text />
+            </div>
+          </div>
         </div>
       </div>
     </>
