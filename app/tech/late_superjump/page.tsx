@@ -1,4 +1,6 @@
+import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
 import NavBarUI from "@/components/ui/NavBar";
+import Link from "next/link";
 
 export default function Late_Superjump() {
   return (
@@ -64,6 +66,87 @@ export default function Late_Superjump() {
               press crouch
             </li>
           </ul>
+        </div>
+
+        {/* Still Stuck Section */}
+        <div className="border border-gray-600 rounded-lg p-6 bg-gray-700 shadow-md my-8 mx-auto max-w-4xl">
+          <h3 className="text-xl font-semibold mb-4 text-yellow-400">
+            Still Stuck?
+          </h3>
+          <div className="text-base leading-relaxed">
+            <p>Consider the solution to be:</p>
+            <p>
+              1-{" "}
+              <Link
+                href="/tech/slingshot"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Slingshot
+              </Link>
+            </p>
+            <p>
+              2-{" "}
+              <Link
+                href="/tech/superjump"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Superjump
+              </Link>
+            </p>
+            <p>
+              3-{" "}
+              <Link
+                href="/tech/late_slingshot"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Late Slingshot
+              </Link>
+            </p>
+            <p>
+              4-{" "}
+              <Link
+                href="/tech/crouch_ga_slingshot"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Crouch GA Sling
+              </Link>
+              /
+              <Link
+                href="/tech/crouch_ga_superjump"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Superjump
+              </Link>
+            </p>
+            <p>
+              5-{" "}
+              <Link
+                href="/tech/cancel_ga_slingshot"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Cancel GA Sling
+              </Link>
+              /
+              <Link
+                href="/tech/cancel_ga_superjump"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Superjump
+              </Link>
+            </p>
+            <p>
+              6-{" "}
+              <Link
+                href="/tech/bhop_reset"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Infinite Bhop/Bhop Reset
+              </Link>
+            </p>
+            <div className="mt-8 font-semibold">
+              <If_You_Are_Still_Stuck_Text />
+            </div>
+          </div>
         </div>
       </div>
     </>
