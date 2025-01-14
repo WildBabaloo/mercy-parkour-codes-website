@@ -69,7 +69,7 @@ export default function Bunnyhop() {
           </ul>
         </div>
 
-        {/* Tips Section */}
+        {/* Still Stuck Section */}
         <div className="border border-gray-600 rounded-lg p-6 bg-gray-700 shadow-md my-8 mx-auto max-w-4xl">
           <h3 className="text-xl font-semibold mb-4 text-yellow-400">
             Still Stuck?
