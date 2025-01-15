@@ -2,6 +2,7 @@ import NavBarUI from "@/components/ui/NavBar";
 import Image from "next/image";
 import NoFacingTargetOnly from "@/public/images/warnings/no-facing-target-only.png";
 import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
+import Link from "next/link";
 
 export default function Instant_Superjump() {
   return (
@@ -122,6 +123,16 @@ export default function Instant_Superjump() {
             Still Stuck?
           </h3>
           <div className="text-base leading-relaxed">
+            <p>Consider the solution to be:</p>
+            <p>
+              1-{" "}
+              <Link
+                href="/tech/propjump"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Propjump
+              </Link>
+            </p>
             <div className="font-semibold">
               <If_You_Are_Still_Stuck_Text />
             </div>
