@@ -1,7 +1,7 @@
 "use client";
 import type { Selection } from "@nextui-org/react";
-
-import React from "react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import {
   Dropdown,
   DropdownTrigger,
@@ -26,6 +26,27 @@ export default function Dropdown_Menu(props: {
   const handleClearSingleFilterOption = () => {
     setSelectedKeys(new Set([props.menuHeader]));
   };
+
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (selectedValue != props.menuHeader) {
+      params.set(props.urlHeader, selectedValue);
+    } else {
+      params.delete(props.urlHeader);
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }, [
+    selectedValue,
+    props.menuHeader,
+    props.urlHeader,
+    pathname,
+    searchParams,
+    replace,
+  ]);
 
   return (
     <Dropdown>
