@@ -12,12 +12,21 @@ export default async function Codes(props: {
     search?: string;
     page?: string;
     sort?: string;
+    category?: string;
+    map?: string;
+    difficulty?: string;
+    // play_status?: string;
   }>;
 }) {
   const searchParams = await props.searchParams;
   const search = searchParams?.search;
   const currentPage = Number(searchParams?.page) || 1;
   const sortMethod = searchParams?.sort;
+  const selectedCategory = searchParams?.category;
+  const selectedMap = searchParams?.map;
+  const selectedDifficulty = searchParams?.difficulty;
+  // Play status to be added in future implementations
+  // const selectPlayStatus = searchParams?.play_status;
   const take = 20;
   const skip = (currentPage - 1) * take;
 
@@ -30,6 +39,9 @@ export default async function Codes(props: {
     sort: sortMethod,
     skip: skip,
     take: take,
+    category: selectedCategory,
+    map: selectedMap,
+    difficulty: selectedDifficulty,
   };
   const codes: MapCode[] = await fetchCodes(queryParams);
 
@@ -65,18 +77,24 @@ const fetchCodes = async ({
   sort,
   skip,
   take,
+  category,
+  map,
+  difficulty,
 }: {
   search?: string;
   sort?: string;
   skip: number;
   take: number;
+  category: string;
+  map: string;
+  difficulty: string;
 }) => {
   const [sortKey, sortOrder] =
     sort && sort !== "undefined" ? sort.split("_") : ["Map_Number", "desc"];
 
   const codes =
     sortKey === "Map_Number"
-      ? getNewCodesDefault(search, skip, take)
+      ? getNewCodesDefault(search, skip, take, map, difficulty)
       : getSortedMapCodes(search, skip, take, sortKey, sortOrder);
 
   return codes;
