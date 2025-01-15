@@ -1,4 +1,6 @@
+import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
 import NavBarUI from "@/components/ui/NavBar";
+import Link from "next/link";
 
 export default function Reverse_Crouch_GA() {
   return (
@@ -60,6 +62,37 @@ export default function Reverse_Crouch_GA() {
               bhop, cancel sling bhop, cancel sj bhop, etc.
             </li>
           </ul>
+        </div>
+
+        {/* Still Stuck Section */}
+        <div className="border border-gray-600 rounded-lg p-6 bg-gray-700 shadow-md my-8 mx-auto max-w-4xl">
+          <h3 className="text-xl font-semibold mb-4 text-yellow-400">
+            Still Stuck?
+          </h3>
+          <div className="text-base leading-relaxed">
+            <p>Consider the solution to be:</p>
+            <p>
+              1-{" "}
+              <Link
+                href="/tech/reverse_walking_slant_jump"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Reverse walking slant jump
+              </Link>
+            </p>
+            <p>
+              2-{" "}
+              <Link
+                href="/tech/reverse_jumping_slant_jump"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+              >
+                Reverse jumping slant jump
+              </Link>
+            </p>
+            <div className="mt-8 font-semibold">
+              <If_You_Are_Still_Stuck_Text />
+            </div>
+          </div>
         </div>
       </div>
     </>
