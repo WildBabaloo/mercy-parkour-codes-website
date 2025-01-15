@@ -95,7 +95,15 @@ const fetchCodes = async ({
   const codes =
     sortKey === "Map_Number"
       ? getNewCodesDefault(search, skip, take, map, difficulty)
-      : getSortedMapCodes(search, skip, take, sortKey, sortOrder);
+      : getSortedMapCodes(
+          search,
+          skip,
+          take,
+          sortKey,
+          sortOrder,
+          map,
+          difficulty
+        );
 
   return codes;
 };
