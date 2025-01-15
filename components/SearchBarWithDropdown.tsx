@@ -27,18 +27,22 @@ const SearchBarWithDropdown = () => {
               <Dropdown_Menu
                 menuHeader="Category..."
                 menuItems={categoryOptionItems.sort()}
+                urlHeader="category"
               />
               <Dropdown_Menu
                 menuHeader="Map..."
                 menuItems={mapOptionItems.sort()}
+                urlHeader="map"
               />
               <Dropdown_Menu
                 menuHeader="Difficulty..."
                 menuItems={difficultyOptionItems}
+                urlHeader="difficulty"
               />
               <Dropdown_Menu
                 menuHeader="Played/Not Played..."
                 menuItems={playOptionItems}
+                urlHeader="play_status"
               />
             </div>
             {/* Slider */}

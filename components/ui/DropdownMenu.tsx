@@ -12,6 +12,7 @@ import {
 export default function Dropdown_Menu(props: {
   menuHeader: string;
   menuItems: string[];
+  urlHeader: string;
 }) {
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([props.menuHeader])
