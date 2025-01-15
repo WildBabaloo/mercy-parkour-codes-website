@@ -133,7 +133,7 @@ export default function Instant_Superjump() {
                 Propjump
               </Link>
             </p>
-            <div className="font-semibold">
+            <div className="mt-8 font-semibold">
               <If_You_Are_Still_Stuck_Text />
             </div>
           </div>
