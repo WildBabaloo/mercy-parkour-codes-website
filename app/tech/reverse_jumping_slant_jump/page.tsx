@@ -91,10 +91,10 @@ export default function Reverse_Jumping_Slant_Jump() {
             <p>
               1-{" "}
               <Link
-                href="/tech/reverse_jumping_slant_jump"
+                href="/tech/reverse_walking_slant_jump"
                 className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
               >
-                Reverse Jumping Slant Jump
+                Reverse Walking Slant Jump
               </Link>
             </p>
             <p>
