@@ -14,8 +14,9 @@ export default function Dropdown_Menu(props: {
   menuItems: string[];
   urlHeader: string;
 }) {
+  const menuHeader = props.menuHeader;
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
-    new Set([props.menuHeader])
+    new Set([menuHeader])
   );
 
   const selectedValue = React.useMemo(
@@ -24,7 +25,7 @@ export default function Dropdown_Menu(props: {
   );
 
   const handleClearSingleFilterOption = () => {
-    setSelectedKeys(new Set([props.menuHeader]));
+    setSelectedKeys(new Set([menuHeader]));
   };
 
   const searchParams = useSearchParams();
@@ -33,7 +34,7 @@ export default function Dropdown_Menu(props: {
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
-    if (selectedValue != props.menuHeader) {
+    if (selectedValue != menuHeader) {
       params.set(props.urlHeader, selectedValue);
     } else {
       params.delete(props.urlHeader);
@@ -41,7 +42,7 @@ export default function Dropdown_Menu(props: {
     replace(`${pathname}?${params.toString()}`);
   }, [
     selectedValue,
-    props.menuHeader,
+    menuHeader,
     props.urlHeader,
     pathname,
     searchParams,
@@ -52,7 +53,7 @@ export default function Dropdown_Menu(props: {
     <Dropdown>
       <DropdownTrigger>
         <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500 capitalize">
-          {selectedValue == props.menuHeader ? (
+          {selectedValue == menuHeader ? (
             selectedValue
           ) : (
             <div className="flex items-center">
