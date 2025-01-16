@@ -9,8 +9,10 @@ export async function GET(request: NextRequest) {
         const skip = url.searchParams.get("skip");
         const take = url.searchParams.get("take");
         const sortMethod = url.searchParams.get("sort");
+        const difficulty = url.searchParams.get("difficulty");
+        const map = url.searchParams.get("map");
 
-        console.log(`Skip: ${skip}, Take: ${take}, Search: ${search}, Sort: ${sortMethod}`);
+        console.log(`Skip: ${skip || "none"}, Take: ${take || "none"}, Search: ${search || "none"}, Sort: ${sortMethod || "none"}, Difficulty ${difficulty || "none"}, Map: ${map || "none"}`);
 
         const skipInt = parseInt(skip as string, 10) || 0;
         const takeInt = parseInt(take as string, 10) || 20;
@@ -21,9 +23,11 @@ export async function GET(request: NextRequest) {
         
           const queryParams = {
             search: search || "",
-            sort: sortMethod || "",
+            sort: sortMethod && sortMethod !== "undefined" ? sortMethod : "",
             skip: skipInt,
             take: takeInt,
+            difficulty: difficulty && difficulty !== "undefined" ? difficulty : "",
+            map: map && map !== "undefined" ? map : ""
           };
           
         const codes = await fetchCodes(queryParams);
@@ -40,22 +44,26 @@ const fetchCodes = async ({
   sort,
   skip,
   take,
+  difficulty,
+  map,
 }: {
   search?: string;
   sort?: string;
   skip: number;
   take: number;
+  difficulty?: string;
+  map?: string;
 }) => {
   const [sortKey, sortOrder] = sort && sort !== "undefined"
     ? sort.split("_")
     : ["Map_Number", "desc"];
 
-    console.log(`Sort: ${sort}, SortKey: ${sortKey}, SortOrder: ${sortOrder}`);
+  const codes =
+    sortKey === "Map_Number"
+      ? await getNewCodesDefault(search, skip, take, map, difficulty)
+      : await getSortedMapCodes(search, skip, take, sortKey, sortOrder, map, difficulty);
 
-      const codes =
-        sortKey === "Map_Number"
-          ? getNewCodesDefault(search, skip, take)
-          : getSortedMapCodes(search, skip, take, sortKey, sortOrder);
+      console.log(codes);
 
   return codes;
 };
