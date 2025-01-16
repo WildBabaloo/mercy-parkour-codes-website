@@ -65,7 +65,13 @@ export default async function Codes(props: {
             <SortSection />
           </div>
           {/* Card Section */}
-          <CardSection initialCodes={codes} search={search} sort={sortMethod} />
+          <CardSection
+            initialCodes={codes}
+            search={search}
+            sort={sortMethod}
+            map={selectedMap}
+            difficulty={selectedDifficulty}
+          />
         </div>
       </div>
     </>
@@ -77,7 +83,7 @@ const fetchCodes = async ({
   sort,
   skip,
   take,
-  category,
+  // category,
   map,
   difficulty,
 }: {
@@ -85,17 +91,17 @@ const fetchCodes = async ({
   sort?: string;
   skip: number;
   take: number;
-  category: string;
-  map: string;
-  difficulty: string;
+  category?: string;
+  map?: string;
+  difficulty?: string;
 }) => {
   const [sortKey, sortOrder] =
     sort && sort !== "undefined" ? sort.split("_") : ["Map_Number", "desc"];
 
   const codes =
     sortKey === "Map_Number"
-      ? getNewCodesDefault(search, skip, take, map, difficulty)
-      : getSortedMapCodes(
+      ? await getNewCodesDefault(search, skip, take, map, difficulty)
+      : await getSortedMapCodes(
           search,
           skip,
           take,
