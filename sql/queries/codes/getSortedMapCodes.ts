@@ -18,8 +18,8 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
             not: null,
           },
         },
-        map ? { Map: map } : {},
-        difficulty ? { Difficulty: difficulty } : {},
+        map ? { Map: { contains: map, mode: "insensitive" } } : {},
+        difficulty ? { Difficulty: { contains: difficulty, mode: "insensitive" } } : {},
       ], 
     },
     orderBy: [
