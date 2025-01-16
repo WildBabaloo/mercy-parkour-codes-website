@@ -20,6 +20,7 @@ export default function App() {
 
   return (
     <Navbar
+      position="static"
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
         item: [
