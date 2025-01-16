@@ -1,7 +1,7 @@
 "use client";
 import type { Selection } from "@nextui-org/react";
-
-import React from "react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import {
   Dropdown,
   DropdownTrigger,
@@ -12,9 +12,11 @@ import {
 export default function Dropdown_Menu(props: {
   menuHeader: string;
   menuItems: string[];
+  urlHeader: string;
 }) {
+  const menuHeader = props.menuHeader;
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
-    new Set([props.menuHeader])
+    new Set([menuHeader])
   );
 
   const selectedValue = React.useMemo(
@@ -23,14 +25,35 @@ export default function Dropdown_Menu(props: {
   );
 
   const handleClearSingleFilterOption = () => {
-    setSelectedKeys(new Set([props.menuHeader]));
+    setSelectedKeys(new Set([menuHeader]));
   };
+
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (selectedValue != menuHeader) {
+      params.set(props.urlHeader, selectedValue);
+    } else {
+      params.delete(props.urlHeader);
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }, [
+    selectedValue,
+    menuHeader,
+    props.urlHeader,
+    pathname,
+    searchParams,
+    replace,
+  ]);
 
   return (
     <Dropdown>
       <DropdownTrigger>
         <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500 capitalize">
-          {selectedValue == props.menuHeader ? (
+          {selectedValue == menuHeader ? (
             selectedValue
           ) : (
             <div className="flex items-center">
