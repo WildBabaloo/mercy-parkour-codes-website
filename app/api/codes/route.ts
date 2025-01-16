@@ -63,7 +63,5 @@ const fetchCodes = async ({
       ? await getNewCodesDefault(search, skip, take, map, difficulty)
       : await getSortedMapCodes(search, skip, take, sortKey, sortOrder, map, difficulty);
 
-      console.log(codes);
-
   return codes;
 };
