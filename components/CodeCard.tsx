@@ -8,6 +8,8 @@ import {
   CheckIcon,
   FlagIcon,
 } from "@heroicons/react/24/outline";
+import { FaYoutube } from "react-icons/fa";
+import Link from "next/link";
 
 interface CardProps {
   title: string | null;
@@ -15,6 +17,7 @@ interface CardProps {
   checkpoints: string;
   difficulty: string;
   mapper: string;
+  video: string | null;
   likes: number;
   imageSrc: StaticImageData;
 }
@@ -25,6 +28,7 @@ const Card: React.FC<CardProps> = ({
   checkpoints,
   difficulty,
   mapper,
+  video,
   likes,
   imageSrc,
 }) => {
@@ -63,6 +67,11 @@ const Card: React.FC<CardProps> = ({
             <div className="flex items-center space-x-2">
               <HeartIcon className="h-5 w-5 text-gray-400" />
               <span>{likes}</span>
+              {video && (
+                <Link href={video}>
+                  <FaYoutube className="w-6 h-6" />
+                </Link>
+              )}
             </div>
           </div>
         </div>

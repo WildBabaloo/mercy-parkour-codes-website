@@ -106,6 +106,7 @@ export default function CardSection({
               checkpoints={code.Checkpoints?.toString() || "N/A"}
               difficulty={code.Difficulty || "N/A"}
               mapper={code.Author || "Unknown Mapper"}
+              video={code.Video}
               likes={0}
               imageSrc={Ecopoint}
             />
