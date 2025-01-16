@@ -15,11 +15,11 @@ export default function Home() {
         <div className="h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex items-center justify-center">
           <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6">
             {/* Title Screen */}
-            <div className="w-full text-center">
+            <div className="w-full text-center md:text-left">
               <TitleScreen />
             </div>
             {/* Image/GIF */}
-            <div className="w-[850px] m-20">
+            <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[850px] mx-auto md:mx-0">
               <AspectRatio ratio={16 / 9}>
                 <Image
                   src={MercyGIF}
