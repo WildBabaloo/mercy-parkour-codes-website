@@ -56,7 +56,9 @@ export default function CardSection({
     setPage(1);
     try {
       const response = await fetch(
-        `/api/codes?skip=0&take=20&search=${searchTerm || ""}&sort=${sort}`
+        `/api/codes?skip=0&take=20&search=${
+          searchTerm || ""
+        }&sort=${sort}&map=${map}&difficulty=${difficulty}`
       );
       const searchedCodes: MapCode[] = await response.json();
 
