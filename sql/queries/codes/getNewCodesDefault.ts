@@ -1,6 +1,6 @@
 import prisma from "@/prisma/lib/db";
 
-export async function getNewCodesDefault(search: string | undefined, skip: number, take: number, map: string, difficulty: string){
+export async function getNewCodesDefault(search: string | undefined, skip: number, take: number, map: string | undefined, difficulty: string | undefined){
     const codes = await prisma.mercy_parkour_codes.findMany({
         where: {
           AND: [
