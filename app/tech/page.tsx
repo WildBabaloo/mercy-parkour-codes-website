@@ -2,7 +2,7 @@ import NavBarUI from "@/components/ui/NavBar";
 import Image from "next/image";
 import Ecopoint from "@/images/Map_Images/EcoPointAntarctica.png";
 import Link from "next/link";
-import { CodeInput } from "@/components/ui/CodeInput";
+import { TechInput } from "@/components/ui/TechInput";
 
 export default async function Tech(props: {
   searchParams?: Promise<{
@@ -30,7 +30,7 @@ export default async function Tech(props: {
 
         <div className="flex items-center justify-center">
           <div className="mb-6 max-w-screen-md w-full">
-            <CodeInput
+            <TechInput
               type="search"
               placeholder="Search for a specific tech..."
               className="text-black"
