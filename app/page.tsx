@@ -4,7 +4,6 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import MercyGIF from "@/images/tumblr_p8ffrwv7PA1rignt3o1_500-2380950851.gif";
 import TitleScreen from "@/components/TitleScreen";
-import { Input } from "@/components/ui/MainPageInput";
 
 export default function Home() {
   return (
@@ -13,11 +12,10 @@ export default function Home() {
         {/* Navbar */}
         <NavBarUI />
         {/* Content */}
-        <div className="h-screen bg-black flex items-center justify-center">
-          <div className="flex bg-black ml-[10%] mr-[10%] items-center">
+        <div className="h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 flex items-center justify-center">
+          <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6">
             {/* Title Screen */}
             <div className="w-full text-center">
-              <Input type="search" placeholder="Search..." className="mb-8" />
               <TitleScreen />
             </div>
             {/* Image/GIF */}
