@@ -96,11 +96,11 @@ const fetchCodes = async ({
   difficulty?: string;
 }) => {
   const [sortKey, sortOrder] =
-    sort && sort !== "undefined" ? sort.split("_") : ["Map_Number", "desc"];
+    sort && sort !== "undefined" ? sort.split("-") : ["Map_Number", "desc"];
 
   const codes =
     sortKey === "Map_Number"
-      ? await getNewCodesDefault(search, skip, take, map, difficulty)
+      ? await getNewCodesDefault(search, skip, take, sortKey, sortOrder, map, difficulty)
       : await getSortedMapCodes(
           search,
           skip,

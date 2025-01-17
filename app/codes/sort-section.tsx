@@ -12,7 +12,7 @@ export default function SortSection() {
   const pathname = usePathname();
   const { replace } = useRouter();
   const sortOptions = [
-    "Added",
+    "Map_Number",
     "Difficulty",
     "Author",
     "Map",
@@ -41,9 +41,9 @@ export default function SortSection() {
       const params = new URLSearchParams(searchParams);
       const sortValue =
         activeSort.direction === "down"
-          ? `${activeSort.key}_desc`
+          ? `${activeSort.key}-desc`
           : activeSort.direction === "up"
-          ? `${activeSort.key}_asc`
+          ? `${activeSort.key}-asc`
           : null;
 
       if (sortValue) {

@@ -55,12 +55,12 @@ const fetchCodes = async ({
   map?: string;
 }) => {
   const [sortKey, sortOrder] = sort && sort !== "undefined"
-    ? sort.split("_")
+    ? sort.split("-")
     : ["Map_Number", "desc"];
 
   const codes =
     sortKey === "Map_Number"
-      ? await getNewCodesDefault(search, skip, take, map, difficulty)
+      ? await getNewCodesDefault(search, skip, take, sortKey, sortOrder, map, difficulty)
       : await getSortedMapCodes(search, skip, take, sortKey, sortOrder, map, difficulty);
 
   return codes;
