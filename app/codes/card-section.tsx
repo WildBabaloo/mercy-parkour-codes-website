@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import Card from "@/components/CodeCard";
-import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
+import MapImageSelection from "./map-image-selection";
 import { MapCode } from "./MapCode";
 
 export default function CardSection({
@@ -108,7 +108,7 @@ export default function CardSection({
               mapper={code.Author || "Unknown Mapper"}
               video={code.Video}
               likes={0}
-              imageSrc={MapImageSelection()}
+              imageSrc={MapImageSelection(code.Map || "N/A")}
             />
           ))}
         </div>
@@ -120,7 +120,3 @@ export default function CardSection({
     </>
   );
 }
-
-const MapImageSelection = () => {
-  return Ecopoint;
-};
