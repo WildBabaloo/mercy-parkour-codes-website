@@ -2,7 +2,7 @@
 import NavBarUI from "../components/ui/NavBar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
-import MercyGIF from "@/images/tumblr_p8ffrwv7PA1rignt3o1_500-2380950851.gif";
+import MercyGIF from "@public/images/tumblr_p8ffrwv7PA1rignt3o1_500-2380950851.gif";
 import TitleScreen from "@/components/TitleScreen";
 
 export default function Home() {
