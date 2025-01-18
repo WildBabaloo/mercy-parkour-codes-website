@@ -16,6 +16,13 @@ import Shambali_Monastery from "@/public/images/Map_Images/Shambali_Monastery.pn
 import Gibraltar from "@/public/images/Map_Images/Gibraltar.jpg";
 import New_Junk_City from "@/public/images/Map_Images/New_Junk_City.jpg";
 import Suravasa from "@/public/images/Map_Images/Suravasa.jpg";
+import Blizzard_World from "@/public/images/Map_Images/Blizzard_World.jpg";
+import Eichenwalde from "@/public/images/Map_Images/Eichenwalde.png";
+import Hollywood from "@/public/images/Map_Images/Hollywood.jpg";
+import Kings_Row from "@/public/images/Map_Images/Kings_Row.jpg";
+import Midtown from "@/public/images/Map_Images/Midtown.png";
+import Numbani from "@/public/images/Map_Images/Numbani.jpg";
+import Paraíso from "@/public/images/Map_Images/Paraíso.jpg";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -47,6 +54,13 @@ const mapImages: MapImages = {
   "Watchpoint: Gibraltar": Gibraltar,
   "New Junk City": New_Junk_City,
   Suravasa: Suravasa,
+  "Blizzard World": Blizzard_World,
+  Eichenwalde: Eichenwalde,
+  Hollywood: Hollywood,
+  "King's Row": Kings_Row,
+  Midtown: Midtown,
+  Numbani: Numbani,
+  Paraíso: Paraíso,
 };
 
 export default MapImageSelection;
