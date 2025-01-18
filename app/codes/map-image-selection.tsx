@@ -38,6 +38,10 @@ import Horizon_Lunar_Colony from "@/public/images/Map_Images/Horizon_Lunar_Colon
 import Paris from "@/public/images/Map_Images/Paris.jpg";
 import Temple_of_Anubis from "@/public/images/Map_Images/Temple_of_Anubis.jpg";
 import Volskaya_Industries from "@/public/images/Map_Images/Volskaya_Industries.jpg";
+import Ayutthaya from "@/public/images/Map_Images/Ayutthaya.png";
+import Black_Forest from "@/public/images/Map_Images/Black_Forest.jpg";
+import Castillo from "@/public/images/Map_Images/Castillo.jpg";
+import Necropolis from "@/public/images/Map_Images/Necropolis.jpg";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -91,6 +95,11 @@ const mapImages: MapImages = {
   Paris: Paris,
   "Temple of Anubis": Temple_of_Anubis,
   "Volskaya Industries": Volskaya_Industries,
+  Ayutthaya: Ayutthaya,
+  "Black Forest": Black_Forest,
+  Castillo: Castillo,
+  "Ecopoint: Antarctica": Ecopoint,
+  Necropolis: Necropolis,
 };
 
 export default MapImageSelection;
