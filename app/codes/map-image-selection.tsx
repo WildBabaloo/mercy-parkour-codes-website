@@ -14,6 +14,8 @@ import Rialto from "@/public/images/Map_Images/Rialto.jpg";
 import Route_66 from "@/public/images/Map_Images/Route_66.jpg";
 import Shambali_Monastery from "@/public/images/Map_Images/Shambali_Monastery.png";
 import Gibraltar from "@/public/images/Map_Images/Gibraltar.jpg";
+import New_Junk_City from "@/public/images/Map_Images/New_Junk_City.jpg";
+import Suravasa from "@/public/images/Map_Images/Suravasa.jpg";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -43,6 +45,8 @@ const mapImages: MapImages = {
   "Route 66": Route_66,
   "Shambali Monastery": Shambali_Monastery,
   "Watchpoint: Gibraltar": Gibraltar,
+  "New Junk City": New_Junk_City,
+  Suravasa: Suravasa,
 };
 
 export default MapImageSelection;
