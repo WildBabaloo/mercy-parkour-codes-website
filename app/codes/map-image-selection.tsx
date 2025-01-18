@@ -64,7 +64,7 @@ const mapImages: MapImages = {
   "Antarctic Peninsula": Antarctic_Peninsula,
   Busan: Busan,
   Ilios: Ilios,
-  "Lijiang Tower": Lijiang_Tower,
+  Lijiang: Lijiang_Tower,
   Nepal: Nepal,
   Oasis: Oasis,
   Samoa: Samoa,
