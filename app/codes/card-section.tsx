@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import Card from "@/components/CodeCard";
 import MapImageSelection from "./map-image-selection";
 import { MapCode } from "./MapCode";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 export default function CardSection({
   initialCodes,
@@ -113,8 +114,10 @@ export default function CardSection({
           ))}
         </div>
       </div>
-      {isLoading && <p className="text-center text-white">Loading...</p>}
-      {!hasMore && <p className="text-center text-white">No more codes!</p>}
+      <div className="text-center text-white mt-4 flex justify-center">
+        {isLoading && <LoadingSpinner />}
+        {!hasMore && <p>No more codes!</p>}
+      </div>
       {/* Intersection Observer Element */}
       <div ref={ref} style={{ height: "1px" }}></div>
     </>

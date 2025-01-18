@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import Image from "next/image";
+import Guardian_Angel from "@/public/images/guardian-angel-abd887839bb9315af13b39dacd1b2b2b607bc45bf23ddd428e9e93602d7c25b1.png";
 import {
   Navbar,
   NavbarBrand,
@@ -12,6 +14,14 @@ import {
 } from "@nextui-org/react";
 import { Button } from "@/components/ui/button";
 import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
+
+export const MercyParkourLogo = () => {
+  return (
+    <div className="relative w-9 h-9 mr-2">
+      <Image src={Guardian_Angel} alt="Logo" fill />
+    </div>
+  );
+};
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -45,6 +55,7 @@ export default function App() {
           className="sm:hidden"
         />
         <NavbarBrand>
+          <MercyParkourLogo />
           <Link href="/">
             <p className="font-bold text-inherit">mercyparkour.codes</p>
           </Link>
@@ -57,7 +68,7 @@ export default function App() {
             New/Latest Codes
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
+        <NavbarItem>
           <Link href="/tech" aria-current="page">
             Learn Mercy Tech
           </Link>
