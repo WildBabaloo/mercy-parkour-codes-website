@@ -42,6 +42,11 @@ import Ayutthaya from "@/public/images/Map_Images/Ayutthaya.png";
 import Black_Forest from "@/public/images/Map_Images/Black_Forest.jpg";
 import Castillo from "@/public/images/Map_Images/Castillo.jpg";
 import Necropolis from "@/public/images/Map_Images/Necropolis.jpg";
+import Workshop_Chamber from "@/public/images/Map_Images/Workshop_Chamber.png";
+import Workshop_Expanse from "@/public/images/Map_Images/Workshop_Expanse.png";
+import Workshop_Green_Screen from "@/public/images/Map_Images/Workshop_Green_Screen.png";
+import Workshop_Island from "@/public/images/Map_Images/Workshop_Island.png";
+import Practice_Range from "@/public/images/Map_Images/Practice_Range.jpg";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -100,6 +105,11 @@ const mapImages: MapImages = {
   Castillo: Castillo,
   "Ecopoint: Antarctica": Ecopoint,
   Necropolis: Necropolis,
+  "Workshop Chamber": Workshop_Chamber,
+  "Workshop Expanse": Workshop_Expanse,
+  "Workshop Green Screen": Workshop_Green_Screen,
+  "Workshop Island": Workshop_Island,
+  "Practice Range": Practice_Range,
 };
 
 export default MapImageSelection;
