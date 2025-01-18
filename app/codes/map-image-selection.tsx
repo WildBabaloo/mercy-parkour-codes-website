@@ -33,6 +33,11 @@ import Château_Guillard from "@/public/images/Map_Images/Chateau_Guillard.jpg";
 import Kanezaka from "@/public/images/Map_Images/Kanezaka.jpg";
 import Malevento from "@/public/images/Map_Images/Malevento.jpg";
 import Petra from "@/public/images/Map_Images/Petra.jpg";
+import Hanamura from "@/public/images/Map_Images/Hanamura.jpg";
+import Horizon_Lunar_Colony from "@/public/images/Map_Images/Horizon_Lunar_Colony.jpg";
+import Paris from "@/public/images/Map_Images/Paris.jpg";
+import Temple_of_Anubis from "@/public/images/Map_Images/Temple_of_Anubis.jpg";
+import Volskaya_Industries from "@/public/images/Map_Images/Volskaya_Industries.jpg";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -81,6 +86,11 @@ const mapImages: MapImages = {
   Kanezaka: Kanezaka,
   Malevento: Malevento,
   Petra: Petra,
+  Hanamura: Hanamura,
+  "Horizon Lunar Colony": Horizon_Lunar_Colony,
+  Paris: Paris,
+  "Temple of Anubis": Temple_of_Anubis,
+  "Volskaya Industries": Volskaya_Industries,
 };
 
 export default MapImageSelection;
