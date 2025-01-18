@@ -29,6 +29,10 @@ import New_Queen_Street from "@/public/images/Map_Images/New_Queen_Street.jpg";
 import Runasapi from "@/public/images/Map_Images/Runasapi.jpg";
 import Hanaoka from "@/public/images/Map_Images/Hanaoka.jpg";
 import Throne_of_Anubis from "@/public/images/Map_Images/Throne_of_Anubis.png";
+import Château_Guillard from "@/public/images/Map_Images/Chateau_Guillard.jpg";
+import Kanezaka from "@/public/images/Map_Images/Kanezaka.jpg";
+import Malevento from "@/public/images/Map_Images/Malevento.jpg";
+import Petra from "@/public/images/Map_Images/Petra.jpg";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -73,6 +77,10 @@ const mapImages: MapImages = {
   Runasapi: Runasapi,
   Hanaoka: Hanaoka,
   "Throne of Anubis": Throne_of_Anubis,
+  "Château Guillard": Château_Guillard,
+  Kanezaka: Kanezaka,
+  Malevento: Malevento,
+  Petra: Petra,
 };
 
 export default MapImageSelection;
