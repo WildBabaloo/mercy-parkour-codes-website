@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = ({
         <Image
           src={imageSrc}
           alt={`${title} thumbnail`}
-          layout="fill"
+          fill
           className="object-cover opacity-50"
         />
       </div>

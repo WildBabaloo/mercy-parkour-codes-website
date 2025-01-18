@@ -24,7 +24,7 @@ export default function Home() {
                 <Image
                   src={MercyGIF}
                   alt="Image"
-                  fill={true}
+                  fill
                   className="rounded-md object-cover"
                 />
               </AspectRatio>
