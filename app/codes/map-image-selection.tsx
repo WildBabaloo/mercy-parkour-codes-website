@@ -23,6 +23,10 @@ import Kings_Row from "@/public/images/Map_Images/Kings_Row.jpg";
 import Midtown from "@/public/images/Map_Images/Midtown.png";
 import Numbani from "@/public/images/Map_Images/Numbani.jpg";
 import Paraíso from "@/public/images/Map_Images/Paraíso.jpg";
+import Colosseo from "@/public/images/Map_Images/Colosseo.png";
+import Esperança from "@/public/images/Map_Images/Esperança.jpg";
+import New_Queen_Street from "@/public/images/Map_Images/New_Queen_Street.jpg";
+import Runasapi from "@/public/images/Map_Images/Runasapi.jpg";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -61,6 +65,10 @@ const mapImages: MapImages = {
   Midtown: Midtown,
   Numbani: Numbani,
   Paraíso: Paraíso,
+  Colosseo: Colosseo,
+  Esperança: Esperança,
+  "New Queen Street": New_Queen_Street,
+  Runasapi: Runasapi,
 };
 
 export default MapImageSelection;
