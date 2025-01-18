@@ -13,8 +13,8 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
                   ],
                 }
               : {},
-            map ? { Map: map } : {},
-            difficulty ? { Difficulty: difficulty } : {}
+              map ? { Map: { contains: map, mode: "insensitive" } } : {},
+              difficulty ? { Difficulty: { contains: difficulty, mode: "insensitive" } } : {},
           ]
         },
         orderBy: [
