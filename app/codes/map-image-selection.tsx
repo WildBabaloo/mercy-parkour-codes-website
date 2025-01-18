@@ -27,6 +27,8 @@ import Colosseo from "@/public/images/Map_Images/Colosseo.png";
 import Esperança from "@/public/images/Map_Images/Esperança.jpg";
 import New_Queen_Street from "@/public/images/Map_Images/New_Queen_Street.jpg";
 import Runasapi from "@/public/images/Map_Images/Runasapi.jpg";
+import Hanaoka from "@/public/images/Map_Images/Hanaoka.jpg";
+import Throne_of_Anubis from "@/public/images/Map_Images/Throne_of_Anubis.png";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -69,6 +71,8 @@ const mapImages: MapImages = {
   Esperança: Esperança,
   "New Queen Street": New_Queen_Street,
   Runasapi: Runasapi,
+  Hanaoka: Hanaoka,
+  "Throne of Anubis": Throne_of_Anubis,
 };
 
 export default MapImageSelection;
