@@ -11,38 +11,41 @@ const features = [
 const TitleScreen = () => {
   const [currentFeature, setCurrentFeature] = useState(0);
 
-  // Cycle through features
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFeature((prev) => (prev + 1) % features.length);
-    }, 3000); // Change feature every 3 seconds
+    }, 5000); // Change feature every 5 seconds
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <>
-      <div className="text-white">
-        <div>
-          <h1 className="text-4xl font-medium mb-6">
-            Explore The New Way To <br /> Experience Mercy Parkour With
-          </h1>
-        </div>
-        <div className="h-10">
-          <AnimatePresence>
-            <motion.div
-              key={currentFeature}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6 }}
-              className="left-0 right-0 text-4xl font-bold"
-            >
-              {features[currentFeature]}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+    <div className="text-white">
+      {/* Main Title */}
+      <div>
+        <h1 className="text-4xl font-medium mb-6">
+          Explore The New Way To <br /> Experience Mercy Parkour With
+        </h1>
       </div>
-    </>
+
+      {/* Animated Features */}
+      <div className="h-10 overflow-hidden relative">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentFeature}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{
+              opacity: { duration: 0.8, ease: "easeInOut" },
+              y: { duration: 0.8, ease: "easeInOut" },
+            }}
+            className="absolute w-full text-4xl font-bold"
+          >
+            {features[currentFeature]}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
   );
 };
 
