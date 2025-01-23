@@ -3,20 +3,26 @@ import { Button } from "@/components/ui/button";
 import Card from "@/components/CodeCard";
 import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
 
-export default function Extras() {
+export default function Random() {
   return (
     <>
       <NavBarUI />
-      <div className="bg-gray-800 p-4 text-white">
-        <div className="text-center mt-4">
-          <h1 className="text-4xl">Random Mercy Parkour Code Selector</h1>
-          <p className="italic mt-2">
-            Not sure on what course to play? Let the generator choose for you!
-            Press the Generate button to get started!
+      <div className="bg-gray-800 min-h-screen p-6 text-white">
+        {/* Header Section */}
+        <div className="text-center mt-10">
+          <h1 className="text-4xl font-bold mb-4">
+            Random Mercy Parkour Code Selector
+          </h1>
+          <p className="italic text-lg">
+            Not sure on what course to play? Let the generator choose for you!{" "}
+            <br />
+            Press the <span className="font-bold">Generate</span> button to get
+            started!
           </p>
         </div>
-        <div className="flex justify-center items-center m-8">
-          {/* Card Section */}
+
+        {/* Card Section */}
+        <div className="flex justify-center items-center mt-12">
           <Card
             key="3157"
             title="Ecopoint: Antarctica (Winter)"
@@ -29,8 +35,15 @@ export default function Extras() {
             imageSrc={Ecopoint}
           />
         </div>
-        <div className="text-center">
-          <Button variant="default">Generate</Button>
+
+        {/* Generate Button */}
+        <div className="text-center mt-8">
+          <Button
+            variant="default"
+            className="px-8 py-3 text-lg font-semibold bg-primary text-white rounded-lg shadow-md hover:bg-primary-dark transition-transform transform hover:scale-105"
+          >
+            Generate
+          </Button>
         </div>
       </div>
     </>
