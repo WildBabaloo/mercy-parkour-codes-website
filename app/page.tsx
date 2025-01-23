@@ -1,9 +1,11 @@
 "use client";
 import NavBarUI from "../components/ui/NavBar";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Image from "next/image";
-import MercyGIF from "@/public/images/tumblr_p8ffrwv7PA1rignt3o1_500-2380950851.gif";
+// import { AspectRatio } from "@/components/ui/aspect-ratio";
+// import Image from "next/image";
+// import MercyGIF from "@/public/images/tumblr_p8ffrwv7PA1rignt3o1_500-2380950851.gif";
+import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
 import TitleScreen from "@/components/TitleScreen";
+import Card from "@/components/CodeCard";
 
 export default function Home() {
   return (
@@ -23,14 +25,19 @@ export default function Home() {
               <h2 className="text-white text-center text-2xl mb-6">
                 Today&apos;s Featured Course
               </h2>
-              <AspectRatio ratio={16 / 9}>
-                <Image
-                  src={MercyGIF}
-                  alt="Image"
-                  fill
-                  className="rounded-md object-cover"
+              <div className="flex items-center justify-center">
+                <Card
+                  key="3157"
+                  title="Ecopoint: Antarctica (Winter)"
+                  code="QTXG4"
+                  checkpoints="45"
+                  difficulty="Intermediate"
+                  mapper="OnMyKnees"
+                  video="https://www.youtube.com/watch?v=tJMdXxLr7BU"
+                  likes={0}
+                  imageSrc={Ecopoint}
                 />
-              </AspectRatio>
+              </div>
             </div>
           </div>
         </div>
