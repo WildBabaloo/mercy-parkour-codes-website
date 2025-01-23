@@ -1,25 +1,39 @@
 "use client";
+import { useState } from "react";
 import Card from "@/components/CodeCard";
 import { Button } from "@/components/ui/button";
-import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
+import MapImageSelection from "../map-image-selection";
+import { MapCode } from "../MapCode";
 
 export default function GenerateSection() {
-  const handleGenerateButton = () => {};
+  const [isLoading, setIsLoading] = useState(false);
+  const [code, setCode] = useState<MapCode>();
+  const handleGenerateButton = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
+    const response = await fetch("/api/codes/random");
+    const generatedCode: MapCode = await response.json();
+    setCode(generatedCode);
+    setIsLoading(false);
+  };
   return (
     <>
       {/* Card Section */}
       <div className="flex justify-center items-center mt-12">
-        <Card
-          key="3157"
-          title="Ecopoint: Antarctica (Winter)"
-          code="QTXG4"
-          checkpoints="45"
-          difficulty="Intermediate"
-          mapper="OnMyKnees"
-          video="https://www.youtube.com/watch?v=tJMdXxLr7BU"
-          likes={0}
-          imageSrc={Ecopoint}
-        />
+        {code && (
+          <Card
+            key={code.Map_Number}
+            title={code.Map}
+            code={code.Code}
+            checkpoints={code.Checkpoints?.toString() || "N/A"}
+            difficulty={code.Difficulty || "N/A"}
+            mapper={code.Author || "Unknown Author"}
+            video={code.Video}
+            likes={0}
+            imageSrc={MapImageSelection(code.Map || "N/A")}
+          />
+        )}
       </div>
 
       {/* Generate Button */}
