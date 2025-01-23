@@ -20,6 +20,9 @@ export default function Home() {
             </div>
             {/* Image/GIF */}
             <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[850px] mx-auto md:mx-0">
+              <h2 className="text-white text-center text-2xl mb-6">
+                Today&apos;s Featured Course
+              </h2>
               <AspectRatio ratio={16 / 9}>
                 <Image
                   src={MercyGIF}
