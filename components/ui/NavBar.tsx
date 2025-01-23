@@ -26,7 +26,12 @@ export const MercyParkourLogo = () => {
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = ["New/Latest Codes", "Learn Mercy Tech", "Extras"];
+  const menuItems = [
+    "New/Latest Codes",
+    "Random Code Selection",
+    "Learn Mercy Tech",
+    "Extras",
+  ];
 
   return (
     <Navbar
@@ -62,10 +67,15 @@ export default function App() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-4 ml-8" justify="center">
         <NavbarItem>
           <Link color="foreground" href="/codes">
             New/Latest Codes
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/codes/random">
+            Random Code Selector
           </Link>
         </NavbarItem>
         <NavbarItem>
