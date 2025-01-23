@@ -22,7 +22,7 @@ export default function Home() {
             </div>
             {/* Image/GIF */}
             <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[850px] mx-auto md:mx-0">
-              <h2 className="text-white text-center text-2xl mb-6">
+              <h2 className="text-white text-center text-3xl mb-6 font-extrabold">
                 Today&apos;s Featured Course
               </h2>
               <div className="flex items-center justify-center">
