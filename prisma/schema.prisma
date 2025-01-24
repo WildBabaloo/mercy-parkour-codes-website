@@ -9,9 +9,9 @@ datasource db {
 }
 
 model mercy_parkour_codes {
-  Map_Number    Int     @default(autoincrement())
+  Map_Number    Int           @unique @default(autoincrement())
   Map           String?
-  Code          String  @id
+  Code          String        @id
   Checkpoints   Int?
   Video         String?
   Notes         String?
@@ -22,4 +22,12 @@ model mercy_parkour_codes {
   Stuck_Balance String?
   Softlock      String?
   Many_Orbs     String?
+  daily_codes   daily_codes[]
+}
+
+model daily_codes {
+  id                  BigInt              @id(map: "daily_code_pkey") @default(autoincrement())
+  date                DateTime            @unique(map: "daily_code_date_key") @db.Date
+  Map_Number          Int
+  mercy_parkour_codes mercy_parkour_codes @relation(fields: [Map_Number], references: [Map_Number], onDelete: NoAction, onUpdate: NoAction, map: "daily_code_Map_Number_fkey")
 }
