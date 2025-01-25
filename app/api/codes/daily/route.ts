@@ -16,7 +16,7 @@ export async function GET() {
             return NextResponse.json({ error: "No daily code found." }, { status: 404 });
           }
         
-          return NextResponse.json(dailyCode.Map_Number);
+          return NextResponse.json(dailyCode.mercy_parkour_codes);
     } catch (error) {
         console.error("Error fetching random code from the database", error);
         return NextResponse.json({ error: "Failed to fetch code data" }, { status: 500 });
