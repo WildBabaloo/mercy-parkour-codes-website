@@ -1,56 +1,23 @@
 import { NextResponse } from "next/server";
-import prisma from "@/prisma/lib/db";
-import { getRandomCode } from "@/sql/queries/codes/getRandomCode";
+import GetDailyCode from "@/sql/queries/codes/getDailyCode";
+import PostDailyCode from "@/sql/queries/codes/postDailyCode";
 export async function GET() {
-    try {
-        const today = new Date().toISOString();
-
-        const dailyCode = await prisma.daily_codes.findUnique({
-            where: { date: today },
-            include: { mercy_parkour_codes: true }
-          });
-
-          console.log(dailyCode);
-
-          if (!dailyCode) {
-            return NextResponse.json({ error: "No daily code found." }, { status: 404 });
-          }
-        
-          return NextResponse.json(dailyCode.mercy_parkour_codes);
-    } catch (error) {
-        console.error("Error fetching random code from the database", error);
-        return NextResponse.json({ error: "Failed to fetch code data" }, { status: 500 });
-    }
-}
-
-export async function POST(){
   try {
-    const today = new Date().toISOString();
+    const dailyCode = (await GetDailyCode()) || (await PostDailyCode());
 
-    const isExistingDailyCode = await prisma.daily_codes.findUnique({
-        where: { date: today },
-      });
+    if (!dailyCode) {
+      return NextResponse.json(
+        { error: "Could not add the daily code onto the database" },
+        { status: 500 }
+      );
+    }
 
-      if (!isExistingDailyCode) {
-        const randomCode = await getRandomCode();
-
-        if (randomCode) {
-          await prisma.daily_codes.create({
-            data: {
-              date: today,
-              Map_Number: randomCode.Map_Number
-            }
-          })
-        }
-      }
-
-      const dailyCodeResponse = await GET();
-      const dailyCode = await dailyCodeResponse.json();
-  
-      return NextResponse.json(dailyCode);
-
+    return NextResponse.json(dailyCode.mercy_parkour_codes);
   } catch (error) {
-    console.error("Error posting daily code to the database", error);
-    return NextResponse.json({ error: "Failed to post code data" }, { status: 500 });
+    console.error("Error fetching random code from the database", error);
+    return NextResponse.json(
+      { error: "Failed to fetch code data" },
+      { status: 500 }
+    );
   }
 }
