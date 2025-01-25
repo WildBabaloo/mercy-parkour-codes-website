@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { getRandomCode } from "@/sql/queries/codes/getRandomCode";
+import { GetRandomCode } from "@/sql/queries/codes/getRandomCode";
 export async function GET() {
     try {
-        const code = await getRandomCode();
+        const code = await GetRandomCode();
         console.log(code);
         return NextResponse.json(code);
     } catch (error) {
