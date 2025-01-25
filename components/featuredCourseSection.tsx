@@ -13,9 +13,8 @@ export default function FeaturedCourse() {
     setIsLoading(true);
     try {
       const response = await fetch("/api/codes/daily", {
-        method: "POST",
+        cache: "force-cache",
       });
-
       const dailyCode: MapCode = await response.json();
       setFeaturedCode(dailyCode);
     } catch (error) {
