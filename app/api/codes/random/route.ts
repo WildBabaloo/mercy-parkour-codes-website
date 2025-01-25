@@ -1,14 +1,8 @@
 import { NextResponse } from "next/server";
-import prisma from "@/prisma/lib/db";
+import { GetRandomCode } from "@/sql/queries/codes/getRandomCode";
 export async function GET() {
     try {
-        const count = await prisma.mercy_parkour_codes.count();
-        const randInt = Math.floor(Math.random() * count) + 1;
-        const code = await prisma.mercy_parkour_codes.findFirst({
-            where: {
-                Map_Number: randInt
-            }
-        });
+        const code = await GetRandomCode();
         console.log(code);
         return NextResponse.json(code);
     } catch (error) {

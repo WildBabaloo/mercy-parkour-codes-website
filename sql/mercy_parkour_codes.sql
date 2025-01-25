@@ -14,6 +14,12 @@ CREATE TABLE IF NOT EXISTS "mercy_parkour_codes" (
     "Many_Orbs" TEXT
 );
 
+CREATE TABLE IF NOT EXISTS DailyCode (
+  "id" SERIAL PRIMARY KEY,
+  "date" DATE UNIQUE NOT NULL,
+  "Map_Number" INT REFERENCES mercy_parkour_codes(Map_Number) NOT NULL
+);
+
 INSERT INTO "mercy_parkour_codes" ("Map", "Code", "Checkpoints", "Video", "Notes", "Author", "Difficulty", "Sit", "Cloud", "Stuck_Balance", "Softlock", "Many_Orbs") VALUES ('Watchpoint: Gibraltar','WQRCG',NULL,'https://youtu.be/KAEULrDYW0Q',NULL,'SilverFox','N/A',NULL,NULL,NULL,NULL,NULL),
 	('Eichenwalde (Halloween)','1D0V5',NULL,'https://youtu.be/e9QR1ZH369g',NULL,'menenjoyer42','N/A',NULL,NULL,NULL,'✓✓',NULL),
 	('Temple of Anubis','5HAW5',NULL,'https://youtu.be/J6hZW0LC07E',NULL,'풋사과의그린애플','N/A','✓',NULL,NULL,NULL,NULL),
