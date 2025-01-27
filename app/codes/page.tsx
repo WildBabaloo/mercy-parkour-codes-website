@@ -71,6 +71,7 @@ export default async function Codes(props: {
             sort={sortMethod}
             map={selectedMap}
             difficulty={selectedDifficulty}
+            category={selectedCategory}
           />
         </div>
       </div>
@@ -83,7 +84,7 @@ const fetchCodes = async ({
   sort,
   skip,
   take,
-  // category,
+  category,
   map,
   difficulty,
 }: {
@@ -107,7 +108,8 @@ const fetchCodes = async ({
           "Map_Number",
           sortOrder,
           map,
-          difficulty
+          difficulty,
+          category
         )
       : await getSortedMapCodes(
           search,
@@ -116,7 +118,8 @@ const fetchCodes = async ({
           sortKey,
           sortOrder,
           map,
-          difficulty
+          difficulty,
+          category
         );
 
   return codes;

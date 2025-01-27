@@ -12,12 +12,14 @@ export default function CardSection({
   sort,
   map,
   difficulty,
+  category,
 }: {
   initialCodes: MapCode[];
   search: string | undefined;
   sort: string | undefined;
   map: string | undefined;
   difficulty: string | undefined;
+  category: string | undefined;
 }) {
   const [codes, setCodes] = useState<MapCode[]>(initialCodes);
   const [page, setPage] = useState(1);
@@ -34,7 +36,7 @@ export default function CardSection({
       const response = await fetch(
         `/api/codes?skip=${page * 20}&take=20&search=${
           search || ""
-        }&sort=${sort}&map=${map}&difficulty=${difficulty}`
+        }&sort=${sort}&map=${map}&difficulty=${difficulty}&category=${category}`
       );
       const newCodes: MapCode[] = await response.json();
 
@@ -59,7 +61,7 @@ export default function CardSection({
       const response = await fetch(
         `/api/codes?skip=0&take=20&search=${
           searchTerm || ""
-        }&sort=${sort}&map=${map}&difficulty=${difficulty}`
+        }&sort=${sort}&map=${map}&difficulty=${difficulty}&category=${category}`
       );
       const searchedCodes: MapCode[] = await response.json();
 

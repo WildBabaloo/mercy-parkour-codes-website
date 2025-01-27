@@ -35,7 +35,11 @@ export default function Dropdown_Menu(props: {
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
     if (selectedValue != menuHeader) {
-      params.set(props.urlHeader, selectedValue);
+      if (props.urlHeader === "category") {
+        params.set(props.urlHeader, stringCategory(selectedValue));
+      } else {
+        params.set(props.urlHeader, selectedValue);
+      }
     } else {
       params.delete(props.urlHeader);
     }
@@ -98,3 +102,18 @@ export default function Dropdown_Menu(props: {
     </Dropdown>
   );
 }
+
+const stringCategory = (category: string) => {
+  switch (category) {
+    case "Clouds":
+      return "Cloud";
+    case "Many Orbs":
+      return "Many_Orbs";
+    case "Softlock/Hardlock":
+      return "Softlock";
+    case "Stuck/Balances":
+      return "Stuck_Balance";
+    default:
+      return "Rez Map";
+  }
+};

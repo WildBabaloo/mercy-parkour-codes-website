@@ -11,8 +11,9 @@ export async function GET(request: NextRequest) {
         const sortMethod = url.searchParams.get("sort");
         const difficulty = url.searchParams.get("difficulty");
         const map = url.searchParams.get("map");
+        const category = url.searchParams.get("category")
 
-        console.log(`Skip: ${skip || "none"}, Take: ${take || "none"}, Search: ${search || "none"}, Sort: ${sortMethod || "none"}, Difficulty ${difficulty || "none"}, Map: ${map || "none"}`);
+        console.log(`Skip: ${skip || "none"}, Take: ${take || "none"}, Search: ${search || "none"}, Sort: ${sortMethod || "none"}, Difficulty ${difficulty || "none"}, Map: ${map || "none"}, Category: ${category || "none"}`);
 
         const skipInt = parseInt(skip as string, 10) || 0;
         const takeInt = parseInt(take as string, 10) || 20;
@@ -27,7 +28,8 @@ export async function GET(request: NextRequest) {
             skip: skipInt,
             take: takeInt,
             difficulty: difficulty && difficulty !== "undefined" ? difficulty : "",
-            map: map && map !== "undefined" ? map : ""
+            map: map && map !== "undefined" ? map : "",
+            category: category && category !== "undefined" ? category : ""
           };
           
         const codes = await fetchCodes(queryParams);
@@ -46,6 +48,7 @@ const fetchCodes = async ({
   take,
   difficulty,
   map,
+  category,
 }: {
   search?: string;
   sort?: string;
@@ -53,6 +56,7 @@ const fetchCodes = async ({
   take: number;
   difficulty?: string;
   map?: string;
+  category?: string;
 }) => {
   const [sortKey, sortOrder] = sort && sort !== "undefined"
     ? sort.split("-")
@@ -60,8 +64,8 @@ const fetchCodes = async ({
 
   const codes =
     sortKey === "Added" || sortKey === "Map_Number"
-      ? await getNewCodesDefault(search, skip, take, "Map_Number", sortOrder, map, difficulty)
-      : await getSortedMapCodes(search, skip, take, sortKey, sortOrder, map, difficulty);
+      ? await getNewCodesDefault(search, skip, take, "Map_Number", sortOrder, map, difficulty, category)
+      : await getSortedMapCodes(search, skip, take, sortKey, sortOrder, map, difficulty, category);
 
   return codes;
 };
