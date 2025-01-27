@@ -13,7 +13,7 @@ export default function FeaturedCourse() {
     setIsLoading(true);
     try {
       const response = await fetch("/api/codes/daily", {
-        cache: "force-cache",
+        next: { revalidate: 300 },
       });
       const dailyCode: MapCode = await response.json();
       setFeaturedCode(dailyCode);
