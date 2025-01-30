@@ -73,6 +73,7 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
 
     return codes;
   }
-  console.log(`Category: ${category}`);
+  
+  if (sortKey === "Difficulty") sortKey = "Difficulty_Integer"
   return category === "Rez Map" ? fetchSortedCodesWithRezFilter() : fetchSortedCodesWithoutRezFilter();
 }

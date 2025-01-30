@@ -9,20 +9,21 @@ datasource db {
 }
 
 model mercy_parkour_codes {
-  Map_Number    Int           @unique @default(autoincrement())
-  Map           String?
-  Code          String        @id
-  Checkpoints   Int?
-  Video         String?
-  Notes         String?
-  Author        String?
-  Difficulty    String?
-  Sit           String?
-  Cloud         String?
-  Stuck_Balance String?
-  Softlock      String?
-  Many_Orbs     String?
-  daily_codes   daily_codes[]
+  Map_Number         Int           @unique @default(autoincrement())
+  Map                String?
+  Code               String        @id
+  Checkpoints        Int?
+  Video              String?
+  Notes              String?
+  Author             String?
+  Difficulty         String?
+  Sit                String?
+  Cloud              String?
+  Stuck_Balance      String?
+  Softlock           String?
+  Many_Orbs          String?
+  Difficulty_Integer Int?          @db.SmallInt
+  daily_codes        daily_codes[]
 }
 
 model daily_codes {

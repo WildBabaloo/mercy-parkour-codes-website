@@ -1,7 +1,8 @@
+import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
 import prisma from "@/prisma/lib/db";
 
 export async function getNewCodesDefault(search: string | undefined, skip: number, take: number, sortKey: string, sortOrder: string, map: string | undefined, difficulty: string | undefined, category: string | undefined){
-  const fetchCodesWithRezFilter = async () => {
+  const fetchCodesWithRezFilter = async (difficultyNumbers: number[]) => {
     const codes = await prisma.mercy_parkour_codes.findMany({
       where: {
         AND: [
@@ -15,7 +16,7 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
               }
             : {},
             map ? { Map: { contains: map, mode: "insensitive" } } : {},
-            difficulty ? { Difficulty: { contains: difficulty, mode: "insensitive" } } : {},
+            difficultyNumbers.length > 0 ? { Difficulty_Integer: { in: difficultyNumbers } } : {},
             { Notes: { contains: "Rez", mode: "insensitive" } }
         ]
       },
@@ -29,7 +30,7 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
     return codes;
   }
 
-  const fetchCodesWithoutRez = async () => {
+  const fetchCodesWithoutRez = async (difficultyNumbers: number[]) => {
     const codes = await prisma.mercy_parkour_codes.findMany({
       where: {
         AND: [
@@ -43,7 +44,7 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
               }
             : {},
             map ? { Map: { contains: map, mode: "insensitive" } } : {},
-            difficulty ? { Difficulty: { contains: difficulty, mode: "insensitive" } } : {},
+            difficultyNumbers.length > 0 ? { Difficulty_Integer: { in: difficultyNumbers } } : {},
             category
             ? {
                 [category]: {
@@ -63,7 +64,11 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
     return codes;
   }
 
-  return category === "Rez Map" ? fetchCodesWithRezFilter() : fetchCodesWithoutRez();
+  const difficultyNumbers = difficulty
+  ? GetDifficultyIntegerForFilter(difficulty)
+  : [];
+
+  return category === "Rez Map" ? fetchCodesWithRezFilter(difficultyNumbers) : fetchCodesWithoutRez(difficultyNumbers);
 
 }
 
