@@ -100,7 +100,7 @@ const Card: React.FC<CardProps> = ({
               <span>{likes}</span>
               {video && (
                 <Link href={video}>
-                  <FaYoutube className="w-6 h-6" />
+                  <FaYoutube className="w-6 h-6 rounded hover:bg-gray-700 transition relative group" />
                 </Link>
               )}
             </div>
