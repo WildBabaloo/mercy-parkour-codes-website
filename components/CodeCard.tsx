@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import {
@@ -9,11 +9,12 @@ import {
   FlagIcon,
 } from "@heroicons/react/24/outline";
 import { FaYoutube } from "react-icons/fa";
+import { ClipboardIcon } from "lucide-react";
 import Link from "next/link";
 
 interface CardProps {
   title: string | null;
-  code: string | null;
+  code: string;
   checkpoints: string;
   difficulty: string;
   mapper: string;
@@ -32,6 +33,18 @@ const Card: React.FC<CardProps> = ({
   likes,
   imageSrc,
 }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
   return (
     <div className="relative w-full max-w-md rounded-xl overflow-hidden shadow-lg bg-gray-900">
       {/* Image Section */}
@@ -49,9 +62,27 @@ const Card: React.FC<CardProps> = ({
         {/* Top Section */}
         <div>
           <h3 className="text-white text-lg font-bold">{title}</h3>
-          <p className="text-gray-300 text-sm flex space-x-2">
+          <p className="text-gray-300 text-sm flex items-center space-x-2">
             <FlagIcon className="h-5 w-5 mr-1" />
             {`${checkpoints} | ${code}`}
+
+            {/* Copy Button */}
+            <button
+              onClick={handleCopy}
+              className="ml-2 p-1 rounded hover:bg-gray-700 transition relative group"
+              aria-label="Copy to clipboard"
+            >
+              {copied ? (
+                <CheckIcon className="h-4 w-4 text-green-400" />
+              ) : (
+                <ClipboardIcon className="h-4 w-4 text-gray-400 hover:text-white" />
+              )}
+
+              {/* Tooltip */}
+              <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
+                {copied ? "Copied!" : "Copy"}
+              </span>
+            </button>
           </p>
           <p className="text-gray-400 text-sm">{difficulty}</p>
         </div>
