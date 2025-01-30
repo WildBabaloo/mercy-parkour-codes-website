@@ -1,5 +1,7 @@
 export function GetDifficultyIntegerForFilter(difficulty: string) {
     switch (difficulty) {
+        case "Multi Difficulty":
+            return [0];
         case "Beginner":
             return [1, 2];
         case "Easy":
