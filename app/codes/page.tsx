@@ -1,5 +1,4 @@
 import NavBarUI from "@/components/ui/NavBar";
-// import { CodeInput } from "@/components/ui/CodeInput";
 import CardSection from "./card-section";
 import { MapCode } from "./MapCode";
 import SortSection from "./sort-section";
