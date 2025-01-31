@@ -1,12 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CodeInput } from "@/components/ui/CodeInput";
 import DoubleEndedCodeSlider from "./ui/DoubleEndedCodeSlider";
 import Dropdown_Menu from "./ui/DropdownMenu";
+import { useRouter } from "next/navigation";
 
 const SearchBarWithDropdown = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [filters, setFilters] = useState({
+    category: "",
+    map: "",
+    difficulty: "",
+    play_status: "",
+  });
+
+  const { replace } = useRouter();
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    Object.entries(filters).forEach(([key, value]) => {
+      const keyValue = key === "category" ? stringCategory(value) : value;
+      if (keyValue) params.set(key, keyValue);
+    });
+
+    replace(`${window.location.pathname}?${params.toString()}`);
+  }, [filters, replace]);
+
+  const updateFilter = (key: string, value: string) => {
+    setFilters((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const clearFilters = () => {
+    setFilters({ category: "", map: "", difficulty: "", play_status: "" });
+    replace(window.location.pathname);
+  };
 
   return (
     <>
@@ -28,27 +56,38 @@ const SearchBarWithDropdown = () => {
                 menuHeader="Category..."
                 menuItems={categoryOptionItems.sort()}
                 urlHeader="category"
+                selected={filters.category}
+                setSelected={updateFilter}
               />
               <Dropdown_Menu
                 menuHeader="Map..."
                 menuItems={mapOptionItems.sort()}
                 urlHeader="map"
+                selected={filters.map}
+                setSelected={updateFilter}
               />
               <Dropdown_Menu
                 menuHeader="Difficulty..."
                 menuItems={difficultyOptionItems}
                 urlHeader="difficulty"
+                selected={filters.difficulty}
+                setSelected={updateFilter}
               />
               <Dropdown_Menu
                 menuHeader="Played/Not Played..."
                 menuItems={playOptionItems}
                 urlHeader="play_status"
+                selected={filters.play_status}
+                setSelected={updateFilter}
               />
             </div>
             {/* Slider */}
             <DoubleEndedCodeSlider />
             {/* Clear Filter Button */}
-            <button className="w-full py-2 text-center bg-orange-500 rounded-md hover:bg-orange-600">
+            <button
+              className="w-full py-2 text-center bg-orange-500 rounded-md hover:bg-orange-600"
+              onClick={clearFilters}
+            >
               CLEAR FILTERS
             </button>
           </div>
@@ -56,6 +95,21 @@ const SearchBarWithDropdown = () => {
       )}
     </>
   );
+};
+
+const stringCategory = (category: string) => {
+  switch (category) {
+    case "Clouds":
+      return "Cloud";
+    case "Many Orbs":
+      return "Many_Orbs";
+    case "Softlock/Hardlock":
+      return "Softlock";
+    case "Stuck/Balances":
+      return "Stuck_Balance";
+    default:
+      return "Rez Map";
+  }
 };
 
 const categoryOptionItems = [
