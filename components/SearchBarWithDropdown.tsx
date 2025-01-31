@@ -32,8 +32,28 @@ const SearchBarWithDropdown = () => {
   };
 
   const clearFilters = () => {
+    if (!checkIfFiltersAreActive()) return;
+    const params = new URLSearchParams();
+    console.log(`Params: ${params}`);
+    deleteFilterParams(params);
     setFilters({ category: "", map: "", difficulty: "", play_status: "" });
-    replace(window.location.pathname);
+    replace(`${window.location.pathname}?${params.toString()}`);
+  };
+
+  const checkIfFiltersAreActive = () => {
+    return (
+      filters.category !== "" ||
+      filters.map !== "" ||
+      filters.difficulty !== "" ||
+      filters.play_status !== ""
+    );
+  };
+
+  const deleteFilterParams = (params: URLSearchParams) => {
+    params.delete("category");
+    params.delete("map");
+    params.delete("difficulty");
+    params.delete("play_status");
   };
 
   return (
@@ -107,8 +127,10 @@ const stringCategory = (category: string) => {
       return "Softlock";
     case "Stuck/Balances":
       return "Stuck_Balance";
-    default:
+    case "Rez Map":
       return "Rez Map";
+    default:
+      return null;
   }
 };
 
