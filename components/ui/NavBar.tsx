@@ -14,6 +14,7 @@ import {
 } from "@nextui-org/react";
 // import { Button } from "@/components/ui/button";
 // import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
+import { FaDiscord } from "react-icons/fa";
 
 export const MercyParkourLogo = () => {
   return (
@@ -91,9 +92,14 @@ export default function App() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
+        <NavbarItem>
+          <Link href="https://discord.com/invite/mercyparkour">
+            <FaDiscord className="w-6 h-6" />
+          </Link>
+        </NavbarItem>
         {/* SECTION UNDERNEATH WILL BE IMPLEMENTED FOR FUTURE RELEASES */}
         {/* 
-          <NavbarItem>
+        <NavbarItem>
           <MoonIcon className="w-6 h-6" />
         </NavbarItem>
         <NavbarItem>
