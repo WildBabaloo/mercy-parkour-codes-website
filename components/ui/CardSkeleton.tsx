@@ -19,7 +19,6 @@ export default function CardSkeleton() {
           <div className="h-4 w-1/2 bg-gray-600 rounded mb-2"></div>
           <div className="flex items-center space-x-4">
             <div className="h-5 w-5 bg-gray-600 rounded-full"></div>
-            <div className="h-5 w-5 bg-gray-600 rounded-full"></div>
           </div>
         </div>
 
