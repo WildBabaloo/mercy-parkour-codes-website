@@ -13,7 +13,7 @@ export default async function PostDailyCode() {
         },
         include: { mercy_parkour_codes: true }
       })
-      return newDailyCode;
+      return newDailyCode.mercy_parkour_codes;
     }
 
     return null;

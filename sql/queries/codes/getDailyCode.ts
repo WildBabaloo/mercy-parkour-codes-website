@@ -8,6 +8,5 @@ export default async function GetDailyCode(){
         include: { mercy_parkour_codes: true }
     });
     
-    console.log(dailyCode);
-    return dailyCode;
+    return dailyCode?.mercy_parkour_codes;
 }
