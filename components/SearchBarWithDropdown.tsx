@@ -62,11 +62,10 @@ const SearchBarWithDropdown = () => {
   };
 
   const clearAllFilters = () => {
-    if (!checkIfFiltersAreActive() && searchText === "") return;
+    if (!checkIfFiltersAreActive()) return;
     const params = new URLSearchParams(searchParams);
     deleteFilterParams(params);
     setFilters({ category: "", map: "", difficulty: "", play_status: "" });
-    setSearchText("");
     replace(`${pathname}?${params.toString()}`);
   };
 
@@ -84,7 +83,6 @@ const SearchBarWithDropdown = () => {
     params.delete("map");
     params.delete("difficulty");
     params.delete("play_status");
-    params.delete("search");
   };
 
   return (
