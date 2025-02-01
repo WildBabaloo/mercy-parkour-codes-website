@@ -3,6 +3,7 @@ import Card from "@/components/CodeCard";
 import { MapCode } from "@/app/codes/MapCode";
 import { useEffect, useState } from "react";
 import MapImageSelection from "@/app/codes/map-image-selection";
+import CardSkeleton from "./ui/CardSkeleton";
 
 export default function FeaturedCourse() {
   const [featuredCode, setFeaturedCode] = useState<MapCode>();
@@ -12,9 +13,7 @@ export default function FeaturedCourse() {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      const response = await fetch("/api/codes/daily", {
-        next: { revalidate: 300 },
-      });
+      const response = await fetch("/api/codes/daily");
       const dailyCode: MapCode = await response.json();
       setFeaturedCode(dailyCode);
     } catch (error) {
@@ -32,7 +31,9 @@ export default function FeaturedCourse() {
   return (
     <>
       <div className="flex items-center justify-center">
-        {featuredCode && (
+        {!featuredCode ? (
+          <CardSkeleton />
+        ) : (
           <Card
             key={featuredCode.Map_Number}
             title={featuredCode.Map}
