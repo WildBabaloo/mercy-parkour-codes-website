@@ -1,33 +1,12 @@
-"use client";
 import Card from "@/components/CodeCard";
-import { MapCode } from "@/app/codes/MapCode";
-import { useEffect, useState } from "react";
+// import { MapCode } from "@/app/codes/MapCode";
 import MapImageSelection from "@/app/codes/map-image-selection";
 import CardSkeleton from "./ui/CardSkeleton";
+import GetDailyCode from "@/sql/queries/codes/getDailyCode";
+import PostDailyCode from "@/sql/queries/codes/postDailyCode";
 
-export default function FeaturedCourse() {
-  const [featuredCode, setFeaturedCode] = useState<MapCode>();
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchDailyCode = async () => {
-    if (isLoading) return;
-    setIsLoading(true);
-    try {
-      const response = await fetch("/api/codes/daily");
-      const dailyCode: MapCode = await response.json();
-      setFeaturedCode(dailyCode);
-    } catch (error) {
-      console.error("Error fetching daily code:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchDailyCode();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+export default async function FeaturedCourse() {
+  const featuredCode = await fetchDailyCode();
   return (
     <>
       <div className="flex items-center justify-center">
@@ -50,3 +29,13 @@ export default function FeaturedCourse() {
     </>
   );
 }
+
+const fetchDailyCode = async () => {
+  try {
+    const dailyCode = await GetDailyCode();
+    return !dailyCode ? await PostDailyCode() : dailyCode;
+  } catch (error) {
+    console.error("Error fetching daily code:", error);
+    return null;
+  }
+};
