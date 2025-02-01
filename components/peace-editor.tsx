@@ -29,7 +29,7 @@ export default function PeaceEditor() {
               href={"https://www.youtube.com/watch?v=6GfgnYpXtFA"}
               className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
             >
-              The Complete Mercy Parkour Peace Editor Guide by kiŵi !
+              The Complete Mercy Parkour Peace Editor Guide by kiwioko
             </Link>
           </li>
           <li>
