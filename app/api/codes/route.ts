@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
         const map = url.searchParams.get("map");
         const category = url.searchParams.get("category")
 
-        console.log(`Skip: ${skip || "none"}, Take: ${take || "none"}, Search: ${search || "none"}, Sort: ${sortMethod || "none"}, Difficulty ${difficulty || "none"}, Map: ${map || "none"}, Category: ${category || "none"}`);
+        //console.log(`Skip: ${skip || "none"}, Take: ${take || "none"}, Search: ${search || "none"}, Sort: ${sortMethod || "none"}, Difficulty ${difficulty || "none"}, Map: ${map || "none"}, Category: ${category || "none"}`);
 
         const skipInt = parseInt(skip as string, 10) || 0;
         const takeInt = parseInt(take as string, 10) || 20;
