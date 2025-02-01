@@ -32,7 +32,6 @@ export default function PeaceEditor() {
               The Complete Mercy Parkour Peace Editor Guide by kiwioko
             </Link>
           </li>
-          {/*           
           <li>
             <Link
               href={"https://www.youtube.com/watch?v=n37JKkloy4I"}
@@ -41,7 +40,6 @@ export default function PeaceEditor() {
               Mercy Parkour Peace&apos;s editor guide [T6QQT] by AYANA
             </Link>
           </li>
-          */}
 
           <li>
             <Link
