@@ -1,5 +1,7 @@
 import NavBarUI from "@/components/ui/NavBar";
 import DifficultyKey from "./difficulty-key";
+import TawEditor from "@/components/taw-editor";
+import PeaceEditor from "@/components/peace-editor";
 
 export default function Extras() {
   return (
@@ -11,6 +13,10 @@ export default function Extras() {
         </div>
         <div>
           <DifficultyKey />
+        </div>
+        <div>
+          <TawEditor />
+          <PeaceEditor />
         </div>
       </div>
     </>
