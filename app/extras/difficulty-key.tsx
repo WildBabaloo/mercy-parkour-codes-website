@@ -1,8 +1,8 @@
 export default function DifficultyKey() {
   return (
     <>
-      <div className="border border-gray-600 rounded-lg p-6 bg-gray-700 shadow-md my-8 mx-auto max-w-4xl">
-        <h3 className="text-2xl font-semibold mb-1 text-center text-orange-400">
+      <div className="border border-orange-600 rounded-lg p-6 bg-gray-700 shadow-md my-8 mx-auto max-w-4xl">
+        <h3 className="text-2xl font-semibold mb-1 text-center text-orange-500">
           Difficulty Key
         </h3>
         <h5 className="italic text-xs mb-4 mt-4">
