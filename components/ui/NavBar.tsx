@@ -28,7 +28,7 @@ export default function App() {
 
   const menuItems = [
     "New/Latest Codes",
-    "Random Code Selection",
+    "Random Code Selector",
     "Learn Mercy Tech",
     "Extras",
   ];
@@ -112,7 +112,7 @@ export default function App() {
                   : "foreground"
               }
               className="w-full"
-              href="#"
+              href={linkToProperPage(item)}
               size="lg"
             >
               {item}
@@ -123,3 +123,18 @@ export default function App() {
     </Navbar>
   );
 }
+
+const linkToProperPage = (item: string) => {
+  switch (item) {
+    case "New/Latest Codes":
+      return "/codes";
+    case "Random Code Selector":
+      return "/codes/random";
+    case "Learn Mercy Tech":
+      return "/tech";
+    case "Extras":
+      return "/extras";
+    default:
+      return "#";
+  }
+};
