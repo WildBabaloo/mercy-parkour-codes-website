@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { CodeInput } from "@/components/ui/CodeInput";
-import DoubleEndedCodeSlider from "./ui/DoubleEndedCodeSlider";
+// import DoubleEndedCodeSlider from "./ui/DoubleEndedCodeSlider";
 import Dropdown_Menu from "./ui/DropdownMenu";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const SearchBarWithDropdown = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const [filters, setFilters] = useState({
     category: "",
     map: "",
@@ -16,6 +17,7 @@ const SearchBarWithDropdown = () => {
   });
 
   const { replace } = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -24,20 +26,20 @@ const SearchBarWithDropdown = () => {
       if (keyValue) params.set(key, keyValue);
     });
 
-    replace(`${window.location.pathname}?${params.toString()}`);
-  }, [filters, replace]);
+    replace(`${pathname}?${params.toString()}`);
+  }, [filters, pathname, replace]);
 
   const updateFilter = (key: string, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
-  const clearFilters = () => {
-    if (!checkIfFiltersAreActive()) return;
+  const clearAllFilters = () => {
+    if (!checkIfFiltersAreActive() && searchText === "") return;
     const params = new URLSearchParams();
-    console.log(`Params: ${params}`);
     deleteFilterParams(params);
     setFilters({ category: "", map: "", difficulty: "", play_status: "" });
-    replace(`${window.location.pathname}?${params.toString()}`);
+    setSearchText("");
+    replace(`${pathname}?${params.toString()}`);
   };
 
   const checkIfFiltersAreActive = () => {
@@ -54,6 +56,7 @@ const SearchBarWithDropdown = () => {
     params.delete("map");
     params.delete("difficulty");
     params.delete("play_status");
+    params.delete("search");
   };
 
   return (
@@ -64,6 +67,8 @@ const SearchBarWithDropdown = () => {
         placeholder="Search by author, code or map..."
         className=""
         onMenuToggle={() => setIsMenuVisible(!isMenuVisible)}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
 
       {/* Dropdown Menu */}
@@ -102,11 +107,11 @@ const SearchBarWithDropdown = () => {
               />
             </div>
             {/* Slider */}
-            <DoubleEndedCodeSlider />
+            {/* <DoubleEndedCodeSlider /> */}
             {/* Clear Filter Button */}
             <button
               className="w-full py-2 text-center bg-orange-500 rounded-md hover:bg-orange-600"
-              onClick={clearFilters}
+              onClick={clearAllFilters}
             >
               CLEAR FILTERS
             </button>
