@@ -4,6 +4,7 @@ import Card from "@/components/CodeCard";
 import { Button } from "@/components/ui/button";
 import MapImageSelection from "../map-image-selection";
 import { MapCode } from "../MapCode";
+import CardSkeleton from "@/components/ui/CardSkeleton";
 
 export default function GenerateSection() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,8 +21,10 @@ export default function GenerateSection() {
   return (
     <>
       {/* Card Section */}
-      <div className="flex justify-center items-center mt-12">
-        {code && (
+      <div className="flex justify-center items-center mt-8">
+        {!code ? (
+          <CardSkeleton />
+        ) : (
           <Card
             key={code.Map_Number}
             title={code.Map}
