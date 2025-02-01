@@ -22,7 +22,7 @@ export default function GenerateSection() {
     <>
       {/* Card Section */}
       <div className="flex justify-center items-center mt-8">
-        {!code ? (
+        {!code || isLoading ? (
           <CardSkeleton />
         ) : (
           <Card
