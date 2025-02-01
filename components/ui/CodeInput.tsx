@@ -1,12 +1,11 @@
 "use client";
-import { forwardRef, ComponentProps, useEffect } from "react";
+import { forwardRef, ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 import {
   MagnifyingGlassIcon,
   AdjustmentsHorizontalIcon,
 } from "@heroicons/react/20/solid";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { useDebounce } from "use-debounce";
+import { useSearchParams } from "next/navigation";
 
 const CodeInput = forwardRef<
   HTMLInputElement,
@@ -21,19 +20,6 @@ const CodeInput = forwardRef<
     ref
   ) => {
     const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
-    const [searchTerm] = useDebounce(searchText, 500);
-
-    useEffect(() => {
-      const params = new URLSearchParams(searchParams);
-      if (searchTerm) {
-        params.set("search", searchTerm);
-      } else {
-        params.delete("search");
-      }
-      replace(`${pathname}?${params.toString()}`);
-    }, [searchTerm, pathname, searchParams, replace]);
 
     return (
       <div className="relative w-full">

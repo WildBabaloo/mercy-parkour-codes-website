@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { CodeInput } from "@/components/ui/CodeInput";
 // import DoubleEndedCodeSlider from "./ui/DoubleEndedCodeSlider";
 import Dropdown_Menu from "./ui/DropdownMenu";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 const SearchBarWithDropdown = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -18,16 +19,43 @@ const SearchBarWithDropdown = () => {
 
   const { replace } = useRouter();
   const pathname = usePathname();
-
+  const searchParams = useSearchParams();
+  /*
   useEffect(() => {
     const params = new URLSearchParams();
     Object.entries(filters).forEach(([key, value]) => {
-      const keyValue = key === "category" ? stringCategory(value) : value;
-      if (keyValue) params.set(key, keyValue);
+      if (value) {
+        const keyValue = key === "category" ? stringCategory(value) : value;
+        if (keyValue) params.set(key, keyValue);
+      }
     });
+
 
     replace(`${pathname}?${params.toString()}`);
   }, [filters, pathname, replace]);
+  */
+
+  const updateURL = useDebouncedCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value) {
+        const keyValue = key === "category" ? stringCategory(value) : value;
+        if (keyValue) params.set(key, keyValue);
+      }
+    });
+
+    if (searchText) {
+      params.set("search", searchText);
+    } else {
+      params.delete("search");
+    }
+
+    replace(`${pathname}?${params.toString()}`);
+  }, 300);
+
+  useEffect(() => {
+    updateURL.callback();
+  }, [filters, searchText, pathname, updateURL]);
 
   const updateFilter = (key: string, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
@@ -35,7 +63,7 @@ const SearchBarWithDropdown = () => {
 
   const clearAllFilters = () => {
     if (!checkIfFiltersAreActive() && searchText === "") return;
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(searchParams);
     deleteFilterParams(params);
     setFilters({ category: "", map: "", difficulty: "", play_status: "" });
     setSearchText("");
