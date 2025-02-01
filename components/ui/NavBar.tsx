@@ -60,7 +60,8 @@ export default function App() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <MercyParkourLogo />
+          {/* LOGO (to change) */}
+          {/* <MercyParkourLogo /> */}
           <Link href="/">
             <p className="font-bold text-inherit">mercyparkour.codes</p>
           </Link>
