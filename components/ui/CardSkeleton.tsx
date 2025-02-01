@@ -15,8 +15,9 @@ export default function CardSkeleton() {
 
         {/* Bottom Section */}
         <div className="absolute bottom-4 left-4 text-gray-400 text-sm">
-          {/* Mapped By & Likes (Skeleton) */}
+          {/* Mapped By (Skeleton) */}
           <div className="h-4 w-1/2 bg-gray-600 rounded mb-2"></div>
+          {/* Bottom Icons (Skeleton) */}
           <div className="flex items-center space-x-4">
             <div className="h-5 w-5 bg-gray-600 rounded-full"></div>
           </div>
