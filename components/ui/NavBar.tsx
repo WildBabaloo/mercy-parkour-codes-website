@@ -12,8 +12,8 @@ import {
   NavbarMenuItem,
   Link,
 } from "@nextui-org/react";
-import { Button } from "@/components/ui/button";
-import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
+// import { Button } from "@/components/ui/button";
+// import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
 
 export const MercyParkourLogo = () => {
   return (
@@ -91,7 +91,9 @@ export default function App() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem>
+        {/* SECTION UNDERNEATH WILL BE IMPLEMENTED FOR FUTURE RELEASES */}
+        {/* 
+          <NavbarItem>
           <MoonIcon className="w-6 h-6" />
         </NavbarItem>
         <NavbarItem>
@@ -100,6 +102,7 @@ export default function App() {
         <NavbarItem>
           <Button variant="default">Login</Button>
         </NavbarItem>
+        */}
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
