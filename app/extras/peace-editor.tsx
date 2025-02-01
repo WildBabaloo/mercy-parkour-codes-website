@@ -40,7 +40,6 @@ export default function PeaceEditor() {
               Mercy Parkour Peace&apos;s editor guide [T6QQT] by AYANA
             </Link>
           </li>
-
           <li>
             <Link
               href={

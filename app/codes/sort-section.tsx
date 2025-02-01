@@ -11,14 +11,7 @@ export default function SortSection() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const sortOptions = [
-    "Added",
-    "Difficulty",
-    "Author",
-    "Map",
-    "Checkpoints",
-    "Favorites",
-  ];
+  const sortOptions = ["Added", "Difficulty", "Author", "Map", "Checkpoints"];
 
   const handleSortClick = (option: string) => {
     setActiveSort((prev) => {
