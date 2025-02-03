@@ -11,7 +11,6 @@ export default async function Tech(props: {
 }) {
   const searchParams = await props.searchParams;
   const search = searchParams?.search;
-  console.log(`Search Value: ${search}`);
 
   const filteredTechItems =
     search && search !== "undefined"
