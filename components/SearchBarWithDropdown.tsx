@@ -62,13 +62,14 @@ const SearchBarWithDropdown = () => {
   };
 
   const clearAllFilters = () => {
-    if (!checkIfFiltersAreActive()) return;
+    // if (!checkIfFiltersAreActive()) return;
     const params = new URLSearchParams(searchParams);
     deleteFilterParams(params);
     setFilters({ category: "", map: "", difficulty: "", play_status: "" });
     replace(`${pathname}?${params.toString()}`);
   };
 
+  /*
   const checkIfFiltersAreActive = () => {
     return (
       filters.category !== "" ||
@@ -77,6 +78,7 @@ const SearchBarWithDropdown = () => {
       filters.play_status !== ""
     );
   };
+  */
 
   const deleteFilterParams = (params: URLSearchParams) => {
     params.delete("category");

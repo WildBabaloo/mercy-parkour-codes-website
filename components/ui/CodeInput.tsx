@@ -38,11 +38,14 @@ const CodeInput = forwardRef<
         />
         {/* Search Icon */}
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground flex gap-4">
-          <AdjustmentsHorizontalIcon
-            className="h-5 w-5 text-gray-400"
-            aria-hidden="true"
-            onClick={onMenuToggle}
-          />
+          <button>
+            <AdjustmentsHorizontalIcon
+              className="h-5 w-5 text-gray-400"
+              aria-hidden="true"
+              onClick={onMenuToggle}
+            />
+          </button>
+
           <MagnifyingGlassIcon
             className="h-5 w-5 text-gray-400"
             aria-hidden="true"
