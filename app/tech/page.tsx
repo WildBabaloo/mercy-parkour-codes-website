@@ -23,9 +23,12 @@ export default async function Tech(props: {
     <>
       <NavBarUI />
       <div className="bg-gray-800 p-4 text-white">
-        <div className="text-center m-6 text-3xl text-white font-bold">
+        <div className="text-center m-2 text-3xl text-white font-bold">
           <h1>Hall Of Mercy Parkour Tech</h1>
         </div>
+        <p className="italic text-sm text-white mb-6 text-center">
+          (The Ecopoints will be replaced with a proper thumbnail later on...)
+        </p>
 
         <div className="flex items-center justify-center">
           <div className="mb-6 max-w-screen-md w-full">
