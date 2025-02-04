@@ -19,10 +19,14 @@ export default async function Home() {
             </div>
             {/* Image/GIF */}
             <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[850px] mx-auto md:mx-0">
-              <h2 className="text-white text-center text-3xl mb-6 font-extrabold glow">
+              <h2 className="text-white text-center text-3xl font-extrabold mb-6 glow">
                 Today&apos;s Featured Course
               </h2>
               <FeaturedCourse />
+              <p className="italic text-sm text-white mt-2 text-center">
+                The featured course is chosen randomly <br /> and resets every
+                day at 0:00 UTC
+              </p>
             </div>
           </div>
         </div>
