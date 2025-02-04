@@ -12,7 +12,7 @@ export async function GET() {
       );
     }
 
-    return NextResponse.json(dailyCode.mercy_parkour_codes);
+    return NextResponse.json(dailyCode);
   } catch (error) {
     console.error("Error fetching random code from the database", error);
     return NextResponse.json(
