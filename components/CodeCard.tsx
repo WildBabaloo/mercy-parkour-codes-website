@@ -106,7 +106,7 @@ const Card: React.FC<CardProps> = ({
               */}
 
               {video && (
-                <Link href={video}>
+                <Link href={video} rel="noopener noreferrer" target="_blank">
                   <FaYoutube className="w-6 h-6 rounded hover:bg-gray-700 transition relative group" />
                 </Link>
               )}
