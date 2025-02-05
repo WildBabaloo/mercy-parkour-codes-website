@@ -32,6 +32,7 @@ export default function GenerateSection() {
             checkpoints={code.Checkpoints?.toString() || "N/A"}
             difficulty={code.Difficulty || "N/A"}
             mapper={code.Author || "Unknown Author"}
+            notes={code.Notes}
             video={code.Video}
             likes={0}
             imageSrc={MapImageSelection(code.Map || "N/A")}
