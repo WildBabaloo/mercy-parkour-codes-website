@@ -21,6 +21,7 @@ export default async function FeaturedCourse() {
             difficulty={featuredCode.Difficulty || "N/A"}
             mapper={featuredCode.Author || "Unknown Author"}
             video={featuredCode.Video}
+            notes={featuredCode.Notes}
             likes={0}
             imageSrc={MapImageSelection(featuredCode.Map || "N/A")}
           />

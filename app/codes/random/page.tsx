@@ -21,7 +21,7 @@ export default function Random() {
         {/* Header Section */}
         <div className="text-center mt-10">
           <h1 className="text-4xl font-bold mb-4">
-            Random Mercy Parkour Code Selector
+            Random Mercy Parkour Code Generator
           </h1>
           <p className="italic text-lg">
             Not sure on what course to play? Let the generator choose for you!{" "}
