@@ -20,6 +20,7 @@ export default async function FeaturedCourse() {
             checkpoints={featuredCode.Checkpoints?.toString() || "N/A"}
             difficulty={featuredCode.Difficulty || "N/A"}
             mapper={featuredCode.Author || "Unknown Author"}
+            notes={featuredCode.Notes}
             video={featuredCode.Video}
             likes={0}
             imageSrc={MapImageSelection(featuredCode.Map || "N/A")}
