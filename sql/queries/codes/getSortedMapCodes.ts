@@ -73,7 +73,22 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
 
     return codes;
   }
-  
-  if (sortKey === "Difficulty") sortKey = "Difficulty_Integer"
-  return category === "Rez Map" ? fetchSortedCodesWithRezFilter() : fetchSortedCodesWithoutRezFilter();
+  try {
+    if (!validCategory(category)) { category = "" }
+    if (sortKey === "Difficulty") sortKey = "Difficulty_Integer"
+    return category === "Rez Map" ? fetchSortedCodesWithRezFilter() : fetchSortedCodesWithoutRezFilter();
+  } catch (error) {
+    console.error("Error fetching codes from the database", error);
+    return [];
+  }
+
+}
+
+const validCategory = (category: string | undefined) => {
+  return category === "Rez Map" ||
+  category === "Cloud" ||
+  category === "Many_Orbs" ||
+  category === "Softlock" ||
+  category === "Stuck_Balance" ||
+  category === ""
 }
