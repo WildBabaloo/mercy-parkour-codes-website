@@ -1,6 +1,18 @@
 import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
 import NavBarUI from "@/components/ui/NavBar";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Mercy Parkour - Slingshot",
+  description: "Slingshot",
+  icons: {
+    icon: ["/favicon.ico?v=1"],
+    apple: ["/apple-touch-icon.png?v=1"],
+    shortcut: ["/apple-touch-icon.png?v=1"],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function Slingshot() {
   return (

@@ -1,6 +1,17 @@
-"use client";
 import NavBarUI from "@/components/ui/NavBar";
 import GenerateSection from "./generate-section";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mercy Parkour - Random",
+  description: "Get a random mercy parkour code to play around with!",
+  icons: {
+    icon: ["/favicon.ico?v=1"],
+    apple: ["/apple-touch-icon.png?v=1"],
+    shortcut: ["/apple-touch-icon.png?v=1"],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function Random() {
   return (

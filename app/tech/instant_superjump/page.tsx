@@ -3,6 +3,18 @@ import Image from "next/image";
 import NoFacingTargetOnly from "@/public/images/warnings/no-facing-target-only.png";
 import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mercy Parkour - Instant Superjump",
+  description: "Instant Superjump",
+  icons: {
+    icon: ["/favicon.ico?v=1"],
+    apple: ["/apple-touch-icon.png?v=1"],
+    shortcut: ["/apple-touch-icon.png?v=1"],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function Instant_Superjump() {
   return (
