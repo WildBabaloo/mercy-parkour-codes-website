@@ -19,6 +19,7 @@ interface CardProps {
   difficulty: string;
   mapper: string;
   video: string | null;
+  notes: string | null;
   likes: number;
   imageSrc: StaticImageData;
 }
@@ -30,6 +31,7 @@ const Card: React.FC<CardProps> = ({
   difficulty,
   mapper,
   video,
+  notes,
   // likes,
   imageSrc,
 }) => {
@@ -43,6 +45,11 @@ const Card: React.FC<CardProps> = ({
     } catch (err) {
       console.error("Failed to copy:", err);
     }
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = `/codes?search=${mapper}`;
   };
 
   return (
@@ -85,15 +92,19 @@ const Card: React.FC<CardProps> = ({
               </span>
             </button>
           </p>
+          <p className="text-gray-400 text-sm italic">{notes}</p>
           <p className="text-gray-400 text-sm">{difficulty}</p>
         </div>
 
         {/* Bottom Section */}
         <div className="absolute bottom-4 left-4 text-gray-400 text-sm">
           {/* Mapped By & Likes */}
-          <p>
-            Mapped by: <span className="text-white">{mapper}</span>
-          </p>
+          <Link href={`/codes?search=${mapper}`} onClick={handleClick}>
+            <p>
+              Mapped by: <span className="text-white">{mapper}</span>
+            </p>
+          </Link>
+
           <div className="flex items-center space-x-4 mt-2">
             {/* Likes */}
             <div className="flex items-center space-x-2">
@@ -103,7 +114,7 @@ const Card: React.FC<CardProps> = ({
               */}
 
               {video && (
-                <Link href={video}>
+                <Link href={video} rel="noopener noreferrer" target="_blank">
                   <FaYoutube className="w-6 h-6 rounded hover:bg-gray-700 transition relative group" />
                 </Link>
               )}

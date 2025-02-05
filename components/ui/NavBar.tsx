@@ -29,7 +29,7 @@ export default function App() {
 
   const menuItems = [
     "New/Latest Codes",
-    "Random Code Selector",
+    "Random Code Generator",
     "Learn Mercy Tech",
     "Extras",
   ];
@@ -77,7 +77,7 @@ export default function App() {
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="/codes/random">
-            Random Code Selector
+            Random Code Generator
           </Link>
         </NavbarItem>
         <NavbarItem>
