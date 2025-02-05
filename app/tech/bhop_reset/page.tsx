@@ -1,5 +1,17 @@
 import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
 import NavBarUI from "@/components/ui/NavBar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mercy Parkour - Bhop Reset",
+  description: "Bhop Reset",
+  icons: {
+    icon: ["/favicon.ico?v=1"],
+    apple: ["/apple-touch-icon.png?v=1"],
+    shortcut: ["/apple-touch-icon.png?v=1"],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function Bhop_Reset() {
   return (

@@ -5,6 +5,18 @@ import SortSection from "./sort-section";
 import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
 import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 import SearchBarWithDropdown from "@/components/SearchBarWithDropdown";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mercy Parkour - Codes",
+  description: "The list of all the mercy parkour codes!",
+  icons: {
+    icon: ["/favicon.ico?v=1"],
+    apple: ["/apple-touch-icon.png?v=1"],
+    shortcut: ["/apple-touch-icon.png?v=1"],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default async function Codes(props: {
   searchParams?: Promise<{

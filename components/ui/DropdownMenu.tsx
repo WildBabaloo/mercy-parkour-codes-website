@@ -6,6 +6,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function Dropdown_Menu(props: {
   menuHeader: string;
@@ -15,10 +16,16 @@ export default function Dropdown_Menu(props: {
   setSelected: (key: string, value: string) => void;
 }) {
   const { menuHeader, menuItems, urlHeader, selected, setSelected } = props;
+  const { replace } = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const handleClearSingleFilterOption = (event: MouseEvent) => {
+    const params = new URLSearchParams(searchParams);
     event.stopPropagation();
     setSelected(urlHeader, "");
+    params.delete(urlHeader);
+    replace(`${pathname}?${params.toString()}`);
   };
 
   return (

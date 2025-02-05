@@ -64,11 +64,26 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
     return codes;
   }
 
-  const difficultyNumbers = difficulty
-  ? GetDifficultyIntegerForFilter(difficulty)
-  : [];
+  try {
+    if (!validCategory(category)) { category = "" }
 
-  return category === "Rez Map" ? fetchCodesWithRezFilter(difficultyNumbers) : fetchCodesWithoutRez(difficultyNumbers);
+    const difficultyNumbers = difficulty
+    ? GetDifficultyIntegerForFilter(difficulty)
+    : [];
 
+    return category === "Rez Map" ? fetchCodesWithRezFilter(difficultyNumbers) : fetchCodesWithoutRez(difficultyNumbers);
+  } catch (error) {
+    console.error("Error fetching codes from the database", error);
+    return [];
+  }
+}
+
+const validCategory = (category: string | undefined) => {
+  return category === "Rez Map" ||
+  category === "Cloud" ||
+  category === "Many_Orbs" ||
+  category === "Softlock" ||
+  category === "Stuck_Balance" ||
+  category === ""
 }
 

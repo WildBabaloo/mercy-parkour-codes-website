@@ -1,4 +1,16 @@
 import NavBarUI from "@/components/ui/NavBar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mercy Parkour - GA Cancel Bhop",
+  description: "GA Cancel Bhop",
+  icons: {
+    icon: ["/favicon.ico?v=1"],
+    apple: ["/apple-touch-icon.png?v=1"],
+    shortcut: ["/apple-touch-icon.png?v=1"],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function GA_Cancel_Bhop() {
   return (

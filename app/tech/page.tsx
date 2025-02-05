@@ -3,6 +3,18 @@ import Image from "next/image";
 import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
 import Link from "next/link";
 import { TechInput } from "@/components/ui/TechInput";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mercy Parkour - Tech",
+  description: "The list of all the tech found in Mercy Parkour!",
+  icons: {
+    icon: ["/favicon.ico?v=1"],
+    apple: ["/apple-touch-icon.png?v=1"],
+    shortcut: ["/apple-touch-icon.png?v=1"],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default async function Tech(props: {
   searchParams?: Promise<{
