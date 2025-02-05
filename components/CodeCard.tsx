@@ -19,6 +19,7 @@ interface CardProps {
   difficulty: string;
   mapper: string;
   video: string | null;
+  notes: string | null;
   likes: number;
   imageSrc: StaticImageData;
 }
@@ -30,6 +31,7 @@ const Card: React.FC<CardProps> = ({
   difficulty,
   mapper,
   video,
+  notes,
   // likes,
   imageSrc,
 }) => {
@@ -85,6 +87,7 @@ const Card: React.FC<CardProps> = ({
               </span>
             </button>
           </p>
+          <p className="text-gray-400 text-sm italic">{notes}</p>
           <p className="text-gray-400 text-sm">{difficulty}</p>
         </div>
 

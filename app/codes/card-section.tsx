@@ -110,6 +110,7 @@ export default function CardSection({
               difficulty={code.Difficulty || "N/A"}
               mapper={code.Author || "Unknown Author"}
               video={code.Video}
+              notes={code.Notes}
               likes={0}
               imageSrc={MapImageSelection(code.Map || "N/A")}
             />
