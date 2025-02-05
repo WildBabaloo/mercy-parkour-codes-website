@@ -8,18 +8,20 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const SearchBarWithDropdown = () => {
+  const { replace } = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(
+    searchParams.get("search") || ""
+  );
   const [filters, setFilters] = useState({
     category: "",
     map: "",
     difficulty: "",
     play_status: "",
   });
-
-  const { replace } = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
   /*
   useEffect(() => {
     const params = new URLSearchParams();

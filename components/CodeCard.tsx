@@ -94,9 +94,12 @@ const Card: React.FC<CardProps> = ({
         {/* Bottom Section */}
         <div className="absolute bottom-4 left-4 text-gray-400 text-sm">
           {/* Mapped By & Likes */}
-          <p>
-            Mapped by: <span className="text-white">{mapper}</span>
-          </p>
+          <Link href={`/codes?search=${mapper}`}>
+            <p>
+              Mapped by: <span className="text-white">{mapper}</span>
+            </p>
+          </Link>
+
           <div className="flex items-center space-x-4 mt-2">
             {/* Likes */}
             <div className="flex items-center space-x-2">
