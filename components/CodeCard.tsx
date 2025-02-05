@@ -30,7 +30,7 @@ const Card: React.FC<CardProps> = ({
   difficulty,
   mapper,
   video,
-  likes,
+  // likes,
   imageSrc,
 }) => {
   const [copied, setCopied] = useState(false);
@@ -97,8 +97,11 @@ const Card: React.FC<CardProps> = ({
           <div className="flex items-center space-x-4 mt-2">
             {/* Likes */}
             <div className="flex items-center space-x-2">
+              {/* 
               <HeartIcon className="h-5 w-5 text-gray-400" />
               <span>{likes}</span>
+              */}
+
               {video && (
                 <Link href={video}>
                   <FaYoutube className="w-6 h-6 rounded hover:bg-gray-700 transition relative group" />
@@ -107,7 +110,6 @@ const Card: React.FC<CardProps> = ({
             </div>
           </div>
         </div>
-
         {/* Right Section: Vertical Icons */}
         <div className="absolute bottom-4 right-4 flex flex-col space-y-2 items-end">
           <HeartIcon className="h-5 w-5 text-gray-400" />
