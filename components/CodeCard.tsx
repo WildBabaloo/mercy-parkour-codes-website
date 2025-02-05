@@ -47,6 +47,11 @@ const Card: React.FC<CardProps> = ({
     }
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = `/codes?search=${mapper}`;
+  };
+
   return (
     <div className="relative w-full max-w-md rounded-xl overflow-hidden shadow-lg bg-gray-900">
       {/* Image Section */}
@@ -94,7 +99,7 @@ const Card: React.FC<CardProps> = ({
         {/* Bottom Section */}
         <div className="absolute bottom-4 left-4 text-gray-400 text-sm">
           {/* Mapped By & Likes */}
-          <Link href={`/codes?search=${mapper}`}>
+          <Link href={`/codes?search=${mapper}`} onClick={handleClick}>
             <p>
               Mapped by: <span className="text-white">{mapper}</span>
             </p>
