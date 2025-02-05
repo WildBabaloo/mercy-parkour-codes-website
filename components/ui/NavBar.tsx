@@ -138,7 +138,7 @@ const linkToProperPage = (item: string) => {
   switch (item) {
     case "New/Latest Codes":
       return "/codes";
-    case "Random Code Selector":
+    case "Random Code Generator":
       return "/codes/random";
     case "Learn Mercy Tech":
       return "/tech";
