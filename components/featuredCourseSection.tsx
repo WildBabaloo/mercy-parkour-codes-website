@@ -1,9 +1,8 @@
+export const dynamic = "force-dynamic";
 import Card from "@/components/CodeCard";
-// import { MapCode } from "@/app/codes/MapCode";
 import MapImageSelection from "@/app/codes/map-image-selection";
 import CardSkeleton from "./ui/CardSkeleton";
-import GetDailyCode from "@/sql/queries/codes/getDailyCode";
-import PostDailyCode from "@/sql/queries/codes/postDailyCode";
+import { MapCode } from "@/app/codes/MapCode";
 
 export default async function FeaturedCourse() {
   const featuredCode = await fetchDailyCode();
@@ -33,8 +32,11 @@ export default async function FeaturedCourse() {
 
 const fetchDailyCode = async () => {
   try {
-    const dailyCode = await GetDailyCode();
-    return !dailyCode ? await PostDailyCode() : dailyCode;
+    const response = await fetch(`${process.env.url}/api/codes/daily`, {
+      next: { revalidate: 300 },
+    });
+    const dailyCode: MapCode = await response.json();
+    return dailyCode;
   } catch (error) {
     console.error("Error fetching daily code:", error);
     return null;
