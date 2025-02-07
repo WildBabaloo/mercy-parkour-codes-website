@@ -32,7 +32,7 @@ export default async function FeaturedCourse() {
 
 const fetchDailyCode = async () => {
   try {
-    const response = await fetch(`${process.env.url}/api/codes/daily`, {
+    const response = await fetch(`${process.env.URL}/api/codes/daily`, {
       next: { revalidate: 300 },
     });
     const dailyCode: MapCode = await response.json();
