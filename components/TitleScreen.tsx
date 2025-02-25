@@ -6,7 +6,7 @@ const features = [
   "A Complete Code List",
   "Customizable Filters",
   "A Tech Learning Hub",
-  "Intuituve Interfaces",
+  "Intuitive Interfaces",
 ];
 
 const TitleScreen = () => {
