@@ -1,6 +1,7 @@
 import NavBarUI from "@/components/ui/NavBar";
 import Image from "next/image";
-import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
+// import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
+import Ecopoint from "@/public/images/Your_paragraph_text.png";
 import Link from "next/link";
 import { TechInput } from "@/components/ui/TechInput";
 import { Metadata } from "next";
@@ -62,7 +63,7 @@ export default async function Tech(props: {
               >
                 <Link href={item.link}>
                   {/* GIF/Tech Image */}
-                  <div className="relative w-full h-48 overflow-hidden">
+                  <div className="relative w-full h-56 overflow-hidden">
                     <Image
                       layout="fill"
                       src={item.gif}
@@ -71,12 +72,14 @@ export default async function Tech(props: {
                     />
                   </div>
 
-                  {/* Title */}
+                  {/* IF SECTION BELOW WILL BE UNCOMMENTED THE OLD HEIGHT ON THE SECTION ABOVE WAS H-48*/}
+                  {/* Title 
                   <div className="p-4 bg-gray-700">
                     <h3 className="text-xl font-bold mb-2 text-center">
                       {item.title}
                     </h3>
                   </div>
+                  */}
                 </Link>
               </div>
             ))}
