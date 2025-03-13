@@ -1,7 +1,6 @@
 import NavBarUI from "@/components/ui/NavBar";
 import Image from "next/image";
-// import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
-import Ecopoint from "@/public/images/Your_paragraph_text.png";
+import Ecopoint from "@/public/images/Map_Images/EcoPointAntarctica.png";
 import Link from "next/link";
 import { TechInput } from "@/components/ui/TechInput";
 import { Metadata } from "next";
