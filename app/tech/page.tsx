@@ -1,9 +1,8 @@
 import NavBarUI from "@/components/ui/NavBar";
-import Image from "next/image";
 import { techItems } from "./tech-items";
-import Link from "next/link";
 import { TechInput } from "@/components/ui/TechInput";
 import { Metadata } from "next";
+import DisplayTechImage from "./display-tech-image";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Tech",
@@ -56,30 +55,8 @@ export default async function Tech(props: {
         <div className="min-h-screen flex justify-center mt-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-screen-md h-full w-full align-top">
             {filteredTechItems.map((item) => (
-              <div
-                key={item.id}
-                className="border rounded-md shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-              >
-                <Link href={item.link}>
-                  {/* GIF/Tech Image */}
-                  <div className="relative w-full h-56 overflow-hidden">
-                    <Image
-                      layout="fill"
-                      src={item.gif}
-                      alt={item.title}
-                      className="object-cover"
-                    />
-                  </div>
-
-                  {/* IF SECTION BELOW WILL BE UNCOMMENTED THE OLD HEIGHT ON THE SECTION ABOVE WAS H-48*/}
-                  {/* Title 
-                  <div className="p-4 bg-gray-700">
-                    <h3 className="text-xl font-bold mb-2 text-center">
-                      {item.title}
-                    </h3>
-                  </div>
-                  */}
-                </Link>
+              <div key={item.id}>
+                <DisplayTechImage item={item} />
               </div>
             ))}
           </div>
