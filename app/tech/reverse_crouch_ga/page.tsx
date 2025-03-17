@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Reverse Crouch GA",
-  description: "Reverse Crouch GA",
+  description: "This page teaches you about Reverse Crouch Guardian Angel",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],

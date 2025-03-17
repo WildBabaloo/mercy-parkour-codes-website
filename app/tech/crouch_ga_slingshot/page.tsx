@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Crouch GA Slingshot",
-  description: "Crouch GA Slingshot",
+  description: "This page teaches you about Crouch Guardian Angel Slingshot",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],
