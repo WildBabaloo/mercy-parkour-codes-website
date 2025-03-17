@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Bhop Reset",
-  description: "Bhop Reset",
+  description: "This page teaches you about Bunnyhop Resets",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],

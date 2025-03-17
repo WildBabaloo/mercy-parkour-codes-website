@@ -7,7 +7,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Instant Superjump",
-  description: "Instant Superjump",
+  description: "This page teaches you about Instant Superjumps",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],

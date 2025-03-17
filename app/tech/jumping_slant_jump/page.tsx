@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Jumping Slant Jump",
-  description: "Jumping Slant Jump",
+  description: "This page teaches you about Jumping Slant Jumps",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],

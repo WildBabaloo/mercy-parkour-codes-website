@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Cancel GA Superjump",
-  description: "Cancel GA Superjump",
+  description: "CThis page teaches you about Cancel Guardian Angel Superjumps",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],

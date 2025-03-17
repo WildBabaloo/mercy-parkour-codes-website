@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Sit Emote",
-  description: "Sit Emote",
+  description: "This page teaches you about the usage of the Sit Emote",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],

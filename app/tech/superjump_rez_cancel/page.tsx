@@ -4,8 +4,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Mercy Parkour - Super Rez Cancel",
-  description: "Super Rez Cancel",
+  title: "Mercy Parkour - Superjump Rez Cancel",
+  description: "This page teaches you about Superjump Rez Cancel",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],

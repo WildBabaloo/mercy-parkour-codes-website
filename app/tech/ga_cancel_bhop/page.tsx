@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - GA Cancel Bhop",
-  description: "GA Cancel Bhop",
+  description: "This page teaches you about Guardian Angel Cancel Bunnyhop",
   icons: {
     icon: ["/favicon.ico?v=1"],
     apple: ["/apple-touch-icon.png?v=1"],
