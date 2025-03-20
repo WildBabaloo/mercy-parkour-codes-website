@@ -107,8 +107,17 @@ const fetchCodes = async ({
   map?: string;
   difficulty?: string;
 }) => {
-  const [sortKey, sortOrder] =
+  let [sortKey, sortOrder] =
     sort && sort !== "undefined" ? sort.split("-") : ["Map_Number", "desc"];
+
+  const sortOptions = ["Added", "Difficulty", "Author", "Map", "Checkpoints"];
+  if (
+    !sortOptions.includes(sortKey) ||
+    (sortOrder !== "desc" && sortOrder !== "asc")
+  ) {
+    sortKey = "Map_Number";
+    sortOrder = "desc";
+  }
 
   const codes =
     sortKey === "Added" || sortKey === "Map_Number"
