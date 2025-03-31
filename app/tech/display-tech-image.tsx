@@ -10,6 +10,7 @@ export default function DisplayTechImage(props: {
     id: number;
     title: string;
     gif: StaticImageData;
+    videoPath: string;
     link: string;
   };
 }) {
@@ -20,7 +21,7 @@ export default function DisplayTechImage(props: {
           {/* GIF/Tech Image */}
           <div className="relative w-full h-52 overflow-hidden">
             <HoverVideoPlayer
-              videoSrc="/images/Tech_Videos/slingshot.mp4"
+              videoSrc={props.item.videoPath || null}
               pausedOverlay={
                 <Image
                   fill
