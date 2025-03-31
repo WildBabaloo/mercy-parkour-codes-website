@@ -119,7 +119,7 @@ export const techItems = [
       id: 17,
       title: "Cloud Jump/Bounce",
       gif: Clouds_Image,
-      videoPath: "/images/Tech_Videos/Slingshot.mp4",
+      videoPath: "/images/Tech_Videos/slingshot.mp4",
       link: "/tech/cloud_jump",
     },
     { id: 18, title: "Wall Bounce", gif: Wall_Bounce_Image, videoPath: "/images/Tech_Videos/Wall_Bounce.mp4", link: "/tech/wall_bounce" },
