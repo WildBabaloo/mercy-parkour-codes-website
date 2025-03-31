@@ -12,6 +12,7 @@ export default {
   theme: {
   	extend: {
   		colors: {
+			'beginner-cyan': '#00ffff',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -60,5 +61,6 @@ export default {
   		}
   	}
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [nextui(), require("tailwindcss-animate")],
 } satisfies Config;
