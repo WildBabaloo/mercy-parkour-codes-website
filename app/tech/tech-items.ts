@@ -136,14 +136,14 @@ export const techItems = [
       id: 22,
       title: "Cancel GA Slingshot",
       gif: Cancel_GA_Slingshot_Image,
-      videoPath: "/images/Tech_Videos/Cancel_Ga_Sling.mp4",
+      videoPath: "/images/Tech_Videos/Cancel_Sling.mp4",
       link: "/tech/cancel_ga_slingshot",
     },
     {
       id: 23,
       title: "Cancel GA Superjump",
       gif: Cancel_GA_Superjump_Image,
-      videoPath: "/images/Tech_Videos/Cancel_Ga_Superjump.mp4",
+      videoPath: "/images/Tech_Videos/Cancel_Superjump.mp4",
       link: "/tech/cancel_ga_superjump",
     },
     {
