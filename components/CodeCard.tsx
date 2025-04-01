@@ -11,6 +11,7 @@ import {
 import { FaYoutube } from "react-icons/fa";
 import { ClipboardIcon } from "lucide-react";
 import Link from "next/link";
+import { GetDifficultyColor } from "./utils/getDifficultyColor";
 
 interface CardProps {
   title: string | null;
@@ -93,7 +94,15 @@ const Card: React.FC<CardProps> = ({
             </button>
           </p>
           <p className="text-gray-400 text-sm italic">{notes}</p>
-          <p className="text-gray-400 text-sm">{difficulty}</p>
+          <div className="p-2 w-3/4 bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg border border-gray-700 shadow-md">
+            <p
+              className={`text-sm font-semibold tracking-wide ${GetDifficultyColor(
+                difficulty
+              )}`}
+            >
+              {difficulty}
+            </p>
+          </div>
         </div>
 
         {/* Bottom Section */}
