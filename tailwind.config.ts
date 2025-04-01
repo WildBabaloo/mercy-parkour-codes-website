@@ -13,6 +13,22 @@ export default {
   	extend: {
   		colors: {
 			'beginner-cyan': '#00ffff',
+			'beginner/easy-light-cyan': '#38ffc7',
+			'easy-light-lime-green': '#6fff8f',
+			'easy/low-inter-lime-green': '#90d883',
+			'low-inter-desaturated-green': '#a0c47d',
+			'low-inter/inter-desaturated-yellow': '#d0cf72',
+			'intermediate-yellow': '#ffdf66',
+			'inter/high-inter-vivid-orange': '#ffba33',
+			'high-inter-orange': '#ff9900',
+			'high-inter/hard-dark-orange': '#ff4d00',
+			'hard-red': '#ff0000',
+			'hard/very-hard-dark-pink': '#a54376',
+			'very-hard-soft-blue': '#4a86eb',
+			'very-hard/expert-bright-violet': '#7243f5',
+			'expert-violet': '#9900ff',
+			'expert/super-expert-vivid-violet': '#b609ff',
+			'super-expert-vivid-magenta': '#ff1fff',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
