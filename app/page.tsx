@@ -15,7 +15,6 @@ export default async function Home() {
           <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 z-10">
             {/* Title Screen */}
             <div className="w-full text-center md:text-left">
-              <p className="text-white italic mb-1">(Website in Beta...)</p>
               <TitleScreen />
             </div>
             {/* Image/GIF */}
