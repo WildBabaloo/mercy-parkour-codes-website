@@ -12,6 +12,7 @@ import { FaYoutube } from "react-icons/fa";
 import { ClipboardIcon } from "lucide-react";
 import Link from "next/link";
 import { GetDifficultyColor } from "./utils/getDifficultyColor";
+import { useToast } from "@/components/hooks/use-toast";
 
 interface CardProps {
   title: string | null;
@@ -51,6 +52,16 @@ const Card: React.FC<CardProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     window.location.href = `/codes?search=${mapper}`;
+  };
+
+  const { toast } = useToast();
+
+  const handleFeatureNotImplemented = () => {
+    toast({
+      variant: "destructive",
+      title: "Feature not yet implemented!",
+      description: "This feature will be implemented in future updates...",
+    });
   };
 
   return (
@@ -132,9 +143,24 @@ const Card: React.FC<CardProps> = ({
         </div>
         {/* Right Section: Vertical Icons */}
         <div className="absolute bottom-4 right-4 flex flex-col space-y-2 items-end">
-          <HeartIcon className="h-5 w-5 text-gray-400" />
-          <CheckIcon className="h-5 w-5 text-gray-400" />
-          <BookmarkIcon className="h-5 w-5 text-gray-400" />
+          <button>
+            <HeartIcon
+              className="h-5 w-5 text-gray-400"
+              onClick={handleFeatureNotImplemented}
+            />
+          </button>
+          <button>
+            <CheckIcon
+              className="h-5 w-5 text-gray-400"
+              onClick={handleFeatureNotImplemented}
+            />
+          </button>
+          <button>
+            <BookmarkIcon
+              className="h-5 w-5 text-gray-400"
+              onClick={handleFeatureNotImplemented}
+            />
+          </button>
         </div>
       </div>
     </div>
