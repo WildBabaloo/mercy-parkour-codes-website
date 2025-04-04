@@ -1,4 +1,4 @@
-# mercyparkour.codes website
+# mercyparkour.codes
 
 [mercyparkour.codes](https://mercyparkour.codes/) is a website built with the mercy parkour community in mind. Its for players to have the ability to enhance their skills, find new courses and creators to support while also having a platform to have all their amazing creations be displayed on. This website also aims to unify and connect the community together as well as all the data and various techs built upon it.
 
