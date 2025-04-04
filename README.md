@@ -4,6 +4,8 @@
 
 This website is built with NextJS 15 with the use of TailwindCSS and Typescript with its database being hosted on Supabase with Prisma used as an ORM. Its also self hosted on a VPS with the help of Coolify.
 
+*Please note that this website is still under development with more cool features to be added!*
+
 ## Setup
 
 Coming soon...
