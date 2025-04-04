@@ -10,7 +10,7 @@ Coming soon...
 
 ## Environment Variables
 
-If you would like to setup this website on your own local system they are a couple environment variables that are required to run this website. All of these enviroment variables are just ot connect with Supabase and Prisma. These are:
+If you would like to setup this website on your own local system they are a couple environment variables that are required to run this website. All of these enviroment variables are just to connect with Supabase and Prisma. These are:
 
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `NEXT_PUBLIC_SUPABASE_URL`
