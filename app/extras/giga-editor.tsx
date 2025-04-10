@@ -20,6 +20,24 @@ export default function GigaEditor() {
               Editor Discord Server
             </Link>
           </li>
+          <li>
+            <Link
+              href={"https://www.youtube.com/watch?v=chOZLO2zmb0"}
+              className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+            >
+              Beginner&apos;s Guide: Mercy Parkour Map Making [GigaMercy&apos;s
+              Editor] by poobie
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"https://youtu.be/ju1oT1OUxEE"}
+              className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+            >
+              Customization Guide: Mercy Parkour Map Making [GigaMercy&apos;s
+              Editor] by poobie
+            </Link>
+          </li>
         </ul>
       </div>
     </>

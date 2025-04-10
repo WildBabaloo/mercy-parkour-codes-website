@@ -18,16 +18,6 @@ export default function TawEditor() {
           </li>
           <li>
             <Link
-              href={
-                "https://docs.google.com/document/d/1ERqUGbWffYsBrNzWea6VHH_WYqcRke6e7B0_HUjRIRQ/edit?usp=sharing"
-              }
-              className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
-            >
-              Map Making Handbook by hon6y + random (Taw&apos;s Edition)
-            </Link>
-          </li>
-          <li>
-            <Link
               href={"https://www.youtube.com/watch?v=RlHW1w8oSsI"}
               className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
             >
