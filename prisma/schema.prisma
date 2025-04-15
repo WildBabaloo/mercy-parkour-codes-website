@@ -23,6 +23,7 @@ model mercy_parkour_codes {
   Softlock           String?
   Many_Orbs          String?
   Difficulty_Integer Int?          @db.SmallInt
+  Is_Broken          Boolean       @default(false)
   daily_codes        daily_codes[]
 }
 
