@@ -9,7 +9,7 @@ import {
   FlagIcon,
 } from "@heroicons/react/24/outline";
 import { FaYoutube } from "react-icons/fa";
-import { ClipboardIcon } from "lucide-react";
+import { ClipboardIcon, TriangleAlert } from "lucide-react";
 import Link from "next/link";
 import { GetDifficultyColor } from "./utils/getDifficultyColor";
 import { useToast } from "@/components/hooks/use-toast";
@@ -22,6 +22,7 @@ interface CardProps {
   mapper: string;
   video: string | null;
   notes: string | null;
+  isBroken: boolean;
   likes: number;
   imageSrc: StaticImageData;
 }
@@ -34,11 +35,11 @@ const Card: React.FC<CardProps> = ({
   mapper,
   video,
   notes,
+  isBroken,
   // likes,
   imageSrc,
 }) => {
   const [copied, setCopied] = useState(false);
-
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
@@ -64,8 +65,20 @@ const Card: React.FC<CardProps> = ({
     });
   };
 
+  const handleBrokenCourseAlert = () => {
+    toast({
+      variant: "destructive",
+      title: "This code or course is potentially broken!",
+      description:
+        "This code either doesnt work anymore or contains levels that are now impossible with new map changes. If this is not the case please let us know in the discord!",
+    });
+  };
+
   return (
-    <div className="relative w-full max-w-md rounded-xl overflow-hidden shadow-lg bg-gray-900">
+    <div
+      className={`relative w-full max-w-md rounded-xl overflow-hidden shadow-lg bg-gray-900 
+        ${isBroken ? "border-2 border-amber-500" : ""}`}
+    >
       {/* Image Section */}
       <div className="relative w-full h-48 overflow-hidden">
         <Image
@@ -128,6 +141,14 @@ const Card: React.FC<CardProps> = ({
           <div className="flex items-center space-x-4 mt-2">
             {/* Likes */}
             <div className="flex items-center space-x-2">
+              {isBroken && (
+                <button>
+                  <TriangleAlert
+                    className="w-6 h-6 rounded relative group"
+                    onClick={handleBrokenCourseAlert}
+                  />
+                </button>
+              )}
               {/* 
               <HeartIcon className="h-5 w-5 text-gray-400" />
               <span>{likes}</span>
