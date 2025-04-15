@@ -144,7 +144,7 @@ const Card: React.FC<CardProps> = ({
               {isBroken && (
                 <button>
                   <TriangleAlert
-                    className="w-6 h-6 rounded relative group"
+                    className="w-6 h-6 rounded hover:bg-gray-700 transition relative group"
                     onClick={handleBrokenCourseAlert}
                   />
                 </button>
