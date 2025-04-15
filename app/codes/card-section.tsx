@@ -111,6 +111,7 @@ export default function CardSection({
               mapper={code.Author || "Unknown Author"}
               video={code.Video}
               notes={code.Notes}
+              isBroken={code.Is_Broken}
               likes={0}
               imageSrc={MapImageSelection(code.Map || "N/A")}
             />
