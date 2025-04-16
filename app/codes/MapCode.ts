@@ -12,5 +12,6 @@ export type MapCode = {
     Stuck_Balance: string | null;
     Softlock: string | null;
     Many_Orbs: string | null;
+    Is_Broken: boolean;
   };
   
