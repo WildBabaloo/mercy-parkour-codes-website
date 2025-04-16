@@ -34,6 +34,7 @@ export default function GenerateSection() {
             mapper={code.Author || "Unknown Author"}
             notes={code.Notes}
             video={code.Video}
+            isBroken={code.Is_Broken}
             likes={0}
             imageSrc={MapImageSelection(code.Map || "N/A")}
           />
