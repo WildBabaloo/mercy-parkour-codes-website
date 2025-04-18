@@ -14,7 +14,7 @@ export default async function FeaturedCourse() {
         ) : (
           <Card
             key={featuredCode.Map_Number}
-            title={featuredCode.Map}
+            title={featuredCode.Course_Name || featuredCode.Map}
             code={featuredCode.Code}
             checkpoints={featuredCode.Checkpoints?.toString() || "N/A"}
             difficulty={featuredCode.Difficulty || "N/A"}
