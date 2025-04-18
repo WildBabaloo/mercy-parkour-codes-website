@@ -11,6 +11,7 @@ datasource db {
 model mercy_parkour_codes {
   Map_Number         Int           @unique @default(autoincrement())
   Map                String?
+  Course_Name        String?
   Code               String        @id
   Checkpoints        Int?
   Video              String?
