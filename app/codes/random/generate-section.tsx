@@ -27,7 +27,7 @@ export default function GenerateSection() {
         ) : (
           <Card
             key={code.Map_Number}
-            title={code.Map}
+            title={code.Course_Name || code.Map}
             code={code.Code}
             checkpoints={code.Checkpoints?.toString() || "N/A"}
             difficulty={code.Difficulty || "N/A"}
