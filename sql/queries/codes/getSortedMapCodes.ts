@@ -1,7 +1,8 @@
+import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
 import prisma from "@/prisma/lib/db";
 
 export async function getSortedMapCodes(search: string | undefined, skip: number, take: number, sortKey: string, sortOrder: string, map: string | undefined, difficulty: string | undefined, category: string | undefined) {
-  const fetchSortedCodesWithRezFilter = async () => {
+  const fetchSortedCodesWithRezFilter = async (difficultyNumbers: number[]) => {
     const codes = await prisma.mercy_parkour_codes.findMany({
       where: {
         AND: [
@@ -20,7 +21,7 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
             },
           },
           map ? { Map: { contains: map, mode: "insensitive" } } : {},
-          difficulty ? { Difficulty: { contains: difficulty, mode: "insensitive" } } : {},
+          difficultyNumbers.length > 0 ? { Difficulty_Integer: { in: difficultyNumbers } } : {},
           { Notes: { contains: "Rez", mode: "insensitive" } }
         ], 
       },
@@ -34,7 +35,7 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
 
     return codes;
   }
-  const fetchSortedCodesWithoutRezFilter = async () => {
+  const fetchSortedCodesWithoutRezFilter = async (difficultyNumbers: number[]) => {
     const codes = await prisma.mercy_parkour_codes.findMany({
       where: {
         AND: [
@@ -53,7 +54,7 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
             },
           },
           map ? { Map: { contains: map, mode: "insensitive" } } : {},
-          difficulty ? { Difficulty: { contains: difficulty, mode: "insensitive" } } : {},
+          difficultyNumbers.length > 0 ? { Difficulty_Integer: { in: difficultyNumbers } } : {},
           category
           ? {
               [category]: {
@@ -75,8 +76,14 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
   }
   try {
     if (!validCategory(category)) { category = "" }
-    if (sortKey === "Difficulty") sortKey = "Difficulty_Integer"
-    return category === "Rez Map" ? fetchSortedCodesWithRezFilter() : fetchSortedCodesWithoutRezFilter();
+    let difficultyNumbers: number[] = [];
+    if (sortKey === "Difficulty") {
+      difficultyNumbers = difficulty
+        ? GetDifficultyIntegerForFilter(difficulty)
+        : [];
+      sortKey = "Difficulty_Integer"
+    }
+    return category === "Rez Map" ? fetchSortedCodesWithRezFilter(difficultyNumbers) : fetchSortedCodesWithoutRezFilter(difficultyNumbers);
   } catch (error) {
     console.error("Error fetching codes from the database", error);
     return [];
