@@ -11,7 +11,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Link,
-} from "@nextui-org/react";
+} from "@heroui/react";
 // import { Button } from "@/components/ui/button";
 // import { GlobeIcon, MoonIcon } from "@radix-ui/react-icons";
 import { FaDiscord, FaGithub } from "react-icons/fa";
