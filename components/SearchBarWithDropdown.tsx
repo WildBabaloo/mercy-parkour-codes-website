@@ -6,6 +6,7 @@ import { CodeInput } from "@/components/ui/CodeInput";
 import Dropdown_Menu from "./ui/DropdownMenu";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import RangeSlider from "./RangeSlider";
 
 const SearchBarWithDropdown = () => {
   const { replace } = useRouter();
@@ -137,7 +138,10 @@ const SearchBarWithDropdown = () => {
               />
             </div>
             {/* Slider */}
-            {/* <DoubleEndedCodeSlider /> */}
+            <div className="pt-2 border-t border-gray-600">
+              <RangeSlider />
+            </div>
+
             {/* Clear Filter Button */}
             <button
               className="w-full py-2 text-center bg-orange-500 rounded-md hover:bg-orange-600"
