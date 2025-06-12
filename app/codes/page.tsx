@@ -26,6 +26,7 @@ export default async function Codes(props: {
     category?: string;
     map?: string;
     difficulty?: string;
+    difficultyRange?: string;
     // play_status?: string;
   }>;
 }) {
@@ -36,6 +37,9 @@ export default async function Codes(props: {
   const selectedCategory = searchParams?.category;
   const selectedMap = searchParams?.map;
   const selectedDifficulty = searchParams?.difficulty;
+  const selectedDifficultyRange = searchParams?.difficultyRange
+    ?.split("-")
+    .map(Number);
   // Play status to be added in future implementations
   // const selectPlayStatus = searchParams?.play_status;
   const take = 20;
@@ -44,6 +48,7 @@ export default async function Codes(props: {
   // console.log(`Search Value: ${search}`);
   // console.log(`Current Page: ${currentPage}`);
   // console.log(`Sort Method: ${sortMethod}`);
+  console.log(`Difficulty Range: ${selectedDifficultyRange}`);
 
   const queryParams = {
     search: search,
