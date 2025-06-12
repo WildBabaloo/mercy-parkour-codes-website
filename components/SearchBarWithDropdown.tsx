@@ -76,6 +76,7 @@ const SearchBarWithDropdown = () => {
     const params = new URLSearchParams(searchParams);
     deleteFilterParams(params);
     setFilters({ category: "", map: "", difficulty: "", play_status: "" });
+    setRange([1, 17]);
     replace(`${pathname}?${params.toString()}`);
   };
 
