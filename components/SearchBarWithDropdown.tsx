@@ -23,6 +23,8 @@ const SearchBarWithDropdown = () => {
     difficulty: "",
     play_status: "",
   });
+
+  const [range, setRange] = useState([1, 17]);
   /*
   useEffect(() => {
     const params = new URLSearchParams();
@@ -139,7 +141,7 @@ const SearchBarWithDropdown = () => {
             </div>
             {/* Slider */}
             <div className="pt-2 border-t border-gray-600">
-              <RangeSlider />
+              <RangeSlider range={range} setRange={setRange} />
             </div>
 
             {/* Clear Filter Button */}

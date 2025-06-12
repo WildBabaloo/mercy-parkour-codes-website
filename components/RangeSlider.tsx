@@ -1,11 +1,13 @@
 "use client";
 import { Slider } from "@/components/ui/slider";
-import { useState } from "react";
 import { getDifficultyStringForRangeSlider } from "./utils/getDifficultyStringForRangeSlider";
 
-export default function RangeSlider() {
-  const [range, setRange] = useState([1, 17]);
+interface RangeSliderProps {
+  range: number[];
+  setRange: (range: number[]) => void;
+}
 
+export default function RangeSlider({ range, setRange }: RangeSliderProps) {
   return (
     <div className="space-y-2">
       <label className="text-medium text-gray-300 font-medium">
