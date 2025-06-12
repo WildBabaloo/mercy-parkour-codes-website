@@ -42,6 +42,11 @@ const SearchBarWithDropdown = () => {
 
   const updateURL = useDebouncedCallback(() => {
     const params = new URLSearchParams(searchParams);
+
+    if (range) {
+      params.set("difficultyRange", range.join("-"));
+    }
+
     Object.entries(filters).forEach(([key, value]) => {
       if (value) {
         const keyValue = key === "category" ? stringCategory(value) : value;
@@ -60,7 +65,7 @@ const SearchBarWithDropdown = () => {
 
   useEffect(() => {
     updateURL.callback();
-  }, [filters, searchText, pathname, updateURL]);
+  }, [filters, range, searchText, pathname, updateURL]);
 
   const updateFilter = (key: string, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
