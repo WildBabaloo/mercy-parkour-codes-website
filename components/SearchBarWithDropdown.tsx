@@ -6,6 +6,7 @@ import Dropdown_Menu from "./ui/DropdownMenu";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import RangeSlider from "./RangeSlider";
+import { getMinMaxFromDifficultyIntegerForRangeSlider } from "./utils/getMinMaxFromDifficultyIntegerForRangeSlider";
 
 const SearchBarWithDropdown = ({
   map,
@@ -27,7 +28,7 @@ const SearchBarWithDropdown = ({
     searchParams.get("search") || ""
   );
   const [filters, setFilters] = useState({
-    category: category ? stringCategory(category) : "",
+    category: category ? stringValidURLCategory(category) : "",
     map: map && mapOptionItems.includes(map) ? map : "",
     difficulty:
       difficulty && difficultyOptionItems.includes(difficulty)
@@ -36,7 +37,11 @@ const SearchBarWithDropdown = ({
     play_status: "",
   });
 
-  const [range, setRange] = useState([1, 17]);
+  const [range, setRange] = useState(
+    difficultyRange
+      ? getMinMaxFromDifficultyIntegerForRangeSlider(difficultyRange)
+      : [1, 17]
+  );
   /*
   useEffect(() => {
     const params = new URLSearchParams();
@@ -186,6 +191,23 @@ const stringCategory = (category: string) => {
       return "Softlock";
     case "Stuck/Balances":
       return "Stuck_Balance";
+    case "Rez Map":
+      return "Rez Map";
+    default:
+      return "";
+  }
+};
+
+const stringValidURLCategory = (urlCategory: string) => {
+  switch (urlCategory) {
+    case "Cloud":
+      return "Clouds";
+    case "Many_Orbs":
+      return "Many Orbs";
+    case "Softlock":
+      return "Softlock/Hardlock";
+    case "Stuck_Balance":
+      return "Stuck/Balances";
     case "Rez Map":
       return "Rez Map";
     default:
