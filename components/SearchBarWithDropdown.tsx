@@ -7,7 +7,17 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import RangeSlider from "./RangeSlider";
 
-const SearchBarWithDropdown = () => {
+const SearchBarWithDropdown = ({
+  map,
+  difficulty,
+  category,
+  difficultyRange,
+}: {
+  map: string | undefined;
+  difficulty: string | undefined;
+  category: string | undefined;
+  difficultyRange: string | undefined;
+}) => {
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -17,9 +27,12 @@ const SearchBarWithDropdown = () => {
     searchParams.get("search") || ""
   );
   const [filters, setFilters] = useState({
-    category: "",
-    map: "",
-    difficulty: "",
+    category: category ? stringCategory(category) : "",
+    map: map && mapOptionItems.includes(map) ? map : "",
+    difficulty:
+      difficulty && difficultyOptionItems.includes(difficulty)
+        ? difficulty
+        : "",
     play_status: "",
   });
 
@@ -176,7 +189,7 @@ const stringCategory = (category: string) => {
     case "Rez Map":
       return "Rez Map";
     default:
-      return null;
+      return "";
   }
 };
 
