@@ -6,6 +6,8 @@ import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
 import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 import SearchBarWithDropdown from "@/components/SearchBarWithDropdown";
 import { Metadata } from "next";
+import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
+import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntergerForRangeSlider";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Codes",
@@ -37,9 +39,11 @@ export default async function Codes(props: {
   const selectedCategory = searchParams?.category;
   const selectedMap = searchParams?.map;
   const selectedDifficulty = searchParams?.difficulty;
-  const selectedDifficultyRange = searchParams?.difficultyRange
-    ?.split("-")
-    .map(Number);
+  const selectedDifficultyRange = selectedDifficulty
+    ? GetDifficultyIntegerForFilter(selectedDifficulty)
+    : GetDifficultyIntegerForRangeSlider(
+        searchParams?.difficultyRange || "1-17"
+      );
   // Play status to be added in future implementations
   // const selectPlayStatus = searchParams?.play_status;
   const take = 20;
@@ -57,7 +61,7 @@ export default async function Codes(props: {
     take: take,
     category: selectedCategory,
     map: selectedMap,
-    difficulty: selectedDifficulty,
+    difficultyRange: selectedDifficultyRange,
   };
   const codes: MapCode[] = await fetchCodes(queryParams);
 
@@ -102,7 +106,7 @@ const fetchCodes = async ({
   take,
   category,
   map,
-  difficulty,
+  difficultyRange,
 }: {
   search?: string;
   sort?: string;
@@ -110,7 +114,7 @@ const fetchCodes = async ({
   take: number;
   category?: string;
   map?: string;
-  difficulty?: string;
+  difficultyRange?: number[];
 }) => {
   let [sortKey, sortOrder] =
     sort && sort !== "undefined" ? sort.split("-") : ["Map_Number", "desc"];
@@ -133,7 +137,7 @@ const fetchCodes = async ({
           "Map_Number",
           sortOrder,
           map,
-          difficulty,
+          difficultyRange,
           category
         )
       : await getSortedMapCodes(
@@ -143,7 +147,7 @@ const fetchCodes = async ({
           sortKey,
           sortOrder,
           map,
-          difficulty,
+          difficultyRange,
           category
         );
 

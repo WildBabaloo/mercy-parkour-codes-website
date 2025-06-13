@@ -1,7 +1,6 @@
-import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
 import prisma from "@/prisma/lib/db";
 
-export async function getNewCodesDefault(search: string | undefined, skip: number, take: number, sortKey: string, sortOrder: string, map: string | undefined, difficulty: string | undefined, category: string | undefined){
+export async function getNewCodesDefault(search: string | undefined, skip: number, take: number, sortKey: string, sortOrder: string, map: string | undefined, difficultyRange: number[] | undefined, category: string | undefined){
   const fetchCodesWithRezFilter = async (difficultyNumbers: number[]) => {
     const codes = await prisma.mercy_parkour_codes.findMany({
       where: {
@@ -66,12 +65,10 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
 
   try {
     if (!validCategory(category)) { category = "" }
-
-    const difficultyNumbers = difficulty
-    ? GetDifficultyIntegerForFilter(difficulty)
-    : [];
-
-    return category === "Rez Map" ? fetchCodesWithRezFilter(difficultyNumbers) : fetchCodesWithoutRez(difficultyNumbers);
+    console.log(difficultyRange);
+    console.log(`Sort key: ${sortKey}`);
+    console.log(`Sort order: ${sortOrder}`);
+    return category === "Rez Map" ? fetchCodesWithRezFilter(difficultyRange || []) : fetchCodesWithoutRez(difficultyRange || []);
   } catch (error) {
     console.error("Error fetching codes from the database", error);
     return [];
