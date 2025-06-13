@@ -7,7 +7,7 @@ import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 import SearchBarWithDropdown from "@/components/SearchBarWithDropdown";
 import { Metadata } from "next";
 import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
-import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntergerForRangeSlider";
+import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntegerForRangeSlider";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Codes",
@@ -76,7 +76,12 @@ export default async function Codes(props: {
         {/* Search Bar */}
         <div className="flex items-center justify-center">
           <div className="max-w-screen-md w-full">
-            <SearchBarWithDropdown />
+            <SearchBarWithDropdown
+              map={selectedMap}
+              difficulty={selectedDifficulty}
+              difficultyRange={searchParams?.difficultyRange}
+              category={selectedCategory}
+            />
           </div>
         </div>
         <div>

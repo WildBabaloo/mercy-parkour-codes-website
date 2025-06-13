@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
 import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
 import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
-import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntergerForRangeSlider";
+import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntegerForRangeSlider";
 
 export async function GET(request: NextRequest) {
     try {
