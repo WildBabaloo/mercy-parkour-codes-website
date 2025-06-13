@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getNewCodesDefault } from "@/sql/queries/codes/getNewCodesDefault";
 import { getSortedMapCodes } from "@/sql/queries/codes/getSortedMapCodes";
+import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
+import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntergerForRangeSlider";
 
 export async function GET(request: NextRequest) {
     try {
@@ -11,7 +13,12 @@ export async function GET(request: NextRequest) {
         const sortMethod = url.searchParams.get("sort");
         const difficulty = url.searchParams.get("difficulty");
         const map = url.searchParams.get("map");
-        const category = url.searchParams.get("category")
+        const category = url.searchParams.get("category");
+        const difficultyRangeString = url.searchParams.get("difficultyRange");
+
+        const difficultyRange = difficulty && difficulty !== "undefined"
+            ? GetDifficultyIntegerForFilter(difficulty)
+            : GetDifficultyIntegerForRangeSlider(difficultyRangeString || "1-17");
 
         //console.log(`Skip: ${skip || "none"}, Take: ${take || "none"}, Search: ${search || "none"}, Sort: ${sortMethod || "none"}, Difficulty ${difficulty || "none"}, Map: ${map || "none"}, Category: ${category || "none"}`);
 
@@ -27,7 +34,7 @@ export async function GET(request: NextRequest) {
             sort: sortMethod && sortMethod !== "undefined" ? sortMethod : "",
             skip: skipInt,
             take: takeInt,
-            difficulty: difficulty && difficulty !== "undefined" ? difficulty : "",
+            difficultyRange: difficultyRange,
             map: map && map !== "undefined" ? map : "",
             category: category && category !== "undefined" ? category : ""
           };
@@ -46,7 +53,7 @@ const fetchCodes = async ({
   sort,
   skip,
   take,
-  difficulty,
+  difficultyRange,
   map,
   category,
 }: {
@@ -54,7 +61,7 @@ const fetchCodes = async ({
   sort?: string;
   skip: number;
   take: number;
-  difficulty?: string;
+  difficultyRange: number[];
   map?: string;
   category?: string;
 }) => {
@@ -64,8 +71,8 @@ const fetchCodes = async ({
 
   const codes =
     sortKey === "Added" || sortKey === "Map_Number"
-      ? await getNewCodesDefault(search, skip, take, "Map_Number", sortOrder, map, difficulty, category)
-      : await getSortedMapCodes(search, skip, take, sortKey, sortOrder, map, difficulty, category);
+      ? await getNewCodesDefault(search, skip, take, "Map_Number", sortOrder, map, difficultyRange, category)
+      : await getSortedMapCodes(search, skip, take, sortKey, sortOrder, map, difficultyRange, category);
 
   return codes;
 };

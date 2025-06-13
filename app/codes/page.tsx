@@ -91,6 +91,7 @@ export default async function Codes(props: {
             sort={sortMethod}
             map={selectedMap}
             difficulty={selectedDifficulty}
+            difficultyRange={searchParams?.difficultyRange}
             category={selectedCategory}
           />
         </div>
