@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { CodeInput } from "@/components/ui/CodeInput";
-// import DoubleEndedCodeSlider from "./ui/DoubleEndedCodeSlider";
 import Dropdown_Menu from "./ui/DropdownMenu";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
