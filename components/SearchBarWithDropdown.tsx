@@ -2,12 +2,23 @@
 
 import { useState, useEffect } from "react";
 import { CodeInput } from "@/components/ui/CodeInput";
-// import DoubleEndedCodeSlider from "./ui/DoubleEndedCodeSlider";
 import Dropdown_Menu from "./ui/DropdownMenu";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import RangeSlider from "./RangeSlider";
+import { getMinMaxFromDifficultyIntegerForRangeSlider } from "./utils/getMinMaxFromDifficultyIntegerForRangeSlider";
 
-const SearchBarWithDropdown = () => {
+const SearchBarWithDropdown = ({
+  map,
+  difficulty,
+  category,
+  difficultyRange,
+}: {
+  map: string | undefined;
+  difficulty: string | undefined;
+  category: string | undefined;
+  difficultyRange: string | undefined;
+}) => {
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -17,11 +28,20 @@ const SearchBarWithDropdown = () => {
     searchParams.get("search") || ""
   );
   const [filters, setFilters] = useState({
-    category: "",
-    map: "",
-    difficulty: "",
+    category: category ? stringValidURLCategory(category) : "",
+    map: map && mapOptionItems.includes(map) ? map : "",
+    difficulty:
+      difficulty && difficultyOptionItems.includes(difficulty)
+        ? difficulty
+        : "",
     play_status: "",
   });
+
+  const [range, setRange] = useState(
+    difficultyRange
+      ? getMinMaxFromDifficultyIntegerForRangeSlider(difficultyRange)
+      : [1, 17]
+  );
   /*
   useEffect(() => {
     const params = new URLSearchParams();
@@ -39,6 +59,11 @@ const SearchBarWithDropdown = () => {
 
   const updateURL = useDebouncedCallback(() => {
     const params = new URLSearchParams(searchParams);
+
+    if (range) {
+      params.set("difficultyRange", range.join("-"));
+    }
+
     Object.entries(filters).forEach(([key, value]) => {
       if (value) {
         const keyValue = key === "category" ? stringCategory(value) : value;
@@ -57,7 +82,7 @@ const SearchBarWithDropdown = () => {
 
   useEffect(() => {
     updateURL.callback();
-  }, [filters, searchText, pathname, updateURL]);
+  }, [filters, range, searchText, pathname, updateURL]);
 
   const updateFilter = (key: string, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
@@ -68,6 +93,7 @@ const SearchBarWithDropdown = () => {
     const params = new URLSearchParams(searchParams);
     deleteFilterParams(params);
     setFilters({ category: "", map: "", difficulty: "", play_status: "" });
+    setRange([1, 17]);
     replace(`${pathname}?${params.toString()}`);
   };
 
@@ -137,7 +163,10 @@ const SearchBarWithDropdown = () => {
               />
             </div>
             {/* Slider */}
-            {/* <DoubleEndedCodeSlider /> */}
+            <div className="pt-2 border-t border-gray-600">
+              <RangeSlider range={range} setRange={setRange} />
+            </div>
+
             {/* Clear Filter Button */}
             <button
               className="w-full py-2 text-center bg-orange-500 rounded-md hover:bg-orange-600"
@@ -165,7 +194,24 @@ const stringCategory = (category: string) => {
     case "Rez Map":
       return "Rez Map";
     default:
-      return null;
+      return "";
+  }
+};
+
+const stringValidURLCategory = (urlCategory: string) => {
+  switch (urlCategory) {
+    case "Cloud":
+      return "Clouds";
+    case "Many_Orbs":
+      return "Many Orbs";
+    case "Softlock":
+      return "Softlock/Hardlock";
+    case "Stuck_Balance":
+      return "Stuck/Balances";
+    case "Rez Map":
+      return "Rez Map";
+    default:
+      return "";
   }
 };
 
