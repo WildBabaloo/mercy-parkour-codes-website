@@ -8,7 +8,5 @@ export function GetDifficultyIntegerForRangeSlider(difficultyRange: string) {
     const difficultyIntegersArray: number[] = [];
 
     for (let i = minDifficultyInteger; i <= maxDifficultyInterger; i++) { difficultyIntegersArray.push(i); }
-
-    console.log(difficultyIntegersArray);
     return difficultyIntegersArray;
 }

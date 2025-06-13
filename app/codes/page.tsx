@@ -52,7 +52,7 @@ export default async function Codes(props: {
   // console.log(`Search Value: ${search}`);
   // console.log(`Current Page: ${currentPage}`);
   // console.log(`Sort Method: ${sortMethod}`);
-  console.log(`Difficulty Range: ${selectedDifficultyRange}`);
+  // console.log(`Difficulty Range: ${selectedDifficultyRange}`);
 
   const queryParams = {
     search: search,

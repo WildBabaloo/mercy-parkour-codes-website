@@ -65,9 +65,6 @@ export async function getNewCodesDefault(search: string | undefined, skip: numbe
 
   try {
     if (!validCategory(category)) { category = "" }
-    console.log(difficultyRange);
-    console.log(`Sort key: ${sortKey}`);
-    console.log(`Sort order: ${sortOrder}`);
     return category === "Rez Map" ? fetchCodesWithRezFilter(difficultyRange || []) : fetchCodesWithoutRez(difficultyRange || []);
   } catch (error) {
     console.error("Error fetching codes from the database", error);
