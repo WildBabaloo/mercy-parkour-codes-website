@@ -278,13 +278,21 @@ const mapOptionItems = [
 const difficultyOptionItems = [
   "Multi Difficulty",
   "Beginner",
+  "Beginner / Easy",
   "Easy",
+  "Easy / Low Intermediate",
   "Low Intermediate",
+  "Low Intermediate / Intermediate",
   "Intermediate",
+  "Intermediate / High Intermediate",
   "High Intermediate",
+  "High Intermediate / Hard",
   "Hard",
+  "Hard / Very Hard",
   "Very Hard",
+  "Very Hard / Expert",
   "Expert",
+  "Expert / Super Expert",
   "Super Expert",
 ];
 
