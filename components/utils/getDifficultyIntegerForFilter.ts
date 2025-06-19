@@ -3,23 +3,39 @@ export function GetDifficultyIntegerForFilter(difficulty: string) {
         case "Multi Difficulty":
             return [0];
         case "Beginner":
-            return [1, 2];
+            return [1];
+        case "Beginner / Easy":
+            return [2];
         case "Easy":
-            return [2, 3, 4];
+            return [3];
+        case "Easy / Low Intermediate":
+            return [4];
         case "Low Intermediate":
-            return [4, 5, 6];
+            return [5];
+        case "Low Intermediate / Intermediate":
+            return [6];
         case "Intermediate":
-            return [6, 7, 8];
+            return [7];
+        case "Intermediate / High Intermediate":
+            return [8];
         case "High Intermediate":
-            return [8, 9, 10];
+            return [9];
+        case "High Intermediate / Hard":
+            return [10];
         case "Hard":
-            return [10, 11, 12];
+            return [11];
+        case "Hard / Very Hard":
+            return [12];
         case "Very Hard":
-            return [12, 13, 14];
+            return [13];
+        case "Very Hard / Expert":
+            return [14];
         case "Expert":
-            return [14, 15, 16];
+            return [15];
+        case "Expert / Super Expert":
+            return [16];
         case "Super Expert":
-            return [16, 17];
+            return [17];
         default:
             return [];
     }
