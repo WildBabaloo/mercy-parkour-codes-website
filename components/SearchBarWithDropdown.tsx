@@ -224,6 +224,7 @@ const categoryOptionItems = [
 ];
 
 const mapOptionItems = [
+  "Aatlis",
   "Antarctic Peninsula",
   "Busan",
   "Ilios",
