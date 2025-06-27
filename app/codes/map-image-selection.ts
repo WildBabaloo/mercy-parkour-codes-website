@@ -47,6 +47,7 @@ import Workshop_Expanse from "@/public/images/Map_Images/Workshop_Expanse.png";
 import Workshop_Green_Screen from "@/public/images/Map_Images/Workshop_Green_Screen.png";
 import Workshop_Island from "@/public/images/Map_Images/Workshop_Island.png";
 import Practice_Range from "@/public/images/Map_Images/Practice_Range.jpg";
+import Aatlis from "@/public/images/Map_Images/AAtlis.png";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -110,6 +111,7 @@ const mapImages: MapImages = {
   "Workshop Green Screen": Workshop_Green_Screen,
   "Workshop Island": Workshop_Island,
   "Practice Range": Practice_Range,
+  Aatlis: Aatlis,
 };
 
 export default MapImageSelection;
