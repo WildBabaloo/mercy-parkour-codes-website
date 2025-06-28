@@ -47,7 +47,7 @@ import Workshop_Expanse from "@/public/images/Map_Images/Workshop_Expanse.png";
 import Workshop_Green_Screen from "@/public/images/Map_Images/Workshop_Green_Screen.png";
 import Workshop_Island from "@/public/images/Map_Images/Workshop_Island.png";
 import Practice_Range from "@/public/images/Map_Images/Practice_Range.jpg";
-import Aatlis from "@/public/images/Map_Images/AAtlis.png";
+import Aatlis from "@/public/images/Map_Images/Aatlis.png";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
