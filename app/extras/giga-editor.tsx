@@ -22,6 +22,16 @@ export default function GigaEditor() {
           </li>
           <li>
             <Link
+              href={
+                "https://docs.google.com/document/d/1bdrMcpKeaJzDQwxuYWbn835EVVW9YQnTvyRHZfx1Hao/edit?usp=sharing"
+              }
+              className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
+            >
+              Parkour Editor Handbook [GigaMercy&apos;s Editor] by poobie
+            </Link>
+          </li>
+          <li>
+            <Link
               href={"https://www.youtube.com/watch?v=chOZLO2zmb0"}
               className="text-blue-400 hover:text-blue-500 underline transition-colors duration-300"
             >
