@@ -27,7 +27,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.460.0",
-    "next": "^15.1.6",
+    "next": "^15.3.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hover-video-player": "^10.0.2",
