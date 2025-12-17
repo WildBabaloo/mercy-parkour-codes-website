@@ -36,7 +36,7 @@ export default function RootLayout({
       <Script
         defer
         src="https://umami.mercyparkour.codes/script.js"
-        data-website-id="58dfb35b-02da-49d5-aa2a-c803962336de"
+        data-website-id="cc750bf1-a84f-4792-8861-41ac7800ba2f"
       />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
