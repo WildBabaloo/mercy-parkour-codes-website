@@ -1,11 +1,10 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "./generated/prisma"
 }
 
 datasource db {
   provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }
 
 model mercy_parkour_codes {
@@ -25,6 +24,7 @@ model mercy_parkour_codes {
   Many_Orbs          String?
   Difficulty_Integer Int?          @db.SmallInt
   Is_Broken          Boolean       @default(false)
+  Is_Hidden         Boolean       @default(false)
   daily_codes        daily_codes[]
 }
 
