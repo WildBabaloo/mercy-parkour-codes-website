@@ -4,6 +4,7 @@ import TawEditor from "@/app/extras/taw-editor";
 import PeaceEditor from "@/app/extras/peace-editor";
 import GigaEditor from "@/app/extras/giga-editor";
 import { Metadata } from "next";
+import Credits from "@/components/credits";
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Extra",
@@ -25,6 +26,7 @@ export default function Extras() {
           <h1>Extras</h1>
         </div>
         <div>
+          <Credits />
           <DifficultyKey />
         </div>
         <div>
