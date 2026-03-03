@@ -12,7 +12,7 @@ export async function GetRandomCode() {
       });
   
       if (!code) return null;
-      if (!code.Is_Broken) return code;
+      if (!code.Is_Broken || !code.Is_Hidden) return code;
   
       console.log(`Attempt ${i + 1}: Broken map found (Map #${randInt}). Retrying...`);
     }

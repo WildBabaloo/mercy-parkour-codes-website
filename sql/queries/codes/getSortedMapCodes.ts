@@ -5,6 +5,7 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
     const codes = await prisma.mercy_parkour_codes.findMany({
       where: {
         AND: [
+          { Is_Hidden: false },
           search
             ? {
                 OR: [
@@ -38,6 +39,7 @@ export async function getSortedMapCodes(search: string | undefined, skip: number
     const codes = await prisma.mercy_parkour_codes.findMany({
       where: {
         AND: [
+          { Is_Hidden: false },
           search
             ? {
                 OR: [
