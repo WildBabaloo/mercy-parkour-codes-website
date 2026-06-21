@@ -48,6 +48,7 @@ import Workshop_Green_Screen from "@/public/images/Map_Images/Workshop_Green_Scr
 import Workshop_Island from "@/public/images/Map_Images/Workshop_Island.png";
 import Practice_Range from "@/public/images/Map_Images/Practice_Range.jpg";
 import Aatlis from "@/public/images/Map_Images/Aatlis.png";
+import Neon_Junction from "@/public/images/Map_Images/Neon_Junction.png";
 import { StaticImageData } from "next/image";
 
 type MapImages = {
@@ -112,6 +113,7 @@ const mapImages: MapImages = {
   "Workshop Island": Workshop_Island,
   "Practice Range": Practice_Range,
   Aatlis: Aatlis,
+  "Neon Junction": Neon_Junction,
 };
 
 export default MapImageSelection;
