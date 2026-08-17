@@ -4,6 +4,10 @@ import { TechInput } from "@/components/ui/TechInput";
 import { Metadata } from "next";
 import DisplayTechImage from "./display-tech-image";
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export const metadata: Metadata = {
   title: "Mercy Parkour - Tech",
   description: "The list of all the tech found in Mercy Parkour!",

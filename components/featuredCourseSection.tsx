@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 import Card from "@/components/CodeCard";
 import MapImageSelection from "@/app/codes/map-image-selection";
 import CardSkeleton from "./ui/CardSkeleton";
