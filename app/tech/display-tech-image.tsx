@@ -28,6 +28,7 @@ export default function DisplayTechImage(props: {
                   src={props.item.gif}
                   alt={props.item.title}
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 384px"
                 />
               }
               loadingOverlay={
