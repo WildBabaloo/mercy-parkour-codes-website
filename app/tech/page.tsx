@@ -30,7 +30,7 @@ export default async function Tech(props: {
   const filteredTechItems =
     search && search !== "undefined"
       ? techItems.filter((item) =>
-          item.title.toLowerCase().includes(search.toLowerCase())
+          item.title.toLowerCase().includes(search.toLowerCase()),
         )
       : techItems;
 
