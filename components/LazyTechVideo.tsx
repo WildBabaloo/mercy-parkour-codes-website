@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import HoverVideoPlayer from "react-hover-video-player";
 import LoadingSpinner from "./ui/LoadingSpinner";
 
 interface LazyTechVideoProps {
   videoSrc: string;
-  imageSrc: string;
+  imageSrc: StaticImageData;
   alt: string;
 }
 
