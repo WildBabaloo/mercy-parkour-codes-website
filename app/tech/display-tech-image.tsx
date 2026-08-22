@@ -24,7 +24,7 @@ export default function DisplayTechImage(props: {
             alt={props.item.title}
           />
 
-          {/* PUT TECH NAME UNDER TECH CARD. COMMENTED IN CASE ITS NEEDED IN THE FUTURE 
+          {/* PUT TECH NAME UNDER TECH CARD. COMMENTED IN CASE ITS NEEDED IN THE FUTURE LIKE TRANSLATIONS
 
           <div className="p-4">
             <h3 className="text-xl font-bold">{props.item.title}</h3>
