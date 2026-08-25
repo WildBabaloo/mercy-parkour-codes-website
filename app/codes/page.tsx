@@ -9,10 +9,6 @@ import { Metadata } from "next";
 import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
 import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntegerForRangeSlider";
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
-
 export const metadata: Metadata = {
   title: "Mercy Parkour - Codes",
   description: "The list of all the mercy parkour codes!",
