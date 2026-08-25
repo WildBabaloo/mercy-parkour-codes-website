@@ -1,6 +1,8 @@
 import NavBarUI from "../components/ui/NavBar";
 import TitleScreen from "@/components/TitleScreen";
 import FeaturedCourse from "../components/featuredCourseSection";
+import { Suspense } from "react";
+import TitleScreenFallback from "@/components/TitleScreenFallback";
 
 export default async function Home() {
   return (
@@ -15,7 +17,9 @@ export default async function Home() {
           <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 z-10">
             {/* Title Screen */}
             <div className="w-full text-center md:text-left">
-              <TitleScreen />
+              <Suspense fallback={<TitleScreenFallback />}>
+                <TitleScreen />
+              </Suspense>
             </div>
             {/* Image/GIF */}
             <div className="w-full md:w-[60%] lg:w-[50%] xl:w-[850px] mx-auto md:mx-0">
