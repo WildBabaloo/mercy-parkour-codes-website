@@ -211,3 +211,9 @@ export const techItems = [
     },
     { id: 33, title: "Ghost GA", gif: Ghost_GA_Image, videoPath: "/images/Tech_Videos/Superjump.mp4", link: "/tech/ghost_ga" },
   ];
+
+export async function getTechItems() {
+  "use cache";
+  
+  return techItems;
+}

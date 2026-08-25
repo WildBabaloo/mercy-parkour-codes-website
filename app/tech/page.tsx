@@ -1,12 +1,8 @@
 import NavBarUI from "@/components/ui/NavBar";
-import { techItems } from "./tech-items";
+import { getTechItems } from "./tech-items";
 import { TechInput } from "@/components/ui/TechInput";
 import { Metadata } from "next";
 import DisplayTechImage from "./display-tech-image";
-
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
 
 export const metadata: Metadata = {
   title: "Mercy Parkour - Tech",
@@ -26,6 +22,8 @@ export default async function Tech(props: {
 }) {
   const searchParams = await props.searchParams;
   const search = searchParams?.search;
+
+  const techItems = await getTechItems();
 
   const filteredTechItems =
     search && search !== "undefined"
