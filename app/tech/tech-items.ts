@@ -32,6 +32,12 @@ import Superjump_Image from "@/public/images/Tech_Images/superjump.png"
 import Walking_Slant_Jump_Image from "@/public/images/Tech_Images/walking_slant_jump.png"
 import Wall_Bounce_Image from "@/public/images/Tech_Images/wall_bounce.png"
 
+export async function getTechItems() {
+  "use cache";
+  
+  return techItems;
+}
+
 export const techItems = [
     { 
       id: 1, 
@@ -211,9 +217,3 @@ export const techItems = [
     },
     { id: 33, title: "Ghost GA", gif: Ghost_GA_Image, videoPath: "/images/Tech_Videos/Superjump.mp4", link: "/tech/ghost_ga" },
   ];
-
-export async function getTechItems() {
-  "use cache";
-  
-  return techItems;
-}
