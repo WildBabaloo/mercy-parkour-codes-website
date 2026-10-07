@@ -4,6 +4,9 @@ import { TechInput } from "@/components/ui/TechInput";
 import { Metadata } from "next";
 import DisplayTechImage from "./display-tech-image";
 
+// Maybe i need to take out idk. Need to check out later
+export const instant = false;
+
 export const metadata: Metadata = {
   title: "Mercy Parkour - Tech",
   description: "The list of all the tech found in Mercy Parkour!",
