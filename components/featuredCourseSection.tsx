@@ -1,8 +1,8 @@
-export const dynamic = "force-dynamic";
 import Card from "@/components/CodeCard";
 import MapImageSelection from "@/app/codes/map-image-selection";
 import CardSkeleton from "./ui/CardSkeleton";
 import { MapCode } from "@/app/codes/MapCode";
+import { cacheLife } from "next/cache";
 
 export default async function FeaturedCourse() {
   const featuredCode = await fetchDailyCode();
@@ -32,10 +32,10 @@ export default async function FeaturedCourse() {
 }
 
 const fetchDailyCode = async () => {
+  "use cache";
+  cacheLife("hours");
   try {
-    const response = await fetch(`${process.env.URL}/api/codes/daily`, {
-      next: { revalidate: 300 },
-    });
+    const response = await fetch(`${process.env.URL}/api/codes/daily`);
     const dailyCode: MapCode = await response.json();
     return dailyCode;
   } catch (error) {

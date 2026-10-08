@@ -1,7 +1,6 @@
 import If_You_Are_Still_Stuck_Text from "@/components/if_you_are_still_stuck_text";
 import NavBarUI from "@/components/ui/NavBar";
 import { Metadata } from "next";
-
 export const metadata: Metadata = {
   title: "Mercy Parkour - Rez Bhop Reset",
   description: "This page teaches you about Rez Bunnyhop Resets",

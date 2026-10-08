@@ -1,9 +1,8 @@
 "use client";
 
-import LoadingSpinner from "@/components/ui/LoadingSpinner";
-import Image, { StaticImageData } from "next/image";
+import LazyTechVideo from "@/components/LazyTechVideo";
+import { StaticImageData } from "next/image";
 import Link from "next/link";
-import HoverVideoPlayer from "react-hover-video-player";
 
 export default function DisplayTechImage(props: {
   item: {
@@ -19,33 +18,19 @@ export default function DisplayTechImage(props: {
       <div className="border rounded-md shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
         <Link href={props.item.link}>
           {/* GIF/Tech Image */}
-          <div className="relative w-full h-52 overflow-hidden">
-            <HoverVideoPlayer
-              videoSrc={props.item.videoPath || null}
-              pausedOverlay={
-                <Image
-                  fill
-                  src={props.item.gif}
-                  alt={props.item.title}
-                  className="object-cover"
-                />
-              }
-              loadingOverlay={
-                <div>
-                  <LoadingSpinner />
-                </div>
-              }
-            />
-          </div>
+          <LazyTechVideo
+            videoSrc={props.item.videoPath}
+            imageSrc={props.item.gif}
+            alt={props.item.title}
+          />
 
-          {/* IF SECTION BELOW WILL BE UNCOMMENTED THE OLD HEIGHT ON THE SECTION ABOVE WAS H-48*/}
-          {/* Title 
-                  <div className="p-4 bg-gray-700">
-                    <h3 className="text-xl font-bold mb-2 text-center">
-                      {item.title}
-                    </h3>
-                  </div>
-        */}
+          {/* PUT TECH NAME UNDER TECH CARD. COMMENTED IN CASE ITS NEEDED IN THE FUTURE LIKE TRANSLATIONS
+
+          <div className="p-4">
+            <h3 className="text-xl font-bold">{props.item.title}</h3>
+          </div>
+          
+          */}
         </Link>
       </div>
     </>

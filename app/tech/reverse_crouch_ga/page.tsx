@@ -3,6 +3,7 @@ import NavBarUI from "@/components/ui/NavBar";
 import { Metadata } from "next";
 import Link from "next/link";
 
+
 export const metadata: Metadata = {
   title: "Mercy Parkour - Reverse Crouch GA",
   description: "This page teaches you about Reverse Crouch Guardian Angel",
