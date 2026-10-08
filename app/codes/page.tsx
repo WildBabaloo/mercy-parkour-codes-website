@@ -9,8 +9,6 @@ import { Metadata } from "next";
 import { GetDifficultyIntegerForFilter } from "@/components/utils/getDifficultyIntegerForFilter";
 import { GetDifficultyIntegerForRangeSlider } from "@/components/utils/getDifficultyIntegerForRangeSlider";
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
 export const instant = false;
 
 export const metadata: Metadata = {
@@ -46,7 +44,7 @@ export default async function Codes(props: {
   const selectedDifficultyRange = selectedDifficulty
     ? GetDifficultyIntegerForFilter(selectedDifficulty)
     : GetDifficultyIntegerForRangeSlider(
-        searchParams?.difficultyRange || "1-17"
+        searchParams?.difficultyRange || "1-17",
       );
   // Play status to be added in future implementations
   // const selectPlayStatus = searchParams?.play_status;
@@ -148,7 +146,7 @@ const fetchCodes = async ({
           sortOrder,
           map,
           difficultyRange,
-          category
+          category,
         )
       : await getSortedMapCodes(
           search,
@@ -158,7 +156,7 @@ const fetchCodes = async ({
           sortOrder,
           map,
           difficultyRange,
-          category
+          category,
         );
 
   return codes;
