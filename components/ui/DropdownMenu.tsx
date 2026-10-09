@@ -39,7 +39,11 @@ export default function Dropdown_Menu(props: {
   };
 
   return (
-    <Dropdown>
+    <Dropdown
+      classNames={{
+        content: "p-0 bg-transparent border shadow-none min-w-0 rounded-md",
+      }}
+    >
       <DropdownTrigger>
         <button className="px-3 py-1 rounded-full bg-gray-600 hover:bg-gray-500 capitalize flex items-center">
           {selected && selected !== menuHeader ? (
@@ -76,15 +80,17 @@ export default function Dropdown_Menu(props: {
         onSelectionChange={(keys) =>
           setSelected(urlHeader, Array.from(keys).join(","))
         }
-        className="relative border rounded-md bg-gray-800 text-white shadow-lg w-48 max-h-60 overflow-y-auto"
+        className="relative border border-gray-600 rounded-md bg-gray-800 text-white shadow-lg w-48 max-h-60 overflow-y-auto p-1"
+        itemClasses={{
+          base: [
+            "px-4 py-2 rounded-md cursor-pointer text-white",
+            "data-[hover=true]:bg-gray-600 data-[hover=true]:text-white",
+            "data-[focus-visible=true]:bg-gray-600 data-[selectable=true]:focus:bg-gray-600 data-[selectable=true]:focus:text-white",
+          ].join(" "),
+        }}
       >
         {menuItems.map((item) => (
-          <DropdownItem
-            key={item}
-            className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-          >
-            {item}
-          </DropdownItem>
+          <DropdownItem key={item}>{item}</DropdownItem>
         ))}
       </DropdownMenu>
     </Dropdown>

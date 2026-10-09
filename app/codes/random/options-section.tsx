@@ -73,8 +73,6 @@ export default function OptionsSection({
           {(onClose) => (
             <>
               <ModalHeader>Random Map Options</ModalHeader>
-
-              {/* Same content as the /codes dropdown (SearchBarWithDropdown lines 132-177) */}
               <ModalBody className="space-y-4">
                 {/* Filter Options */}
                 <div className="flex flex-wrap gap-2">
