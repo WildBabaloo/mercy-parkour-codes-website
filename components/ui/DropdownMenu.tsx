@@ -14,16 +14,26 @@ export default function Dropdown_Menu(props: {
   urlHeader: string;
   selected: string;
   setSelected: (key: string, value: string) => void;
+  syncUrl?: boolean;
 }) {
-  const { menuHeader, menuItems, urlHeader, selected, setSelected } = props;
+  const {
+    menuHeader,
+    menuItems,
+    urlHeader,
+    selected,
+    setSelected,
+    syncUrl = true,
+  } = props;
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const handleClearSingleFilterOption = (event: MouseEvent) => {
-    const params = new URLSearchParams(searchParams);
     event.stopPropagation();
     setSelected(urlHeader, "");
+    if (!syncUrl) return;
+
+    const params = new URLSearchParams(searchParams);
     params.delete(urlHeader);
     replace(`${pathname}?${params.toString()}`);
   };
