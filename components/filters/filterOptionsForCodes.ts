@@ -18,7 +18,7 @@ export const EMPTY_FILTERS: RandomFilters = {
 
 export const DEFAULT_RANGE = [1, 17];
 
-export const categoryOptions = [
+export const categoryOptionsItems = [
     "Clouds",
     "Many Orbs",
     "Rez Map",
