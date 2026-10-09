@@ -1,15 +1,19 @@
 // Filter options for /codes and /codes/random. Made to avoid redundency.
 
+// NOTE FOR FUTURE WILL ADD PLAYED/NOT PLAYED OVER HERE
+// THAT SECTION IS COMMENETED OUT FOR NOW...
 export type RandomFilters = {
     category: string;
     map: string;
     difficulty: string;
+    // played: string;
 };
 
 export const EMPTY_FILTERS: RandomFilters = {
     category: "",
     map: "",
     difficulty: "",
+    // played: "",
 };
 
 export const DEFAULT_RANGE = [1, 17];
@@ -94,6 +98,11 @@ export const difficultyOptionItems = [
   "Expert",
   "Expert / Super Expert",
   "Super Expert",
+];
+
+export const hasPlayedItems = [
+  "Played",
+  "Not Played"
 ];
 
 export const categoryToUrl = (category: string) => {
