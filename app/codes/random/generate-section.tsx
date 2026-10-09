@@ -42,7 +42,18 @@ export default function GenerateSection() {
 
     try {
       const query = buildQuery();
-      const response = await fetch("/api/codes/random");
+      const response = await fetch(
+        `/api/codes/random${query ? `?${query}` : ""}`,
+        { cache: "no-store" },
+      );
+      if (response.status === 404) {
+        setCode(undefined);
+        setError("No maps match your options. Try loosening up your filters!");
+        return;
+      }
+
+      if (!response.ok) throw new Error(`Request failed! ${response.status}`);
+
       const generatedCode: MapCode = await response.json();
       setCode(generatedCode);
     } catch (err) {
@@ -78,9 +89,17 @@ export default function GenerateSection() {
         )}
       </div>
 
+      {/* Error Message */}
+      {error && <p className="text-center text-red-400 mt-4">{error}</p>}
+
       {/* Generate and Options Button */}
       <div className="flex justify-center items-center gap-4 mt-8">
-        <OptionsSection />
+        <OptionsSection
+          filters={filters}
+          setFilters={setFilters}
+          range={range}
+          setRange={setRange}
+        />
         <Button
           variant="default"
           className="px-8 py-3 text-lg font-semibold bg-primary text-white rounded-lg shadow-md hover:bg-primary-dark transition-transform transform hover:scale-105"
