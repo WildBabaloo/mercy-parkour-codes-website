@@ -1,14 +1,16 @@
 import {nextui} from '@nextui-org/theme';
+import { heroui } from "@heroui/theme";
 import type { Config } from "tailwindcss";
 
 export default {
     darkMode: ["class"],
-    content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/navbar.js"
-  ],
+	content: [
+	"./pages/**/*.{js,ts,jsx,tsx,mdx}",
+	"./components/**/*.{js,ts,jsx,tsx,mdx}",
+	"./app/**/*.{js,ts,jsx,tsx,mdx}",
+	"./node_modules/@nextui-org/theme/dist/components/navbar.js",
+	"./node_modules/@heroui/theme/dist/components/(modal|dropdown|popover|menu).js",
+	],
   theme: {
   	extend: {
   		colors: {
@@ -78,5 +80,5 @@ export default {
   	}
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [nextui(), require("tailwindcss-animate")],
+  plugins: [nextui(), heroui(), require("tailwindcss-animate")],
 } satisfies Config;
