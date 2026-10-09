@@ -5,19 +5,56 @@ import { Button } from "@/components/ui/button";
 import MapImageSelection from "../map-image-selection";
 import { MapCode } from "../MapCode";
 import CardSkeleton from "@/components/ui/CardSkeleton";
+import OptionsSection from "./options-section";
+import {
+  RandomFilters,
+  EMPTY_FILTERS,
+  DEFAULT_RANGE,
+  categoryToUrl,
+} from "@/components/filters/filterOptionsForCodes";
 
 export default function GenerateSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [code, setCode] = useState<MapCode>();
+  const [error, setError] = useState<string | null>(null);
+
+  const [filters, setFilters] = useState<RandomFilters>(EMPTY_FILTERS);
+  const [range, setRange] = useState<number[]>(DEFAULT_RANGE);
+
+  const buildQuery = () => {
+    const params = new URLSearchParams();
+    const urlCategory = categoryToUrl(filters.category);
+    if (urlCategory) params.set("category", urlCategory);
+    if (filters.map) params.set("map", filters.map);
+    if (filters.difficulty) params.set("difficulty", filters.difficulty);
+    if (range[0] !== DEFAULT_RANGE[0] || range[1] !== DEFAULT_RANGE[1]) {
+      params.set("difficultyRange", range.join("-"));
+    }
+
+    return params.toString();
+  };
+
   const handleGenerateButton = async () => {
     if (isLoading) return;
 
     setIsLoading(true);
-    const response = await fetch("/api/codes/random");
-    const generatedCode: MapCode = await response.json();
-    setCode(generatedCode);
-    setIsLoading(false);
+    setError(null);
+
+    try {
+      const query = buildQuery();
+      const response = await fetch("/api/codes/random");
+      const generatedCode: MapCode = await response.json();
+      setCode(generatedCode);
+    } catch (err) {
+      console.error(error);
+      setError(
+        "Something went wrong with generating a map. Please try again...",
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
+
   return (
     <>
       {/* Card Section */}
@@ -41,8 +78,9 @@ export default function GenerateSection() {
         )}
       </div>
 
-      {/* Generate Button */}
-      <div className="text-center mt-8">
+      {/* Generate and Options Button */}
+      <div className="flex justify-center items-center gap-4 mt-8">
+        <OptionsSection />
         <Button
           variant="default"
           className="px-8 py-3 text-lg font-semibold bg-primary text-white rounded-lg shadow-md hover:bg-primary-dark transition-transform transform hover:scale-105"
